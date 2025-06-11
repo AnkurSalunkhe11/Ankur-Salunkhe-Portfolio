@@ -1,0 +1,110 @@
+{
+  "name": "Ankur Salunkhe",
+  "title": "Mechanical Engineering Student & Software Developer",
+  "email": "ankursalunkhe2004@gmail.com",
+  "phone": "+91 93251 38589",
+  "linkedin": "https://www.linkedin.com/in/ankur-salunkhe/",
+  "github": "https://github.com/AnkurSalunkhe11",
+  "twitter": "https://twitter.com",
+  "website": "https://ankur-salunkhe.vercel.app/",
+  "leetcode": "https://leetcode.com/u/noobmaster11/",
+  "location": "Pune, Maharashtra, India",
+  "bio": "Passionate Mechanical Engineering undergraduate at Dr. D. Y. Patil Institute of Technology with expertise in thermal systems, CFD analysis, and software development. Bridging the gap between engineering fundamentals and modern technology solutions.",
+  "education": [
+    {
+      "degree": "Bachelor of Engineering (Mechanical)",
+      "school": "Dr. D. Y. Patil Institute of Technology",
+      "location": "Pimpri, Pune",
+      "startDate": "2022-06",
+      "endDate": "2026-05",
+      "gpa": "9.0/10.0",
+      "coursework": ["Heat Transfer", "Thermodynamics", "Fluid Mechanics", "CFD", "Materials Science", "Manufacturing Processes"]
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Machine Learning Specialization",
+      "issuer": "Stanford University (via DeepLearning.AI)",
+      "date": "Apr 2025",
+      "credentialId": "1MDD42MQS6H3",
+      "link": "https://www.coursera.org/account/accomplishments/specialization/1MDD42MQS6H3"
+    },
+    {
+      "name": "Advanced Learning Algorithms",
+      "issuer": "DeepLearning.AI",
+      "date": "Mar 2025",
+      "credentialId": "1dcb518fa4dc5d2a0ce4343cbd5bc423",
+      "link": "https://www.coursera.org/account/accomplishments/certificate/1dcb518fa4dc5d2a0ce4343cbd5bc423"
+    },
+    {
+      "name": "Supervised Machine Learning: Regression and Classification",
+      "issuer": "DeepLearning.AI",
+      "date": "Mar 2025",
+      "credentialId": "d7d3b8c6f87e8d682c90b6fbf1b3b4d2",
+      "link": "https://www.coursera.org/account/accomplishments/certificate/d7d3b8c6f87e8d682c90b6fbf1b3b4d2"
+    },
+    {
+      "name": "Salesforce Certified AI Associate",
+      "issuer": "Salesforce",
+      "date": "Jan 2025",
+      "credentialId": "5663420",
+      "link": "https://trailhead.salesforce.com/credentials/verification"
+    },
+    {
+      "name": "Mastering Programming with MATLAB",
+      "issuer": "Vanderbilt University",
+      "date": "Sep 2024",
+      "credentialId": "26267eddb0268bd333ffe5e291911359",
+      "link": "https://www.coursera.org/account/accomplishments/certificate/26267eddb0268bd333ffe5e291911359"
+    },
+    {
+      "name": "Oil & Gas Industry Operations and Markets",
+      "issuer": "Duke University",
+      "date": "Sep 2024",
+      "credentialId": "32cd8bfcf25f3ad3a6bd6000f1694f07",
+      "link": "https://www.coursera.org/account/accomplishments/certificate/32cd8bfcf25f3ad3a6bd6000f1694f07"
+    },
+    {
+      "name": "CAM and Design Manufacturing with Autodesk Fusion 360",
+      "issuer": "Autodesk Fusion 360 & Moldflow",
+      "date": "Aug 2024",
+      "credentialId": "14RSLQD7HE41",
+      "link": "https://www.coursera.org/account/accomplishments/certificate/14RSLQD7HE41"
+    },
+    {
+      "name": "Python (Basic)",
+      "issuer": "HackerRank",
+      "date": "Aug 2023",
+      "credentialId": "ab4cc393e3b5",
+      "link": "https://www.hackerrank.com/certificates/ab4cc393e3b5"
+    },
+    {
+      "name": "SQL (Basic)",
+      "issuer": "HackerRank",
+      "date": "Aug 2023",
+      "credentialId": "7fdcd290e931",
+      "link": "https://www.hackerrank.com/certificates/7fdcd290e931"
+    },
+    {
+      "name": "The Complete Web Development Bootcamp",
+      "issuer": "Udemy",
+      "date": "Feb 2023",
+      "credentialId": "UC-409f1a4a-8835-49d6-8236-125412f3ca91",
+      "link": "https://www.udemy.com/certificate/UC-409f1a4a-8835-49d6-8236-125412f3ca91"
+    },
+    {
+      "name": "Practical Ethical Hacking",
+      "issuer": "TCM Security",
+      "date": "Oct 2022",
+      "credentialId": "cert_3yf9syd5",
+      "link": "https://academy.tcm-sec.com/"
+    },
+    {
+      "name": "MATLAB Onramp",
+      "issuer": "MATLAB",
+      "date": "Jan 2024",
+      "credentialId": "77f9c145-fa88-41f4-9772-87aa8547e8bb",
+      "link": "https://matlabacademy.mathworks.com/progress/share/certificate.html?id=77f9c145-fa88-41f4-9772-87aa8547e8bb"
+    }
+  ]
+}

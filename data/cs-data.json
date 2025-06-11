@@ -1,0 +1,135 @@
+{
+  "tagline": "Building innovative software solutions with engineering precision and analytical thinking",
+  "about": "Mechanical Engineering student with a passion for software development and automation. I combine engineering fundamentals with programming skills to create efficient solutions for complex problems. My experience spans from numerical modeling and CFD simulations to web development and AI-powered applications.",
+  "skills": [
+    { "category": "Programming", "items": ["Python", "JavaScript", "C++", "MATLAB"] },
+    { "category": "Web Development", "items": ["HTML/CSS", "React", "Node.js", "API Integration"] },
+    { "category": "Data & Analysis", "items": ["Pandas", "NumPy", "Data Visualization", "Log Analysis"] },
+    { "category": "Tools & Platforms", "items": ["Git", "Google Sheets API", "Pygame", "AppScript"] }
+  ],
+  "projects": [
+    {
+      "title": "Financial Statement Analysis Chatbot",
+      "description": "Secure web application with AES encryption and OTP-based login that integrates a chatbot for extracting and summarizing financial insights from uploaded PDFs.",
+      "technologies": ["Python", "AES Encryption", "OTP Authentication", "PDF Processing", "Web Development"],
+      "github": "https://github.com/AnkurSalunkhe11/financial-chatbot",
+      "demo": "https://financial-chatbot-demo.vercel.app"
+    },
+    {
+      "title": "LogCount W - Log Analysis System",
+      "description": "Python-based log analysis system using Pandas to parse server logs, integrated with Google Sheets for monitoring recurring errors and early fault detection.",
+      "technologies": ["Python", "Pandas", "Google Sheets API", "AppScript", "Automation"],
+      "github": "https://github.com/AnkurSalunkhe11/logcount-w",
+      "demo": "https://logcount-demo.herokuapp.com"
+    },
+    {
+      "title": "Numerical Solver for Transient Heat Transfer",
+      "description": "Python-based numerical solver using finite difference methods for transient thermal simulations with adaptive time-stepping and stability control.",
+      "technologies": ["Python", "Finite Difference Method", "Numerical Modeling", "Heat Transfer"],
+      "github": "https://github.com/AnkurSalunkhe11/heat-transfer-solver",
+      "demo": "https://heat-solver-demo.streamlit.app"
+    },
+    {
+      "title": "AI Virtual Assistant",
+      "description": "Voice and text-enabled virtual assistant in Python for task automation including alarms, web browsing, PDF summarization, and system control.",
+      "technologies": ["Python", "Speech Recognition", "Web Scraping", "winsdk", "Automation"],
+      "github": "https://github.com/AnkurSalunkhe11/ai-assistant",
+      "demo": "https://ai-assistant-demo.vercel.app"
+    },
+    {
+      "title": "Lid Driven Cavity Simulation",
+      "description": "2D CFD flow simulation for lid-driven cavity problem using Python with finite difference methods and visual output through contour plots.",
+      "technologies": ["Python", "CFD", "Finite Difference", "Matplotlib", "NumPy"],
+      "github": "https://github.com/AnkurSalunkhe11/lid-driven-cavity",
+      "demo": "https://cavity-simulation.streamlit.app"
+    },
+    {
+      "title": "Space Wars Game",
+      "description": "2D arcade-style game with player-controlled spaceship, enemy waves, collision detection, scoring, and animation using Pygame.",
+      "technologies": ["Python", "Pygame", "Game Development", "Object-Oriented Programming"],
+      "github": "https://github.com/AnkurSalunkhe11/space-wars",
+      "demo": "https://space-wars-game.itch.io"
+    }
+  ],
+  "experience": [
+    {
+      "title": "Software Developer",
+      "company": "Personal Projects",
+      "location": "Pune, India",
+      "startDate": "2022-01",
+      "endDate": "Present",
+      "description": "Developing various software solutions including automation tools, web applications, and numerical solvers for engineering problems.",
+      "achievements": [
+        "Built AI-powered virtual assistant with voice and text capabilities",
+        "Developed financial statement analysis chatbot with AES encryption",
+        "Created numerical solvers for transient heat transfer problems"
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Machine Learning Specialization",
+      "issuer": "Stanford University (via DeepLearning.AI)",
+      "date": "Apr 2025",
+      "credentialId": "1MDD42MQS6H3",
+      "link": "https://www.coursera.org/account/accomplishments/specialization/1MDD42MQS6H3",
+      "skills": ["Machine Learning", "AI"]
+    },
+    {
+      "name": "Advanced Learning Algorithms",
+      "issuer": "DeepLearning.AI",
+      "date": "Mar 2025",
+      "credentialId": "1dcb518fa4dc5d2a0ce4343cbd5bc423",
+      "link": "https://www.coursera.org/account/accomplishments/certificate/1dcb518fa4dc5d2a0ce4343cbd5bc423",
+      "skills": ["AI", "Gradient Descent", "Regularization"]
+    },
+    {
+      "name": "Supervised Machine Learning: Regression and Classification",
+      "issuer": "DeepLearning.AI",
+      "date": "Mar 2025",
+      "credentialId": "d7d3b8c6f87e8d682c90b6fbf1b3b4d2",
+      "link": "https://www.coursera.org/account/accomplishments/certificate/d7d3b8c6f87e8d682c90b6fbf1b3b4d2",
+      "skills": ["Supervised Learning", "Regression", "Classification"]
+    },
+    {
+      "name": "Salesforce Certified AI Associate",
+      "issuer": "Salesforce",
+      "date": "Jan 2025",
+      "credentialId": "5663420",
+      "link": "https://trailhead.salesforce.com/credentials/verification",
+      "skills": ["IT Automation", "AI-Driven Business Strategies", "Ethical AI", "Agentforce"]
+    },
+    {
+      "name": "Python (Basic)",
+      "issuer": "HackerRank",
+      "date": "Aug 2023",
+      "credentialId": "ab4cc393e3b5",
+      "link": "https://www.hackerrank.com/certificates/ab4cc393e3b5",
+      "skills": ["Python"]
+    },
+    {
+      "name": "SQL (Basic)",
+      "issuer": "HackerRank",
+      "date": "Aug 2023",
+      "credentialId": "7fdcd290e931",
+      "link": "https://www.hackerrank.com/certificates/7fdcd290e931",
+      "skills": ["SQL"]
+    },
+    {
+      "name": "The Complete Web Development Bootcamp",
+      "issuer": "Udemy",
+      "date": "Feb 2023",
+      "credentialId": "UC-409f1a4a-8835-49d6-8236-125412f3ca91",
+      "link": "https://www.udemy.com/certificate/UC-409f1a4a-8835-49d6-8236-125412f3ca91",
+      "skills": ["Python", "MySQL", "Node.js", "CSS", "GitHub"]
+    },
+    {
+      "name": "Practical Ethical Hacking",
+      "issuer": "TCM Security",
+      "date": "Oct 2022",
+      "credentialId": "cert_3yf9syd5",
+      "link": "https://academy.tcm-sec.com/",
+      "skills": ["Bash", "Networking", "Offensive Security"]
+    }
+  ]
+}

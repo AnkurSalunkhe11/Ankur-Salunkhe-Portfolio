@@ -1,0 +1,251 @@
+{
+  "tagline": "Designing innovative thermal systems and optimizing engineering processes through advanced simulation",
+  "about": "Mechanical Engineering undergraduate with expertise in thermal systems, CFD analysis, and heat transfer applications. I specialize in waste heat recovery systems, HVAC optimization, and advanced simulation techniques using ANSYS and SolidWorks. My research focuses on sustainable energy solutions and thermal management systems.",
+  "skills": [
+    { "category": "Design & Modeling", "items": ["SolidWorks", "AutoCAD", "ANSYS Mechanical", "CAD Design", "3D Modeling"] },
+    { "category": "Simulation & Analysis", "items": ["ANSYS Fluent", "CFD", "Thermal Analysis", "Structural Analysis", "Heat Transfer"] },
+    { "category": "Thermal Systems", "items": ["HVAC", "Heat Exchangers", "Organic Rankine Cycle", "Waste Heat Recovery", "Thermodynamics"] },
+    { "category": "Manufacturing", "items": ["Metal Fabrication", "Project Management", "Quality Control", "Process Optimization"] }
+  ],
+  "projects": [
+    {
+      "title": "Implementation of an Organic Rankine Cycle as a Waste Heat Recovery System",
+      "description": "Developed an ORC-based test rig to convert industrial waste heat into electricity using a closed-loop system of pump, evaporator, turbine, and condenser.",
+      "technologies": ["Heat Transfer", "Organic Rankine Cycle", "Waste Heat Recovery", "Exergy Analysis", "Metal Fabrication"],
+      "link": "https://doi.org/10.1016/j.csite.2025.105841",
+      "duration": "Apr 2024 – May 2024",
+      "team": "4 students"
+    },
+    {
+      "title": "Transient Thermal Analysis of Braking Systems Using ANSYS",
+      "description": "Conducted coupled field transient analysis in ANSYS to evaluate thermal performance of ceramic vs. composite brake materials and optimize contact mechanics.",
+      "technologies": ["ANSYS Mechanical", "Thermal Analysis", "Dynamic Modeling", "Heat Transfer Simulation", "SolidWorks"],
+      "duration": "Nov 2023 – Jan 2024",
+      "team": "3 students"
+    },
+    {
+      "title": "Heat Exchanger Performance Optimization using CFD",
+      "description": "Used ANSYS Fluent to analyze and optimize thermal and flow performance in heat exchangers using parameters like LMTD, pressure drop, and fluid regimes.",
+      "technologies": ["CFD", "ANSYS Fluent", "Heat Exchangers", "Flow Analysis", "LMTD Analysis"],
+      "duration": "Aug 2023 – Oct 2023",
+      "team": "2 students"
+    },
+    {
+      "title": "Hybrid Air-conditioning System for Passenger Vehicles",
+      "description": "Designed a three-fluid heat exchanger system integrating adsorption refrigeration with exhaust recovery to reduce fuel consumption and improve vehicle HVAC performance.",
+      "technologies": ["HVAC", "CFD", "ANSYS Fluent", "Waste Heat Recovery", "SolidWorks"],
+      "duration": "Sep 2023 – Nov 2023",
+      "team": "5 students"
+    }
+  ],
+  "experience": [
+    {
+      "title": "Summer Intern",
+      "company": "Thermax Limited",
+      "location": "Pune, India",
+      "startDate": "2024-06",
+      "endDate": "2024-07",
+      "description": "Worked on water and waste treatment systems, analyzing heat and mass balance in MEE systems and interpreting P&IDs.",
+      "achievements": [
+        "Analyzed heat and mass balance in MEE systems",
+        "Interpreted Piping and Instrumentation Diagrams (P&IDs)",
+        "Collaborated with site engineers for maintenance planning",
+        "Gained hands-on experience with water and waste treatment systems"
+      ]
+    }
+  ],
+  "publications": [
+    {
+      "title": "Performance Investigation on Organic Rankine Cycle from a Low-temperature Heat Source",
+      "journal": "CSITE (Scopus, Sci Indexed, Q1)",
+      "year": 2025,
+      "doi": "https://doi.org/10.1016/j.csite.2025.105841",
+      "description": "Comprehensive analysis of ORC performance optimization for low-temperature waste heat recovery applications."
+    },
+    {
+      "title": "Design, Development & Performance Evaluation of Sustainable, Hybrid Air-conditioning System for Automobiles",
+      "journal": "IJoSI (Scopus Indexed, Q3)",
+      "year": 2024,
+      "doi": "https://doi.org/10.6977/IJoSI.202409_8(3).0007",
+      "description": "Novel hybrid HVAC system design achieving significant energy savings in automotive applications."
+    }
+  ],
+  "patents": [
+    {
+      "title": "ORC Test Rig for Waste Heat Recovery",
+      "applicationNumber": "Patent No: 425785-001",
+      "status": "Granted",
+      "year": 2025,
+      "description": "A system designed to harness waste heat using an Organic Rankine Cycle setup for efficient energy recovery from low-temperature industrial sources."
+    },
+    {
+      "title": "Baffle-Integrated Water Jacket",
+      "applicationNumber": "Patent No: 429677-001",
+      "status": "Granted",
+      "year": 2024,
+      "description": "A water jacket design with integrated baffles to enhance thermal transfer in engine cooling applications, improving heat dissipation efficiency."
+    },
+    {
+      "title": "Integrated Microplastic Filtration and Compaction System for Sustainable Use",
+      "applicationNumber": "Patent No: 440174-001",
+      "status": "Granted",
+      "year": 2025,
+      "description": "An innovative system for filtering and compacting microplastics from water sources, enabling sustainable reuse and environmental protection."
+    }
+  ],
+  "detailedProjects": [
+    {
+      "title": "Implementation of an Organic Rankine Cycle as a Waste Heat Recovery System",
+      "description": "Developed an ORC-based test rig to convert industrial waste heat into electricity using a closed-loop system of pump, evaporator, turbine, and condenser. The system efficiently recycles the organic fluid for continuous power generation, achieving significant energy recovery from low-temperature heat sources.",
+      "technologies": ["Heat Transfer", "Organic Rankine Cycle", "Waste Heat Recovery", "Exergy Analysis", "Metal Fabrication", "Project Management"],
+      "link": "https://doi.org/10.1016/j.csite.2025.105841",
+      "duration": "Apr 2024 – May 2024",
+      "team": "4 students"
+    },
+    {
+      "title": "Transient Thermal Analysis of Braking Systems Using ANSYS",
+      "description": "Conducted comprehensive coupled field transient analysis in ANSYS to evaluate thermal performance of ceramic vs. composite brake materials. Optimized contact mechanics and simulated braking under varying thermal loads to improve brake system efficiency and safety.",
+      "technologies": ["ANSYS Mechanical", "Thermal & Structural Analysis", "Dynamic Modeling", "Heat Transfer Simulation", "Mesh Optimization", "SolidWorks"],
+      "duration": "Nov 2023 – Jan 2024",
+      "team": "3 students"
+    },
+    {
+      "title": "Hybrid Air-conditioning System for Passenger Vehicles",
+      "description": "Designed an innovative three-fluid heat exchanger system integrating adsorption refrigeration with exhaust heat recovery. The system significantly reduces fuel consumption while improving vehicle HVAC performance through advanced thermal management techniques.",
+      "technologies": ["HVAC", "CFD", "ANSYS Fluent", "Waste Heat Recovery", "SolidWorks", "Thermal Design"],
+      "link": "https://doi.org/10.6977/IJoSI.202409_8(3).0007",
+      "duration": "Sep 2023 – Nov 2023",
+      "team": "5 students"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Mastering Programming with MATLAB",
+      "issuer": "Vanderbilt University",
+      "date": "Sep 2024",
+      "credentialId": "26267eddb0268bd333ffe5e291911359",
+      "link": "https://www.coursera.org/account/accomplishments/certificate/26267eddb0268bd333ffe5e291911359",
+      "skills": ["MATLAB", "OOP", "App Designer", "Live Scripts"]
+    },
+    {
+      "name": "Oil & Gas Industry Operations and Markets",
+      "issuer": "Duke University",
+      "date": "Sep 2024",
+      "credentialId": "32cd8bfcf25f3ad3a6bd6000f1694f07",
+      "link": "https://www.coursera.org/account/accomplishments/certificate/32cd8bfcf25f3ad3a6bd6000f1694f07",
+      "skills": ["Energy Systems"]
+    },
+    {
+      "name": "Utilities, Safety & Environmental Care in Oil & Gas Industry",
+      "issuer": "L&T EduTech",
+      "date": "Sep 2024",
+      "credentialId": "52d2787333dc07627e4e6408a6b05718",
+      "link": "https://www.coursera.org/account/accomplishments/certificate/52d2787333dc07627e4e6408a6b05718",
+      "skills": ["Safety", "Utility Management"]
+    },
+    {
+      "name": "CAM and Design Manufacturing with Autodesk Fusion 360",
+      "issuer": "Autodesk Fusion 360 & Moldflow",
+      "date": "Aug 2024",
+      "credentialId": "14RSLQD7HE41",
+      "link": "https://www.coursera.org/account/accomplishments/certificate/14RSLQD7HE41",
+      "skills": ["Fusion 360", "Mechanical Design"]
+    },
+    {
+      "name": "Absolute Beginner's Guide to CFD Simulation in ANSYS",
+      "issuer": "Udemy",
+      "date": "Jul 2024",
+      "credentialId": "UC-449acd7f-2c9e-43aa-af59-887aa7869366",
+      "link": "https://www.udemy.com/certificate/UC-449acd7f-2c9e-43aa-af59-887aa7869366",
+      "skills": ["ANSYS Workbench"]
+    },
+    {
+      "name": "Mastering ANSYS CFD",
+      "issuer": "Udemy",
+      "date": "Jul 2024",
+      "credentialId": "UC-26b33ea8-666b-4b3e-9741-2bb41aa7a276",
+      "link": "https://www.udemy.com/certificate/UC-26b33ea8-666b-4b3e-9741-2bb41aa7a276",
+      "skills": ["CFD", "Ansys Fluent", "Heat Transfer"]
+    },
+    {
+      "name": "Computational Fluid Mechanics - Airflow Around a Spoiler",
+      "issuer": "Coursera",
+      "date": "Jun 2024",
+      "credentialId": "3NHSJLALVKQE",
+      "link": "https://www.coursera.org/account/accomplishments/certificate/3NHSJLALVKQE",
+      "skills": ["Fluid Mechanics"]
+    },
+    {
+      "name": "Finite Element Analysis Convergence and Mesh Independence",
+      "issuer": "Coursera",
+      "date": "Jun 2024",
+      "credentialId": "55ZAMVAYVTNR",
+      "link": "https://www.coursera.org/account/accomplishments/certificate/55ZAMVAYVTNR",
+      "skills": ["FEA", "Meshing"]
+    },
+    {
+      "name": "Harnessing the Power of Data with Power BI",
+      "issuer": "Coursera",
+      "date": "Jun 2024",
+      "credentialId": "FYCN6XBGQMXW",
+      "link": "https://www.coursera.org/account/accomplishments/certificate/FYCN6XBGQMXW",
+      "skills": ["Power BI", "Dashboards"]
+    },
+    {
+      "name": "Introduction to Fluent Aero Package",
+      "issuer": "Udemy",
+      "date": "Jun 2024",
+      "credentialId": "UC-2fc5e974-7f5c-4d83-89dd-80f10e17eb66",
+      "link": "https://www.udemy.com/certificate/UC-2fc5e974-7f5c-4d83-89dd-80f10e17eb66",
+      "skills": ["ANSYS Aero", "Ansys Fluent"]
+    },
+    {
+      "name": "Simulink Onramp",
+      "issuer": "MATLAB",
+      "date": "Feb 2024",
+      "credentialId": "dcc71b37-2584-4870-ab7a-6823e94038d8",
+      "link": "https://matlabacademy.mathworks.com/progress/share/certificate.html?id=dcc71b37-2584-4870-ab7a-6823e94038d8",
+      "skills": ["Simulink"]
+    },
+    {
+      "name": "Stateflow Onramp",
+      "issuer": "MATLAB",
+      "date": "Feb 2024",
+      "credentialId": "73e18446-9aa8-4f06-b0fd-bb1e84846e9d",
+      "link": "https://matlabacademy.mathworks.com/progress/share/certificate.html?id=73e18446-9aa8-4f06-b0fd-bb1e84846e9d",
+      "skills": ["Stateflow"]
+    },
+    {
+      "name": "MATLAB Onramp",
+      "issuer": "MATLAB",
+      "date": "Jan 2024",
+      "credentialId": "77f9c145-fa88-41f4-9772-87aa8547e8bb",
+      "link": "https://matlabacademy.mathworks.com/progress/share/certificate.html?id=77f9c145-fa88-41f4-9772-87aa8547e8bb",
+      "skills": ["MATLAB"]
+    },
+    {
+      "name": "CFD Simulation Through a Centrifugal Pump",
+      "issuer": "Coursera",
+      "date": "Nov 2023",
+      "credentialId": "bf1bb9183ffb623730a3625988478650",
+      "link": "https://www.coursera.org/account/accomplishments/certificate/bf1bb9183ffb623730a3625988478650",
+      "skills": ["CFD", "SOLIDWORKS"]
+    },
+    {
+      "name": "Complete SolidWorks Beginners Course",
+      "issuer": "Udemy",
+      "date": "Nov 2023",
+      "credentialId": "UC-9a3e43af-2919-4804-b2a1-431a2fda11cc",
+      "link": "https://www.udemy.com/certificate/UC-9a3e43af-2919-4804-b2a1-431a2fda11cc",
+      "skills": ["SOLIDWORKS", "Mechanical Drawings"]
+    },
+    {
+      "name": "ISHRAE Student Member",
+      "issuer": "ISHRAE Pune Chapter",
+      "date": "Jul 2024",
+      "credentialId": "N/A",
+      "link": "https://ishrae.in/",
+      "skills": ["HVAC Industry Awareness"]
+    }
+  ]
+}

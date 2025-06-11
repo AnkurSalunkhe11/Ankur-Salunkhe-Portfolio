@@ -1,0 +1,13 @@
+{
+  "defaultLanding": "cs",
+  "contactEmail": "ankursalunkhe2004@gmail.com",
+  "analytics": {
+    "vercelAnalytics": true,
+    "speedInsights": true
+  },
+  "seo": {
+    "title": "Ankur Salunkhe - Mechanical Engineering Student & Software Developer",
+    "description": "Passionate Mechanical Engineering undergraduate with expertise in thermal systems, CFD analysis, and software development.",
+    "keywords": "mechanical engineer, software developer, thermal systems, CFD, Python, ANSYS"
+  }
+}
