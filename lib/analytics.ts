@@ -1,6 +1,7 @@
 'use client';
 
 import { track } from '@vercel/analytics';
+import { SpeedInsights } from "@vercel/speed-insights/next" 
 
 // Simple analytics wrapper using only Vercel Analytics
 export const analytics = {

@@ -12,7 +12,7 @@ export const csImages = {
   
   // Hero/Profile images
   hero: {
-    profileImage: "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=600"
+    profileImage: "https://www.flaticon.com/free-animated-icon/thunder_17102860.jpeg?ato=compress&cs=tinysrgb&w=600"
   },
   
   // Background/Section images
