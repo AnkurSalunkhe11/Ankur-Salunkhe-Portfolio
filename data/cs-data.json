@@ -1,6 +1,6 @@
 {
   "tagline": "Building innovative software solutions with engineering precision and analytical thinking",
-  "about": "Mechanical Engineering student with a passion for software development and automation. I combine engineering fundamentals with programming skills to create efficient solutions for complex problems. My experience spans from numerical modeling and CFD simulations to web development and AI-powered applications.",
+  "about": "Mechanical Engineering student with a passion for software development and automation. I combine engineering fundamentals with programming skills to create efficient solutions. My experience spans from numerical modeling and Machine Learning ,web development .",
   "skills": [
     { "category": "Programming", "items": ["Python", "JavaScript", "C++", "MATLAB"] },
     { "category": "Web Development", "items": ["HTML/CSS", "React", "Node.js", "API Integration"] },
