@@ -21,6 +21,10 @@ const nextConfig = {
     ],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    // Add loader for better image handling
+    loader: 'default',
+    // Disable static imports for better dynamic loading
+    disableStaticImages: false,
   },
   experimental: {
     optimizePackageImports: ['lucide-react', 'framer-motion', '@radix-ui/react-slot']

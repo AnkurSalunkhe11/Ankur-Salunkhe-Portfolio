@@ -18,7 +18,6 @@ import {
   Eye
 } from 'lucide-react';
 import { analytics } from '@/lib/analytics';
-import { getProjectImage } from '@/lib/images';
 
 export default function MechanicalAchievements() {
   const mechanicalData = getDomainData('mechanical') as any;
@@ -92,6 +91,18 @@ export default function MechanicalAchievements() {
     if (link) {
       window.open(link, '_blank');
     }
+  };
+
+  // Get project image with fallback
+  const getProjectImage = (projectTitle: string): string => {
+    const imageMap: Record<string, string> = {
+      'Implementation of an Organic Rankine Cycle as a Waste Heat Recovery System': '/images/orc-image.jpeg',
+      'Transient Thermal Analysis of Braking Systems Using ANSYS': '/images/transient-thermal-braking.jpeg',
+      'Heat Exchanger Performance Optimization using CFD': '/images/heat-exchanger-performance-cfd.jpeg',
+      'Hybrid Air-conditioning System for Passenger Vehicles': '/images/hybrid-air-conditioning-system.jpeg',
+    };
+    
+    return imageMap[projectTitle] || '/images/orc-image.jpeg';
   };
 
   return (
@@ -202,9 +213,13 @@ export default function MechanicalAchievements() {
                   <Card className="h-full group hover:shadow-professional-xl transition-all duration-300 overflow-hidden hover:-translate-y-2 border-slate-200 bg-white">
                     <div className="relative overflow-hidden">
                       <img
-                        src={getProjectImage('mechanical', project.title)}
+                        src={getProjectImage(project.title)}
                         alt={project.title}
                         className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = '/images/orc-image.jpeg';
+                        }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
