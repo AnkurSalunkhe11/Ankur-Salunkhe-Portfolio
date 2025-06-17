@@ -67,8 +67,8 @@ const Projects = memo(() => {
   }, [personalData.github]);
 
   return (
-    <section id="projects" className="py-20 bg-slate-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="section-padding bg-slate-50">
+      <div className="max-w-7xl mx-auto container-padding">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -76,9 +76,9 @@ const Projects = memo(() => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-slate-900 mb-4">Featured Projects</h2>
+          <h2 className="heading-secondary mb-4">Featured Projects</h2>
           <div className="w-24 h-1 gradient-primary mx-auto rounded-full mb-6"></div>
-          <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+          <p className="text-body-large max-w-3xl mx-auto">
             {domain === 'cs' 
               ? 'A showcase of my software development work, featuring modern technologies and clean code practices'
               : 'Engineering projects demonstrating innovation, precision, and technical excellence'
