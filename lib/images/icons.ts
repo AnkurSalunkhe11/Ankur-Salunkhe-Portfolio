@@ -56,6 +56,7 @@ export const techLogos: Record<string, React.ComponentType<any>> = {
   
   // Tools & Platforms
   'Git': SiGit,
+  'Git & GitHub': SiGit,
   'Docker': SiDocker,
   'AWS': SiAmazonwebservices,
   'Vercel': SiVercel,
@@ -68,11 +69,53 @@ export const techLogos: Record<string, React.ComponentType<any>> = {
   'AutoCAD': SiAutodesk,
   'Fusion 360': SiAutodesk,
   'ANSYS': SiAnsys,
+  'ANSYS Fluent': SiAnsys,
+  'ANSYS Mechanical': SiAnsys,
   'Arduino': SiArduino,
   'Raspberry Pi': SiRaspberrypi,
   
-  // Fallback icons for concepts and other technologies
+  // Programming Languages
+  'C++': Code,
+  'C': Code,
+  'Bash': Code,
+  'HTML/CSS': Code,
+  
+  // Web Development
+  'FastAPI': Server,
+  'Django': Server,
+  'Streamlit': Server,
+  'RESTful APIs': Server,
   'REST APIs': Server,
+  'API Integration': Server,
+  
+  // AI/ML & Data
+  'Scikit-learn': BarChart3,
+  'TensorFlow': BarChart3,
+  'PyTorch': BarChart3,
+  'Hugging Face Transformers': BarChart3,
+  'Langchain': BarChart3,
+  'Pandas': BarChart3,
+  'NumPy': BarChart3,
+  'Data Visualization': BarChart3,
+  
+  // Technologies
+  'LLMs': Lightbulb,
+  'NLP': Lightbulb,
+  'Transformers': Lightbulb,
+  'Reinforcement Learning (DQN, NEAT)': Lightbulb,
+  'Local LLM Inference': Lightbulb,
+  'Open Source': Lightbulb,
+  'MCP': Lightbulb,
+  
+  // Tools & Platforms
+  'VS Code': Code,
+  'Vim': Code,
+  'Jupyter': Code,
+  'Postman': Server,
+  'Google Apps Script': Code,
+  'Google Sheets API': Database,
+  
+  // Fallback icons for concepts and other technologies
   'System Design': Settings,
   'Testing': Target,
   'Agile': Lightbulb,
@@ -123,20 +166,13 @@ export const techLogos: Record<string, React.ComponentType<any>> = {
   'High-Performance Computing': Cpu,
   'Turbomachinery': Wrench,
   'MATLAB': BarChart3,
-  'HTML/CSS': Code,
-  'API Integration': Server,
-  'Data Visualization': BarChart3,
   'Log Analysis': BarChart3,
   'Pygame': Code,
   'AppScript': Code,
-  'Pandas': BarChart3,
-  'NumPy': BarChart3,
-  'Google Sheets API': Database,
   'AES Encryption': Settings,
   'OTP Authentication': Settings,
   'PDF Processing': Code,
   'Web Development': Code,
-  'Automation': Settings,
   'Speech Recognition': Lightbulb,
   'Web Scraping': Server,
   'winsdk': Settings,
@@ -146,12 +182,8 @@ export const techLogos: Record<string, React.ComponentType<any>> = {
   'Matplotlib': BarChart3,
   'Game Development': Code,
   'Object-Oriented Programming': Code,
-  'C++': Code,
-  'MATLAB': BarChart3,
-  'ANSYS Mechanical': SiAnsys,
   'CAD Design': Wrench,
   '3D Modeling': Wrench,
-  'ANSYS Fluent': SiAnsys,
   'Structural Analysis': Wrench,
   'HVAC': Settings,
   'Organic Rankine Cycle': Zap,
@@ -160,7 +192,12 @@ export const techLogos: Record<string, React.ComponentType<any>> = {
   'Dynamic Modeling': BarChart3,
   'Heat Transfer Simulation': Zap,
   'Mesh Optimization': Settings,
-  'Flow Analysis': Zap
+  'Waste Heat Recovery': Zap,
+  'LMTD Evaluation': BarChart3,
+  'Aspen': Settings,
+  'SIEMENS NX': Wrench,
+  'P&ID Interpretation': Settings,
+  'Catia V5': Wrench
 };
 
 // Color mapping for specific technologies
@@ -177,6 +214,7 @@ export const techColors: Record<string, string> = {
   'MongoDB': '#47A248',
   'GraphQL': '#E10098',
   'Git': '#F05032',
+  'Git & GitHub': '#F05032',
   'Docker': '#2496ED',
   'AWS': '#FF9900',
   'Vercel': '#000000',
@@ -187,6 +225,8 @@ export const techColors: Record<string, string> = {
   'AutoCAD': '#E51937',
   'Fusion 360': '#FF6600',
   'ANSYS': '#FFB71B',
+  'ANSYS Fluent': '#FFB71B',
+  'ANSYS Mechanical': '#FFB71B',
   'MATLAB': '#0076A8',
   'Arduino': '#00979D',
   'Raspberry Pi': '#A22846'

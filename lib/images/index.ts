@@ -12,11 +12,11 @@ export const getDomainImages = (domain: PortfolioDomain) => {
   return domain === 'cs' ? csImages : mechanicalImages;
 };
 
-// Helper function to get project image by title
+// Helper function to get project image by title with fallbacks
 export const getProjectImage = (domain: PortfolioDomain, projectTitle: string): string => {
   const images = getDomainImages(domain);
   
-  // Map project titles to image keys
+  // Map project titles to image keys with normalized titles
   const projectImageMap: Record<string, string> = {
     // CS Projects
     'Financial Statement Analysis Chatbot': images.projects.financialChatbot || csImages.projects.financialChatbot,
@@ -33,13 +33,31 @@ export const getProjectImage = (domain: PortfolioDomain, projectTitle: string): 
     'Hybrid Air-conditioning System for Passenger Vehicles': mechanicalImages.projects.hybridAirConditioning,
   };
 
-  return projectImageMap[projectTitle] || images.backgrounds.codeBackground || mechanicalImages.backgrounds.engineeringBackground;
+  const imageUrl = projectImageMap[projectTitle];
+  
+  // Return the mapped image or fallback to a default
+  if (imageUrl) {
+    return imageUrl;
+  }
+  
+  // Fallback to domain-specific default
+  return domain === 'cs' 
+    ? csImages.backgrounds.codeBackground 
+    : mechanicalImages.backgrounds.engineeringBackground;
 };
 
-// Helper function to get hero image
+// Helper function to get hero image with fallback
 export const getHeroImage = (domain: PortfolioDomain): string => {
   const images = getDomainImages(domain);
-  return images.hero.profileImage;
+  const heroImage = images.hero.profileImage;
+  
+  // Ensure the image path is correct
+  if (heroImage && !heroImage.startsWith('http')) {
+    // Make sure it starts with /images/ for local images
+    return heroImage.startsWith('/images/') ? heroImage : `/images/${heroImage.replace(/^\//, '')}`;
+  }
+  
+  return heroImage || '/images/thunder.png'; // Fallback
 };
 
 // Helper function to get background image
@@ -69,11 +87,28 @@ export const preloadCriticalImages = (domain: PortfolioDomain) => {
   
   // Preload hero image
   const heroImg = new Image();
-  heroImg.src = images.hero.profileImage;
+  heroImg.src = getHeroImage(domain);
   
   // Preload first few project images
   Object.values(images.projects).slice(0, 3).forEach(src => {
+    if (src && typeof src === 'string') {
+      const img = new Image();
+      img.src = src;
+    }
+  });
+};
+
+// Validate image exists (client-side only)
+export const validateImageExists = (src: string): Promise<boolean> => {
+  return new Promise((resolve) => {
+    if (typeof window === 'undefined') {
+      resolve(true); // Assume true on server
+      return;
+    }
+    
     const img = new Image();
+    img.onload = () => resolve(true);
+    img.onerror = () => resolve(false);
     img.src = src;
   });
 };
