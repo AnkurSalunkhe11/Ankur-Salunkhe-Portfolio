@@ -8,7 +8,8 @@ import { ArrowDown, Github, Linkedin, Mail, Globe, GraduationCap } from 'lucide-
 import { SiLeetcode, SiGooglescholar } from 'react-icons/si';
 import { analytics } from '@/lib/analytics';
 import { memo, useCallback } from 'react';
-import { getHeroImage } from '@/lib/images';
+import OptimizedImage from '@/components/ui/optimized-image';
+import { getImageConfig } from '@/lib/images/image-config-optimized';
 
 const Hero = memo(() => {
   const { domain } = usePortfolioStore();
@@ -69,6 +70,8 @@ const Hero = memo(() => {
       onClick: handleEmailClick
     }
   ];
+
+  const heroImageConfig = getImageConfig(domain, 'hero');
 
   return (
     <section id="home" className="min-h-screen flex items-center bg-gradient-to-br from-slate-50 via-white to-slate-100 pt-16">
@@ -174,11 +177,13 @@ const Hero = memo(() => {
                 whileHover={{ scale: 1.05 }}
                 className="relative"
               >
-                <img
-                  src={getHeroImage(domain)}
-                  alt={personalData.name}
+                <OptimizedImage
+                  src={heroImageConfig.src}
+                  alt={heroImageConfig.alt}
+                  type="hero"
+                  variant="desktop"
                   className="w-64 h-64 sm:w-80 sm:h-80 rounded-full object-cover border-4 border-white shadow-professional-xl"
-                  loading="eager"
+                  priority={true}
                 />
                 {/* Status indicator */}
                 <div className="absolute bottom-6 right-6 w-6 h-6 bg-emerald-500 rounded-full border-4 border-white shadow-lg">

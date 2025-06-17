@@ -10,7 +10,8 @@ import { ExternalLink, Github, ChevronDown, ChevronUp } from 'lucide-react';
 import { useState, memo, useCallback } from 'react';
 import TechLogo from '@/components/TechLogo';
 import { analytics } from '@/lib/analytics';
-import { getProjectImage } from '@/lib/images';
+import OptimizedImage from '@/components/ui/optimized-image';
+import { getImageConfig } from '@/lib/images/image-config-optimized';
 
 const Projects = memo(() => {
   const { domain } = usePortfolioStore();
@@ -66,13 +67,6 @@ const Projects = memo(() => {
     window.open(personalData.github, '_blank');
   }, [personalData.github]);
 
-  // Fallback image for failed loads
-  const getFallbackImage = (domain: string) => {
-    return domain === 'cs' 
-      ? 'https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=800'
-      : 'https://images.pexels.com/photos/3862132/pexels-photo-3862132.jpeg?auto=compress&cs=tinysrgb&w=800';
-  };
-
   return (
     <section id="projects" className="py-20 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -101,96 +95,99 @@ const Projects = memo(() => {
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {allProjects.map((project, index) => (
-            <motion.div 
-              key={project.title} 
-              variants={itemVariants}
-              onViewportEnter={() => handleProjectView(project.title)}
-              className="will-change-transform"
-            >
-              <Card className="h-full group hover:shadow-professional-xl transition-all duration-300 overflow-hidden hover:-translate-y-2 border-slate-200 bg-white">
-                <div className="relative overflow-hidden">
-                  <img
-                    src={getProjectImage(domain, project.title)}
-                    alt={project.title}
-                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
-                    loading={index < 3 ? "eager" : "lazy"}
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = getFallbackImage(domain);
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-                
-                <CardHeader className="pb-4">
-                  <h3 className="text-xl font-semibold text-slate-900 group-hover:text-indigo-600 transition-colors">
-                    {project.title}
-                  </h3>
-                </CardHeader>
-                
-                <CardContent className="space-y-4">
-                  <p className="text-slate-600 leading-relaxed">
-                    {project.description}
-                  </p>
-                  
-                  <div className="space-y-3">
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.slice(0, 4).map((tech) => (
-                        <div
-                          key={tech}
-                          className="flex items-center space-x-1 bg-indigo-50 text-indigo-800 px-2 py-1 rounded-md text-xs font-medium border border-indigo-100"
-                        >
-                          <TechLogo technology={tech} size="sm" />
-                          <span>{tech}</span>
-                        </div>
-                      ))}
-                      {project.technologies.length > 4 && (
-                        <Badge variant="secondary" className="text-xs bg-slate-100 text-slate-600">
-                          +{project.technologies.length - 4} more
-                        </Badge>
-                      )}
-                    </div>
+          {allProjects.map((project, index) => {
+            const imageConfig = getImageConfig(domain, 'projects', project.title);
+            
+            return (
+              <motion.div 
+                key={project.title} 
+                variants={itemVariants}
+                onViewportEnter={() => handleProjectView(project.title)}
+                className="will-change-transform"
+              >
+                <Card className="h-full group hover:shadow-professional-xl transition-all duration-300 overflow-hidden hover:-translate-y-2 border-slate-200 bg-white">
+                  <div className="relative overflow-hidden">
+                    <OptimizedImage
+                      src={imageConfig.src}
+                      alt={imageConfig.alt}
+                      type="project"
+                      variant="card"
+                      className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                      priority={index < 3}
+                      fallbackSrc="https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=400&h=300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
                   
-                  {domain === 'cs' && project.github && project.demo && (
-                    <div className="flex space-x-3 pt-4">
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="flex items-center space-x-2 group/btn border-slate-300 hover:bg-slate-50 focus-ring"
-                        onClick={() => handleProjectCode(project.title, project.github)}
-                      >
-                        <Github className="w-4 h-4 group-hover/btn:scale-110 transition-transform" />
-                        <span>Code</span>
-                      </Button>
-                      <Button
-                        size="sm"
-                        className="flex items-center space-x-2 gradient-primary text-white group/btn btn-hover-lift focus-ring"
-                        onClick={() => handleProjectDemo(project.title, project.demo)}
-                      >
-                        <ExternalLink className="w-4 h-4 group-hover/btn:scale-110 transition-transform" />
-                        <span>Demo</span>
-                      </Button>
+                  <CardHeader className="pb-4">
+                    <h3 className="text-xl font-semibold text-slate-900 group-hover:text-indigo-600 transition-colors">
+                      {project.title}
+                    </h3>
+                  </CardHeader>
+                  
+                  <CardContent className="space-y-4">
+                    <p className="text-slate-600 leading-relaxed">
+                      {project.description}
+                    </p>
+                    
+                    <div className="space-y-3">
+                      <div className="flex flex-wrap gap-2">
+                        {project.technologies.slice(0, 4).map((tech) => (
+                          <div
+                            key={tech}
+                            className="flex items-center space-x-1 bg-indigo-50 text-indigo-800 px-2 py-1 rounded-md text-xs font-medium border border-indigo-100"
+                          >
+                            <TechLogo technology={tech} size="sm" />
+                            <span>{tech}</span>
+                          </div>
+                        ))}
+                        {project.technologies.length > 4 && (
+                          <Badge variant="secondary" className="text-xs bg-slate-100 text-slate-600">
+                            +{project.technologies.length - 4} more
+                          </Badge>
+                        )}
+                      </div>
                     </div>
-                  )}
+                    
+                    {domain === 'cs' && project.github && project.demo && (
+                      <div className="flex space-x-3 pt-4">
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="flex items-center space-x-2 group/btn border-slate-300 hover:bg-slate-50 focus-ring"
+                          onClick={() => handleProjectCode(project.title, project.github)}
+                        >
+                          <Github className="w-4 h-4 group-hover/btn:scale-110 transition-transform" />
+                          <span>Code</span>
+                        </Button>
+                        <Button
+                          size="sm"
+                          className="flex items-center space-x-2 gradient-primary text-white group/btn btn-hover-lift focus-ring"
+                          onClick={() => handleProjectDemo(project.title, project.demo)}
+                        >
+                          <ExternalLink className="w-4 h-4 group-hover/btn:scale-110 transition-transform" />
+                          <span>Demo</span>
+                        </Button>
+                      </div>
+                    )}
 
-                  {domain === 'mechanical' && project.link && (
-                    <div className="pt-4">
-                      <Button
-                        size="sm"
-                        className="w-full flex items-center space-x-2 gradient-primary text-white group/btn btn-hover-lift focus-ring"
-                        onClick={() => window.open(project.link, '_blank')}
-                      >
-                        <ExternalLink className="w-4 h-4 group-hover/btn:scale-110 transition-transform" />
-                        <span>View Details</span>
-                      </Button>
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
+                    {domain === 'mechanical' && project.link && (
+                      <div className="pt-4">
+                        <Button
+                          size="sm"
+                          className="w-full flex items-center space-x-2 gradient-primary text-white group/btn btn-hover-lift focus-ring"
+                          onClick={() => window.open(project.link, '_blank')}
+                        >
+                          <ExternalLink className="w-4 h-4 group-hover/btn:scale-110 transition-transform" />
+                          <span>View Details</span>
+                        </Button>
+                      </div>
+                    )}
+                  </CardContent>
+                </Card>
+              </motion.div>
+            );
+          })}
         </motion.div>
 
         {additionalProjects.length > 0 && (

@@ -21,13 +21,22 @@ const nextConfig = {
     ],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    // Add loader for better image handling
+    minimumCacheTTL: 60,
+    // Optimize loading
     loader: 'default',
-    // Disable static imports for better dynamic loading
-    disableStaticImages: false,
+    quality: 85,
   },
   experimental: {
-    optimizePackageImports: ['lucide-react', 'framer-motion', '@radix-ui/react-slot']
+    optimizePackageImports: ['lucide-react', 'framer-motion', '@radix-ui/react-slot'],
+    // Enable modern bundling
+    turbo: {
+      rules: {
+        '*.svg': {
+          loaders: ['@svgr/webpack'],
+          as: '*.js',
+        },
+      },
+    },
   },
   // Enable static optimization
   trailingSlash: false,
@@ -36,6 +45,10 @@ const nextConfig = {
   compress: true,
   // Optimize bundle
   swcMinify: true,
+  // Performance optimizations
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
   // Headers for better performance
   async headers() {
     return [
@@ -54,10 +67,23 @@ const nextConfig = {
             key: 'Referrer-Policy',
             value: 'origin-when-cross-origin',
           },
+          {
+            key: 'X-DNS-Prefetch-Control',
+            value: 'on',
+          },
         ],
       },
       {
         source: '/images/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/_next/static/(.*)',
         headers: [
           {
             key: 'Cache-Control',
