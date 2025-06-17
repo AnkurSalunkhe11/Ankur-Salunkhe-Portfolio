@@ -52,7 +52,7 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-20"
+          className="text-center mb-16"
         >
           <h2 className="heading-secondary mb-6">About Me</h2>
           <div className="w-32 h-1.5 gradient-primary mx-auto rounded-full mb-8"></div>
@@ -64,7 +64,7 @@ export default function About() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-12">
           {/* Main About Content */}
           <motion.div
             key={domain}

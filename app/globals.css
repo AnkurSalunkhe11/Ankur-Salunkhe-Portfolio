@@ -318,3 +318,71 @@ img {
 .status-offline {
   @apply w-3 h-3 bg-slate-400 rounded-full;
 }
+
+/* Optimized section spacing */
+.section-spacing {
+  @apply py-12 sm:py-16 lg:py-20;
+}
+
+.section-spacing-sm {
+  @apply py-8 sm:py-12 lg:py-16;
+}
+
+.section-spacing-lg {
+  @apply py-20 sm:py-24 lg:py-32;
+}
+
+/* Responsive container */
+.container-responsive {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Optimized grid layouts */
+.grid-responsive {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8;
+}
+
+.grid-responsive-2 {
+  @apply grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12;
+}
+
+/* Better mobile spacing */
+@media (max-width: 640px) {
+  .section-padding {
+    @apply py-12;
+  }
+  
+  .container-padding {
+    @apply px-4;
+  }
+  
+  .heading-secondary {
+    @apply text-2xl;
+  }
+  
+  .text-body-large {
+    @apply text-base;
+  }
+}
+
+/* Improved tablet spacing */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .section-padding {
+    @apply py-16;
+  }
+  
+  .container-padding {
+    @apply px-6;
+  }
+}
+
+/* Desktop optimizations */
+@media (min-width: 1025px) {
+  .section-padding {
+    @apply py-20;
+  }
+  
+  .container-padding {
+    @apply px-8;
+  }
+}

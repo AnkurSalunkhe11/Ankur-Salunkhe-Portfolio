@@ -68,7 +68,7 @@ const Skills = memo(() => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
         >
           {domainData.skills.map((skillCategory, index) => (
             <motion.div key={skillCategory.category} variants={itemVariants}>
@@ -113,7 +113,7 @@ const Skills = memo(() => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="mt-16 text-center"
+          className="text-center"
         >
           <div className="gradient-primary-light rounded-2xl p-8 border border-slate-200">
             <h3 className="heading-tertiary mb-4">

@@ -92,7 +92,7 @@ const Projects = memo(() => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
         >
           {allProjects.map((project, index) => (
             <motion.div 
@@ -188,12 +188,12 @@ const Projects = memo(() => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="text-center mt-12"
+            className="text-center mb-8"
           >
             <Button
               size="lg"
               variant="outline"
-              className="mb-6 flex items-center space-x-2 mx-auto border-slate-300 hover:bg-slate-50 btn-hover-lift focus-ring"
+              className="flex items-center space-x-2 mx-auto border-slate-300 hover:bg-slate-50 btn-hover-lift focus-ring"
               onClick={handleShowMore}
             >
               {showMore ? (
@@ -216,7 +216,7 @@ const Projects = memo(() => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className="text-center mt-8"
+          className="text-center"
         >
           <p className="text-slate-600 mb-6">
             Interested in seeing more of my work?
