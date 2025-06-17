@@ -1,11 +1,12 @@
 {
-  "tagline": "Building innovative software solutions with engineering precision and analytical thinking",
-  "about": "Mechanical Engineering student with a passion for software development and automation. I combine engineering fundamentals with programming skills to create efficient solutions. My experience spans from numerical modeling and Machine Learning ,web development .",
+  "tagline": "Innovative software. Engineered with precision. Driven by logic.",
+  "about": "Mechanical Engineering student passionate about software development and automation. I build efficient, user-focused solutions using web development, machine learning, and engineering logic.",
   "skills": [
-    { "category": "Programming", "items": ["Python", "JavaScript", "C++", "MATLAB"] },
-    { "category": "Web Development", "items": ["HTML/CSS", "React", "Node.js", "API Integration"] },
-    { "category": "Data & Analysis", "items": ["Pandas", "NumPy", "Data Visualization", "Log Analysis"] },
-    { "category": "Tools & Platforms", "items": ["Git", "Google Sheets API", "Pygame", "AppScript"] }
+    { "category": "Programming Languages", "items": ["Python", "C++", "C", "JavaScript", "Bash", "HTML/CSS"] },
+{ "category": "Web Development", "items": ["React", "Node.js", "FastAPI", "Django", "Streamlit", "RESTful APIs"] },
+{ "category": "AI/ML & Data", "items": ["Scikit-learn", "TensorFlow", "PyTorch", "Hugging Face Transformers", "Langchain", "Pandas", "NumPy", "Data Visualization"] },
+{ "category": "Technologies", "items": ["LLMs", "NLP", "Transformers", "Reinforcement Learning (DQN, NEAT)", "Local LLM Inference", "Open Source", "MCP"] },
+{ "category": "Tools & Platforms", "items": ["Git & GitHub", "VS Code", "Vim", "Jupyter", "Postman", "Google Apps Script", "Google Sheets API"] }
   ],
   "projects": [
     {

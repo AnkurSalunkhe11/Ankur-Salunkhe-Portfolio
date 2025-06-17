@@ -1,29 +1,56 @@
 // Central image management and helper functions
-import { imageConfig, getImage, getHeroImage, getProjectImage, getBackgroundImage, getSectionImage } from './image-config';
+import { csImages, type CSImageKeys } from './cs-images';
+import { mechanicalImages, type MechanicalImageKeys } from './mechanical-images';
 import type { PortfolioDomain } from '@/lib/data-loader';
 
-// Re-export everything from image-config for easy access
-export { 
-  imageConfig, 
-  getImage, 
-  getHeroImage, 
-  getProjectImage, 
-  getBackgroundImage, 
-  getSectionImage 
+// Combined image types
+export type ImageDomain = 'cs' | 'mechanical';
+export type ImageCategory = 'projects' | 'hero' | 'backgrounds';
+
+// Helper function to get domain-specific images
+export const getDomainImages = (domain: PortfolioDomain) => {
+  return domain === 'cs' ? csImages : mechanicalImages;
 };
 
-// Legacy compatibility - update existing functions to use new centralized config
-export const getDomainImages = (domain: PortfolioDomain) => {
-  return {
-    projects: imageConfig.projects[domain] || {},
-    hero: { profileImage: getHeroImage(domain) },
-    backgrounds: {
-      codeBackground: getBackgroundImage(domain, 'primary'),
-      techBackground: getBackgroundImage(domain, 'secondary'),
-      engineeringBackground: getBackgroundImage(domain, 'primary'),
-      thermalBackground: getBackgroundImage(domain, 'secondary')
-    }
+// Helper function to get project image by title
+export const getProjectImage = (domain: PortfolioDomain, projectTitle: string): string => {
+  const images = getDomainImages(domain);
+  
+  // Map project titles to image keys
+  const projectImageMap: Record<string, string> = {
+    // CS Projects
+    'Financial Statement Analysis Chatbot': images.projects.financialChatbot || csImages.projects.financialChatbot,
+    'LogCount W - Log Analysis System': images.projects.logAnalysis || csImages.projects.logAnalysis,
+    'Numerical Solver for Transient Heat Transfer': images.projects.heatTransferSolver || csImages.projects.heatTransferSolver,
+    'AI Virtual Assistant': images.projects.aiAssistant || csImages.projects.aiAssistant,
+    'Lid Driven Cavity Simulation': images.projects.lidDrivenCavity || csImages.projects.lidDrivenCavity,
+    'Space Wars Game': images.projects.spaceWarsGame || csImages.projects.spaceWarsGame,
+    
+    // Mechanical Projects
+    'Implementation of an Organic Rankine Cycle as a Waste Heat Recovery System': mechanicalImages.projects.organicRankineCycle,
+    'Transient Thermal Analysis of Braking Systems Using ANSYS': mechanicalImages.projects.thermalAnalysis,
+    'Heat Exchanger Performance Optimization using CFD': mechanicalImages.projects.heatExchanger,
+    'Hybrid Air-conditioning System for Passenger Vehicles': mechanicalImages.projects.hybridAirConditioning,
   };
+
+  return projectImageMap[projectTitle] || images.backgrounds.codeBackground || mechanicalImages.backgrounds.engineeringBackground;
+};
+
+// Helper function to get hero image
+export const getHeroImage = (domain: PortfolioDomain): string => {
+  const images = getDomainImages(domain);
+  return images.hero.profileImage;
+};
+
+// Helper function to get background image
+export const getBackgroundImage = (domain: PortfolioDomain, type: 'primary' | 'secondary' = 'primary'): string => {
+  const images = getDomainImages(domain);
+  
+  if (domain === 'cs') {
+    return type === 'primary' ? images.backgrounds.codeBackground : images.backgrounds.techBackground;
+  } else {
+    return type === 'primary' ? images.backgrounds.engineeringBackground : images.backgrounds.thermalBackground;
+  }
 };
 
 // Image optimization helper
@@ -38,48 +65,19 @@ export const optimizeImageUrl = (url: string, width: number = 800, quality: numb
 
 // Preload critical images
 export const preloadCriticalImages = (domain: PortfolioDomain) => {
+  const images = getDomainImages(domain);
+  
   // Preload hero image
   const heroImg = new Image();
-  heroImg.src = getHeroImage(domain);
-  
-  // Preload background images
-  const primaryBg = new Image();
-  primaryBg.src = getBackgroundImage(domain, 'primary');
-  
-  const secondaryBg = new Image();
-  secondaryBg.src = getBackgroundImage(domain, 'secondary');
+  heroImg.src = images.hero.profileImage;
   
   // Preload first few project images
-  const projectImages = imageConfig.projects[domain];
-  if (projectImages) {
-    Object.values(projectImages).slice(0, 3).forEach(src => {
-      const img = new Image();
-      img.src = src;
-    });
-  }
+  Object.values(images.projects).slice(0, 3).forEach(src => {
+    const img = new Image();
+    img.src = src;
+  });
 };
 
-// Export legacy image objects for backward compatibility
-export const csImages = {
-  projects: imageConfig.projects.cs,
-  hero: { profileImage: getHeroImage('cs') },
-  backgrounds: {
-    codeBackground: getBackgroundImage('cs', 'primary'),
-    techBackground: getBackgroundImage('cs', 'secondary')
-  }
-};
-
-export const mechanicalImages = {
-  projects: imageConfig.projects.mechanical,
-  hero: { profileImage: getHeroImage('mechanical') },
-  backgrounds: {
-    engineeringBackground: getBackgroundImage('mechanical', 'primary'),
-    thermalBackground: getBackgroundImage('mechanical', 'secondary')
-  }
-};
-
-// Type exports for backward compatibility
-export type CSImageKeys = keyof typeof csImages;
-export type MechanicalImageKeys = keyof typeof mechanicalImages;
-export type ImageDomain = 'cs' | 'mechanical';
-export type ImageCategory = 'projects' | 'hero' | 'backgrounds' | 'sections';
+// Export all images for direct access
+export { csImages, mechanicalImages };
+export type { CSImageKeys, MechanicalImageKeys };

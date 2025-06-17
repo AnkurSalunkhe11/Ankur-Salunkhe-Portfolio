@@ -9,7 +9,6 @@ A modern, responsive portfolio website showcasing both Computer Science and Mech
 - **Modern UI**: Clean, professional design with smooth animations
 - **Performance Optimized**: Fast loading with Vercel Analytics and Speed Insights
 - **JSON-Based Content**: Easy content management through JSON files
-- **Centralized Image Management**: Update all website images from a single configuration file
 
 ## Tech Stack
 
@@ -33,9 +32,6 @@ A modern, responsive portfolio website showcasing both Computer Science and Mech
 │   ├── mechanical-data.json # Mechanical Engineering content
 │   └── config.json       # Site configuration
 ├── lib/                   # Utility functions
-│   └── images/           # Image management
-│       ├── image-config.ts # Centralized image configuration
-│       └── index.ts      # Image helper functions
 └── public/               # Static assets
 ```
 
@@ -61,54 +57,6 @@ Content is managed through JSON files in the `data/` directory:
    - Default landing page (cs/mechanical)
    - SEO settings
    - Analytics configuration
-
-### Image Management
-
-All website images are managed from a single file: `lib/images/image-config.ts`
-
-#### Updating Images
-
-To update any image on the website, edit the `imageConfig` object in `lib/images/image-config.ts`:
-
-```typescript
-export const imageConfig = {
-  // Hero/Profile Images
-  hero: {
-    cs: "your-cs-profile-image-url",
-    mechanical: "your-mechanical-profile-image-url"
-  },
-
-  // Project Images
-  projects: {
-    cs: {
-      "Project Name": "project-image-url"
-    },
-    mechanical: {
-      "Project Name": "project-image-url"
-    }
-  },
-
-  // Background Images
-  backgrounds: {
-    cs: {
-      primary: "primary-background-url",
-      secondary: "secondary-background-url"
-    },
-    mechanical: {
-      primary: "primary-background-url",
-      secondary: "secondary-background-url"
-    }
-  }
-};
-```
-
-#### Image Categories
-
-- **Hero Images**: Profile pictures for each domain
-- **Project Images**: Specific images for each project
-- **Background Images**: Section backgrounds (primary/secondary)
-- **Section Images**: Images for specific sections (about, skills, contact)
-- **Fallback Images**: Default images when specific ones aren't found
 
 ### Changing Default Landing Page
 
@@ -169,18 +117,9 @@ Add to the respective JSON file (`cs-data.json` or `mechanical-data.json`):
   "title": "Project Name",
   "description": "Project description",
   "technologies": ["Tech1", "Tech2"],
+  "image": "https://example.com/image.jpg",
   "github": "https://github.com/...",
   "demo": "https://demo.com"
-}
-```
-
-Then add the project image to `lib/images/image-config.ts`:
-
-```typescript
-projects: {
-  cs: {
-    "Project Name": "https://your-image-url.com/image.jpg"
-  }
 }
 ```
 
@@ -194,29 +133,6 @@ Update the skills array in the respective data file:
   "items": ["Skill1", "Skill2", "Skill3"]
 }
 ```
-
-### Adding New Certifications
-
-Add to the certifications array in the respective data file:
-
-```json
-{
-  "name": "Certification Name",
-  "issuer": "Issuing Organization",
-  "date": "Month Year",
-  "credentialId": "credential-id",
-  "link": "https://certificate-url.com",
-  "skills": ["Skill1", "Skill2"]
-}
-```
-
-## Image Management Benefits
-
-- **Centralized Control**: All images managed from one file
-- **Easy Updates**: Change any image by updating a single URL
-- **Consistent Fallbacks**: Automatic fallback images for missing content
-- **Domain-Specific**: Separate images for CS and Mechanical domains
-- **Performance**: Optimized image loading and preloading
 
 ## License
 

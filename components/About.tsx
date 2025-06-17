@@ -36,7 +36,7 @@ export default function About() {
     ? [
         { icon: Brain, label: 'AI & ML Certified', value: 'Stanford/DeepLearning.AI' },
         { icon: Code, label: 'Programming Languages', value: '5+ Languages' },
-        { icon: TrendingUp, label: 'Projects Completed', value: '6+ Projects' }
+        { icon: TrendingUp, label: 'Projects Completed', value: '10+ Projects' }
       ]
     : [
         { icon: Award, label: 'Research Publications', value: '2 Published' },
@@ -45,18 +45,18 @@ export default function About() {
       ];
 
   return (
-    <section id="about" className="section-padding bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
-      <div className="max-w-7xl mx-auto container-padding">
+    <section id="about" className="py-24 bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="heading-secondary mb-6">About Me</h2>
+          <h2 className="text-5xl font-bold text-slate-900 mb-6">About Me</h2>
           <div className="w-32 h-1.5 gradient-primary mx-auto rounded-full mb-8"></div>
-          <p className="text-body-large max-w-3xl mx-auto">
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
             {domain === 'cs' 
               ? 'Bridging mechanical engineering principles with cutting-edge software development to create innovative solutions'
               : 'Passionate about sustainable energy solutions and thermal system optimization through advanced engineering'
@@ -64,7 +64,7 @@ export default function About() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16">
           {/* Main About Content */}
           <motion.div
             key={domain}
@@ -80,7 +80,7 @@ export default function About() {
               transition={{ duration: 0.6 }}
               className="prose prose-lg max-w-none"
             >
-              <p className="text-body leading-relaxed mb-6">
+              <p className="text-lg text-slate-700 leading-relaxed mb-6">
                 {domainData.about}
               </p>
 
@@ -141,7 +141,7 @@ export default function About() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.1 * index, duration: 0.5 }}
                   viewport={{ once: true }}
-                  className="text-center p-6 bg-white rounded-xl shadow-professional border border-slate-100 card-hover"
+                  className="text-center p-6 bg-white rounded-xl shadow-professional border border-slate-100 hover:shadow-professional-lg transition-all duration-300"
                 >
                   <div className={`w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center ${
                     domain === 'cs' ? 'bg-indigo-100' : 'bg-emerald-100'
@@ -170,7 +170,7 @@ export default function About() {
             className="space-y-6"
           >
             {/* Education Card */}
-            <Card className="card-hover border-slate-200 bg-white overflow-hidden">
+            <Card className="hover:shadow-professional-lg transition-all duration-300 border-slate-200 bg-white overflow-hidden">
               <CardContent className="p-6">
                 <div className="flex items-center space-x-4 mb-4">
                   <div className="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center">
@@ -196,7 +196,7 @@ export default function About() {
             </Card>
 
             {/* Recent Certifications Card */}
-            <Card className="card-hover border-slate-200 bg-white overflow-hidden">
+            <Card className="hover:shadow-professional-lg transition-all duration-300 border-slate-200 bg-white overflow-hidden">
               <CardContent className="p-6">
                 <div className="flex items-center space-x-4 mb-4">
                   <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
@@ -224,7 +224,7 @@ export default function About() {
             </Card>
 
             {/* Experience Summary Card */}
-            <Card className="card-hover border-slate-200 bg-white overflow-hidden">
+            <Card className="hover:shadow-professional-lg transition-all duration-300 border-slate-200 bg-white overflow-hidden">
               <CardContent className="p-6">
                 <div className="flex items-center space-x-4 mb-4">
                   <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center">
@@ -252,7 +252,7 @@ export default function About() {
             </Card>
 
             {/* Contact Info Card */}
-            <Card className="card-hover border-slate-200 bg-white overflow-hidden">
+            <Card className="hover:shadow-professional-lg transition-all duration-300 border-slate-200 bg-white overflow-hidden">
               <CardContent className="p-6">
                 <div className="flex items-center space-x-4 mb-4">
                   <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">

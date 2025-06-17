@@ -72,7 +72,7 @@ const Hero = memo(() => {
 
   return (
     <section id="home" className="min-h-screen flex items-center bg-gradient-to-br from-slate-50 via-white to-slate-100 pt-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div
             key={domain}
@@ -149,6 +149,35 @@ const Hero = memo(() => {
                   <social.icon className="w-6 h-6" />
                 </motion.button>
               ))}
+            </motion.div>
+
+            {/* Quick Stats */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.5 }}
+              className="grid grid-cols-3 gap-6 pt-8 border-t border-slate-200"
+            >
+              <div className="text-center">
+                <p className="text-2xl font-bold text-slate-900">
+                  {domain === 'cs' ? '6+' : '4+'}
+                </p>
+                <p className="text-sm text-slate-600">Projects</p>
+              </div>
+              <div className="text-center">
+                <p className="text-2xl font-bold text-slate-900">
+                  {domain === 'cs' ? '2+' : '3+'}
+                </p>
+                <p className="text-sm text-slate-600">Years Experience</p>
+              </div>
+              <div className="text-center">
+                <p className="text-2xl font-bold text-slate-900">
+                  {domain === 'cs' ? '10+' : '2'}
+                </p>
+                <p className="text-sm text-slate-600">
+                  {domain === 'cs' ? 'Technologies' : 'Publications'}
+                </p>
+              </div>
             </motion.div>
           </motion.div>
 

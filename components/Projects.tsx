@@ -67,8 +67,8 @@ const Projects = memo(() => {
   }, [personalData.github]);
 
   return (
-    <section id="projects" className="section-padding bg-slate-50">
-      <div className="max-w-7xl mx-auto container-padding">
+    <section id="projects" className="py-20 bg-slate-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -76,9 +76,9 @@ const Projects = memo(() => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="heading-secondary mb-4">Featured Projects</h2>
+          <h2 className="text-4xl font-bold text-slate-900 mb-4">Featured Projects</h2>
           <div className="w-24 h-1 gradient-primary mx-auto rounded-full mb-6"></div>
-          <p className="text-body-large max-w-3xl mx-auto">
+          <p className="text-lg text-slate-600 max-w-3xl mx-auto">
             {domain === 'cs' 
               ? 'A showcase of my software development work, featuring modern technologies and clean code practices'
               : 'Engineering projects demonstrating innovation, precision, and technical excellence'
@@ -92,7 +92,7 @@ const Projects = memo(() => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {allProjects.map((project, index) => (
             <motion.div 
@@ -188,12 +188,12 @@ const Projects = memo(() => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="text-center mb-8"
+            className="text-center mt-12"
           >
             <Button
               size="lg"
               variant="outline"
-              className="flex items-center space-x-2 mx-auto border-slate-300 hover:bg-slate-50 btn-hover-lift focus-ring"
+              className="mb-6 flex items-center space-x-2 mx-auto border-slate-300 hover:bg-slate-50 btn-hover-lift focus-ring"
               onClick={handleShowMore}
             >
               {showMore ? (
@@ -216,7 +216,7 @@ const Projects = memo(() => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className="text-center"
+          className="text-center mt-8"
         >
           <p className="text-slate-600 mb-6">
             Interested in seeing more of my work?

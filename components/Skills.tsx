@@ -43,8 +43,8 @@ const Skills = memo(() => {
     : ['SolidWorks', 'ANSYS', 'CFD', 'Heat Transfer', 'AutoCAD', 'Python'];
 
   return (
-    <section id="skills" className="section-padding bg-white">
-      <div className="max-w-7xl mx-auto container-padding">
+    <section id="skills" className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -52,9 +52,9 @@ const Skills = memo(() => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="heading-secondary mb-4">Skills & Expertise</h2>
+          <h2 className="text-4xl font-bold text-slate-900 mb-4">Skills & Expertise</h2>
           <div className="w-24 h-1 gradient-primary mx-auto rounded-full mb-6"></div>
-          <p className="text-body-large max-w-3xl mx-auto">
+          <p className="text-lg text-slate-600 max-w-3xl mx-auto">
             {domain === 'cs' 
               ? 'Modern technologies and frameworks I use to build exceptional software'
               : 'Engineering tools and methodologies I leverage for innovative mechanical solutions'
@@ -68,11 +68,11 @@ const Skills = memo(() => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           {domainData.skills.map((skillCategory, index) => (
             <motion.div key={skillCategory.category} variants={itemVariants}>
-              <Card className="h-full card-hover border-slate-200 bg-white">
+              <Card className="h-full hover:shadow-professional-lg transition-all duration-300 group hover:-translate-y-1 border-slate-200 bg-white">
                 <CardHeader className="pb-4">
                   <CardTitle className="text-lg font-semibold text-slate-900 group-hover:text-indigo-600 transition-colors">
                     {skillCategory.category}
@@ -113,13 +113,13 @@ const Skills = memo(() => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="text-center"
+          className="mt-16 text-center"
         >
           <div className="gradient-primary-light rounded-2xl p-8 border border-slate-200">
-            <h3 className="heading-tertiary mb-4">
+            <h3 className="text-2xl font-semibold text-slate-900 mb-4">
               {domain === 'cs' ? 'Always Learning' : 'Technical Excellence'}
             </h3>
-            <p className="text-body max-w-2xl mx-auto mb-8">
+            <p className="text-slate-600 max-w-2xl mx-auto mb-8">
               {domain === 'cs' 
                 ? 'I stay current with the latest technologies and best practices, constantly expanding my skill set to deliver cutting-edge solutions.'
                 : 'I embrace new technologies and methodologies to optimize designs and improve engineering efficiency.'
