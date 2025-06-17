@@ -1,4 +1,4 @@
-# Ankur Salunkhe Portfolio 
+# Ankur Salunkhe Portfolio - Performance Optimized
 
 A modern, responsive portfolio website showcasing both Computer Science and Mechanical Engineering expertise. Built with Next.js, TypeScript, and Tailwind CSS with advanced performance optimizations.
 

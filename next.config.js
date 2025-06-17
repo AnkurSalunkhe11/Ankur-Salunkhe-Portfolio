@@ -24,7 +24,6 @@ const nextConfig = {
     minimumCacheTTL: 60,
     // Optimize loading
     loader: 'default',
-    quality: 85,
   },
   experimental: {
     optimizePackageImports: ['lucide-react', 'framer-motion', '@radix-ui/react-slot'],
@@ -43,8 +42,6 @@ const nextConfig = {
   // Optimize for Vercel
   poweredByHeader: false,
   compress: true,
-  // Optimize bundle
-  swcMinify: true,
   // Performance optimizations
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
