@@ -120,39 +120,15 @@
   ],
   "certifications": [
     {
-      "name": "Mastering Programming with MATLAB",
-      "issuer": "Vanderbilt University",
-      "date": "Sep 2024",
-      "credentialId": "26267eddb0268bd333ffe5e291911359",
-      "link": "https://www.coursera.org/account/accomplishments/certificate/26267eddb0268bd333ffe5e291911359",
-      "skills": ["MATLAB", "OOP", "App Designer", "Live Scripts"]
-    },
-    {
-      "name": "Oil & Gas Industry Operations and Markets",
-      "issuer": "Duke University",
-      "date": "Sep 2024",
-      "credentialId": "32cd8bfcf25f3ad3a6bd6000f1694f07",
-      "link": "https://www.coursera.org/account/accomplishments/certificate/32cd8bfcf25f3ad3a6bd6000f1694f07",
-      "skills": ["Energy Systems"]
-    },
-    {
-      "name": "Utilities, Safety & Environmental Care in Oil & Gas Industry",
-      "issuer": "L&T EduTech",
-      "date": "Sep 2024",
-      "credentialId": "52d2787333dc07627e4e6408a6b05718",
-      "link": "https://www.coursera.org/account/accomplishments/certificate/52d2787333dc07627e4e6408a6b05718",
-      "skills": ["Safety", "Utility Management"]
-    },
-    {
-      "name": "CAM and Design Manufacturing with Autodesk Fusion 360",
+      "name": "CAM and Design Manufacturing for Mechanical Engineers with Autodesk Fusion 360",
       "issuer": "Autodesk Fusion 360 & Moldflow",
       "date": "Aug 2024",
       "credentialId": "14RSLQD7HE41",
       "link": "https://www.coursera.org/account/accomplishments/certificate/14RSLQD7HE41",
-      "skills": ["Fusion 360", "Mechanical Design"]
+      "skills": ["Autodesk Fusion 360", "Mechanical Drawings"]
     },
     {
-      "name": "Absolute Beginner's Guide to CFD Simulation in ANSYS",
+      "name": "Absolute Beginners Guide to CFD simulation in ANSYS",
       "issuer": "Udemy",
       "date": "Jul 2024",
       "credentialId": "UC-449acd7f-2c9e-43aa-af59-887aa7869366",
@@ -165,7 +141,7 @@
       "date": "Jul 2024",
       "credentialId": "UC-26b33ea8-666b-4b3e-9741-2bb41aa7a276",
       "link": "https://www.udemy.com/certificate/UC-26b33ea8-666b-4b3e-9741-2bb41aa7a276",
-      "skills": ["CFD", "Ansys Fluent", "Heat Transfer"]
+      "skills": ["CFD", "ANSYS Workbench", "ANSYS Fluent", "Heat Transfer"]
     },
     {
       "name": "Computational Fluid Mechanics - Airflow Around a Spoiler",
@@ -184,20 +160,12 @@
       "skills": ["FEA", "Meshing"]
     },
     {
-      "name": "Harnessing the Power of Data with Power BI",
-      "issuer": "Coursera",
-      "date": "Jun 2024",
-      "credentialId": "FYCN6XBGQMXW",
-      "link": "https://www.coursera.org/account/accomplishments/certificate/FYCN6XBGQMXW",
-      "skills": ["Power BI", "Dashboards"]
-    },
-    {
-      "name": "Introduction to Fluent Aero Package",
+      "name": "Introduction to Fluent Aero package",
       "issuer": "Udemy",
       "date": "Jun 2024",
       "credentialId": "UC-2fc5e974-7f5c-4d83-89dd-80f10e17eb66",
       "link": "https://www.udemy.com/certificate/UC-2fc5e974-7f5c-4d83-89dd-80f10e17eb66",
-      "skills": ["ANSYS Aero", "Ansys Fluent"]
+      "skills": ["ANSYS Fluent", "ANSYS Aero"]
     },
     {
       "name": "Simulink Onramp",
@@ -238,6 +206,38 @@
       "credentialId": "UC-9a3e43af-2919-4804-b2a1-431a2fda11cc",
       "link": "https://www.udemy.com/certificate/UC-9a3e43af-2919-4804-b2a1-431a2fda11cc",
       "skills": ["SOLIDWORKS", "Mechanical Drawings"]
+    },
+    {
+      "name": "Mastering Programming with MATLAB",
+      "issuer": "Vanderbilt University",
+      "date": "Sep 2024",
+      "credentialId": "26267eddb0268bd333ffe5e291911359",
+      "link": "https://www.coursera.org/account/accomplishments/certificate/26267eddb0268bd333ffe5e291911359",
+      "skills": ["MATLAB", "OOP", "App Designer", "Live Scripts"]
+    },
+    {
+      "name": "Oil & Gas Industry Operations and Markets",
+      "issuer": "Duke University",
+      "date": "Sep 2024",
+      "credentialId": "32cd8bfcf25f3ad3a6bd6000f1694f07",
+      "link": "https://www.coursera.org/account/accomplishments/certificate/32cd8bfcf25f3ad3a6bd6000f1694f07",
+      "skills": ["Energy Systems"]
+    },
+    {
+      "name": "Utilities, Safety & Environmental Care in Oil & Gas Industry",
+      "issuer": "L&T EduTech",
+      "date": "Sep 2024",
+      "credentialId": "52d2787333dc07627e4e6408a6b05718",
+      "link": "https://www.coursera.org/account/accomplishments/certificate/52d2787333dc07627e4e6408a6b05718",
+      "skills": ["Safety", "Utility Management"]
+    },
+    {
+      "name": "Harnessing the Power of Data with Power BI",
+      "issuer": "Coursera",
+      "date": "Jun 2024",
+      "credentialId": "FYCN6XBGQMXW",
+      "link": "https://www.coursera.org/account/accomplishments/certificate/FYCN6XBGQMXW",
+      "skills": ["Power BI", "Dashboards"]
     },
     {
       "name": "ISHRAE Student Member",
