@@ -11,6 +11,7 @@ import { useState, memo, useCallback } from 'react';
 import TechLogo from '@/components/TechLogo';
 import { analytics } from '@/lib/analytics';
 import { getProjectImage } from '@/lib/images';
+import Image from 'next/image';
 
 const Projects = memo(() => {
   const { domain } = usePortfolioStore();
@@ -102,12 +103,19 @@ const Projects = memo(() => {
               className="will-change-transform"
             >
               <Card className="h-full group hover:shadow-professional-xl transition-all duration-300 overflow-hidden hover:-translate-y-2 border-slate-200 bg-white">
-                <div className="relative overflow-hidden">
-                  <img
+                <div className="relative overflow-hidden h-48">
+                  <Image
                     src={getProjectImage(domain, project.title)}
                     alt={project.title}
-                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
-                    loading={index < 3 ? "eager" : "lazy"}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    priority={index < 3}
+                    onError={(e) => {
+                      console.error('Project image failed to load:', project.title);
+                      // Fallback to a placeholder
+                      e.currentTarget.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDQwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0yMDAgNzVDMTg0LjUgNzUgMTcyIDg3LjUgMTcyIDEwM0MxNzIgMTE4LjUgMTg0LjUgMTMxIDIwMCAxMzFDMjE1LjUgMTMxIDIyOCAxMTguNSAyMjggMTAzQzIyOCA4Ny41IDIxNS41IDc1IDIwMCA3NVoiIGZpbGw9IiM5Q0EzQUYiLz4KPHBhdGggZD0iTTE0MCA5NUMxNDAgODQuNSAxNDguNSA3NiAxNTkgNzZIMjQxQzI1MS41IDc2IDI2MCA4NC41IDI2MCA5NVYxMjVIMTQwVjk1WiIgZmlsbD0iIzlDQTNBRiIvPgo8L3N2Zz4K';
+                    }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>

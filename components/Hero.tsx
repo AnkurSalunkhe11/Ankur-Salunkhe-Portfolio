@@ -4,11 +4,12 @@ import { motion } from 'framer-motion';
 import { usePortfolioStore } from '@/lib/store';
 import { getPersonalData, getDomainData } from '@/lib/data-loader';
 import { Button } from '@/components/ui/button';
-import { ArrowDown, Github, Linkedin, Mail, Globe, Twitter } from 'lucide-react';
-import { SiLeetcode } from 'react-icons/si';
+import { ArrowDown, Github, Linkedin, Mail, Globe, GraduationCap } from 'lucide-react';
+import { SiLeetcode, SiGooglescholar } from 'react-icons/si';
 import { analytics } from '@/lib/analytics';
 import { memo, useCallback } from 'react';
 import { getHeroImage } from '@/lib/images';
+import Image from 'next/image';
 
 const Hero = memo(() => {
   const { domain } = usePortfolioStore();
@@ -50,10 +51,10 @@ const Hero = memo(() => {
       color: 'hover:text-orange-500'
     },
     {
-      icon: Twitter,
-      url: personalData.twitter,
-      platform: 'twitter',
-      color: 'hover:text-blue-400'
+      icon: SiGooglescholar,
+      url: personalData.twitter, // Using the twitter field for Google Scholar URL
+      platform: 'google-scholar',
+      color: 'hover:text-blue-500'
     },
     {
       icon: Globe,
@@ -69,6 +70,8 @@ const Hero = memo(() => {
       onClick: handleEmailClick
     }
   ];
+
+  const heroImageSrc = getHeroImage(domain);
 
   return (
     <section id="home" className="min-h-screen flex items-center bg-gradient-to-br from-slate-50 via-white to-slate-100 pt-16">
@@ -150,35 +153,6 @@ const Hero = memo(() => {
                 </motion.button>
               ))}
             </motion.div>
-
-            {/* Quick Stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.5 }}
-              className="grid grid-cols-3 gap-6 pt-8 border-t border-slate-200"
-            >
-              <div className="text-center">
-                <p className="text-2xl font-bold text-slate-900">
-                  {domain === 'cs' ? '6+' : '4+'}
-                </p>
-                <p className="text-sm text-slate-600">Projects</p>
-              </div>
-              <div className="text-center">
-                <p className="text-2xl font-bold text-slate-900">
-                  {domain === 'cs' ? '2+' : '3+'}
-                </p>
-                <p className="text-sm text-slate-600">Years Experience</p>
-              </div>
-              <div className="text-center">
-                <p className="text-2xl font-bold text-slate-900">
-                  {domain === 'cs' ? '10+' : '2'}
-                </p>
-                <p className="text-sm text-slate-600">
-                  {domain === 'cs' ? 'Technologies' : 'Publications'}
-                </p>
-              </div>
-            </motion.div>
           </motion.div>
 
           <motion.div
@@ -203,12 +177,21 @@ const Hero = memo(() => {
                 whileHover={{ scale: 1.05 }}
                 className="relative"
               >
-                <img
-                  src={getHeroImage(domain)}
-                  alt={personalData.name}
-                  className="w-64 h-64 sm:w-80 sm:h-80 rounded-full object-cover border-4 border-white shadow-professional-xl"
-                  loading="eager"
-                />
+                <div className="w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-white shadow-professional-xl relative">
+                  <Image
+                    src={heroImageSrc}
+                    alt={personalData.name}
+                    fill
+                    className="object-cover"
+                    priority
+                    sizes="(max-width: 640px) 256px, 320px"
+                    onError={(e) => {
+                      console.error('Hero image failed to load:', heroImageSrc);
+                      // Fallback to a placeholder or default image
+                      e.currentTarget.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjMyMCIgdmlld0JveD0iMCAwIDMyMCAzMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMjAiIGhlaWdodD0iMzIwIiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0xNjAgMTAwQzE0NC41IDEwMCAxMzIgMTEyLjUgMTMyIDEyOEMxMzIgMTQzLjUgMTQ0LjUgMTU2IDE2MCAxNTZDMTc1LjUgMTU2IDE4OCAxNDMuNSAxODggMTI4QzE4OCAxMTIuNSAxNzUuNSAxMDAgMTYwIDEwMFoiIGZpbGw9IiM5Q0EzQUYiLz4KPHBhdGggZD0iTTEwMCAxODBDMTAwIDE2NC41IDExMi41IDE1MiAxMjggMTUySDIwMEMyMTUuNSAxNTIgMjI4IDE2NC41IDIyOCAxODBWMjAwSDEwMFYxODBaIiBmaWxsPSIjOUNBM0FGIi8+Cjwvc3ZnPgo=';
+                    }}
+                  />
+                </div>
                 {/* Status indicator */}
                 <div className="absolute bottom-6 right-6 w-6 h-6 bg-emerald-500 rounded-full border-4 border-white shadow-lg">
                   <div className="w-full h-full bg-emerald-500 rounded-full animate-pulse"></div>

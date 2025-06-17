@@ -13,29 +13,25 @@
       "description": "Developed an ORC-based test rig to convert industrial waste heat into electricity using a closed-loop system of pump, evaporator, turbine, and condenser.",
       "technologies": ["Heat Transfer", "Organic Rankine Cycle", "Waste Heat Recovery", "Exergy Analysis", "Metal Fabrication"],
       "link": "https://doi.org/10.1016/j.csite.2025.105841",
-      "duration": "Apr 2024 – May 2024",
-      
+      "duration": "Apr 2024 – May 2024"
     },
     {
       "title": "Transient Thermal Analysis of Braking Systems Using ANSYS",
       "description": "Conducted coupled field transient analysis in ANSYS to evaluate thermal performance of ceramic vs. composite brake materials and optimize contact mechanics.",
       "technologies": ["ANSYS Mechanical", "Thermal Analysis", "Dynamic Modeling", "Heat Transfer Simulation", "SolidWorks"],
-      "duration": "Nov 2023 – Jan 2024",
-      
+      "duration": "Nov 2023 – Jan 2024"
     },
     {
       "title": "Heat Exchanger Performance Optimization using CFD",
       "description": "Used ANSYS Fluent to analyze and optimize thermal and flow performance in heat exchangers using parameters like LMTD, pressure drop, and fluid regimes.",
       "technologies": ["CFD", "ANSYS Fluent", "Heat Exchangers", "Flow Analysis", "LMTD Analysis"],
-      "duration": "Aug 2023 – Oct 2023",
-     
+      "duration": "Aug 2023 – Oct 2023"
     },
     {
       "title": "Hybrid Air-conditioning System for Passenger Vehicles",
       "description": "Designed a three-fluid heat exchanger system integrating adsorption refrigeration with exhaust recovery to reduce fuel consumption and improve vehicle HVAC performance.",
       "technologies": ["HVAC", "CFD", "ANSYS Fluent", "Waste Heat Recovery", "SolidWorks"],
-      "duration": "Sep 2023 – Nov 2023",
-      
+      "duration": "Sep 2023 – Nov 2023"
     }
   ],
   "experience": [
@@ -100,14 +96,14 @@
       "technologies": ["Heat Transfer", "Organic Rankine Cycle", "Waste Heat Recovery", "Exergy Analysis", "Metal Fabrication", "Project Management"],
       "link": "https://doi.org/10.1016/j.csite.2025.105841",
       "duration": "Apr 2024 – May 2024",
-      
+      "team": "4 members"
     },
     {
       "title": "Transient Thermal Analysis of Braking Systems Using ANSYS",
       "description": "Conducted comprehensive coupled field transient analysis in ANSYS to evaluate thermal performance of ceramic vs. composite brake materials. Optimized contact mechanics and simulated braking under varying thermal loads to improve brake system efficiency and safety.",
       "technologies": ["ANSYS Mechanical", "Thermal & Structural Analysis", "Dynamic Modeling", "Heat Transfer Simulation", "Mesh Optimization", "SolidWorks"],
       "duration": "Nov 2023 – Jan 2024",
-      
+      "team": "3 members"
     },
     {
       "title": "Hybrid Air-conditioning System for Passenger Vehicles",
@@ -115,7 +111,7 @@
       "technologies": ["HVAC", "CFD", "ANSYS Fluent", "Waste Heat Recovery", "SolidWorks", "Thermal Design"],
       "link": "https://doi.org/10.6977/IJoSI.202409_8(3).0007",
       "duration": "Sep 2023 – Nov 2023",
-      
+      "team": "5 members"
     }
   ],
   "certifications": [

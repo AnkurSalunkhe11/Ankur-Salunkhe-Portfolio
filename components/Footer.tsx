@@ -2,8 +2,8 @@
 
 import { motion } from 'framer-motion';
 import { getPersonalData } from '@/lib/data-loader';
-import { Github, Linkedin, Mail, Heart, Twitter, Globe, Phone, MapPin } from 'lucide-react';
-import { SiLeetcode } from 'react-icons/si';
+import { Github, Linkedin, Mail, Heart, Globe, Phone, MapPin } from 'lucide-react';
+import { SiLeetcode, SiGooglescholar } from 'react-icons/si';
 import { analytics } from '@/lib/analytics';
 import { memo, useCallback } from 'react';
 
@@ -40,10 +40,10 @@ const Footer = memo(() => {
       color: 'hover:bg-orange-500'
     },
     {
-      icon: Twitter,
-      url: portfolioData.twitter,
-      platform: 'twitter',
-      color: 'hover:bg-blue-400'
+      icon: SiGooglescholar,
+      url: portfolioData.twitter, // Using the twitter field for Google Scholar URL
+      platform: 'google-scholar',
+      color: 'hover:bg-blue-500'
     },
     {
       icon: Globe,

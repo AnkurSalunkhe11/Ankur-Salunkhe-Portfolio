@@ -21,8 +21,8 @@ import { analytics } from '@/lib/analytics';
 import { getProjectImage } from '@/lib/images';
 
 export default function MechanicalAchievements() {
-  const mechanicalData = getDomainData('mechanical');
-  const { publications, detailedProjects, patents } = mechanicalData as any;
+  const mechanicalData = getDomainData('mechanical') as any;
+  const { publications, detailedProjects, patents } = mechanicalData;
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -237,10 +237,12 @@ export default function MechanicalAchievements() {
                           <Clock className="w-4 h-4" />
                           <span>{project.duration}</span>
                         </div>
-                        <div className="flex items-center space-x-2">
-                          <Users className="w-4 h-4" />
-                          <span>{project.team}</span>
-                        </div>
+                        {project.team && (
+                          <div className="flex items-center space-x-2">
+                            <Users className="w-4 h-4" />
+                            <span>{project.team}</span>
+                          </div>
+                        )}
                       </div>
                       
                       {project.link && (
