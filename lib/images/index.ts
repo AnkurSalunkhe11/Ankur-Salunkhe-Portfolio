@@ -1,4 +1,4 @@
-// Central image management and helper functions
+// Central image management and helper functions - Fixed
 import { csImages, type CSImageKeys } from './cs-images';
 import { mechanicalImages, type MechanicalImageKeys } from './mechanical-images';
 import type { PortfolioDomain } from '@/lib/data-loader';
@@ -16,24 +16,28 @@ export const getDomainImages = (domain: PortfolioDomain) => {
 export const getProjectImage = (domain: PortfolioDomain, projectTitle: string): string => {
   const images = getDomainImages(domain);
   
-  // Map project titles to image keys with normalized titles
+  // Normalize project title for mapping
+  const normalizeTitle = (title: string) => title.toLowerCase().replace(/[^a-z0-9]/g, '');
+  
+  // Map project titles to image keys with exact matching
   const projectImageMap: Record<string, string> = {
     // CS Projects
-    'Financial Statement Analysis Chatbot': images.projects.financialChatbot || csImages.projects.financialChatbot,
-    'LogCount W - Log Analysis System': images.projects.logAnalysis || csImages.projects.logAnalysis,
-    'Numerical Solver for Transient Heat Transfer': images.projects.heatTransferSolver || csImages.projects.heatTransferSolver,
-    'AI Virtual Assistant': images.projects.aiAssistant || csImages.projects.aiAssistant,
-    'Lid Driven Cavity Simulation': images.projects.lidDrivenCavity || csImages.projects.lidDrivenCavity,
-    'Space Wars Game': images.projects.spaceWarsGame || csImages.projects.spaceWarsGame,
+    'financialstatementanalysischatbot': '/images/financial-chatbot.jpeg',
+    'logcountwloganalysissystem': '/images/log-analysis.jpeg',
+    'numericalsolverfortransientheattransfer': '/images/numerical-solver-transient-heat-transfer.jpeg',
+    'aivirtualassistant': '/images/ai-assistant.jpeg',
+    'liddrivencavitysimulation': '/images/lid-driven-cavity-simulation.jpeg',
+    'spacewarsgame': '/images/space-wars.jpeg',
     
-    // Mechanical Projects
-    'Implementation of an Organic Rankine Cycle as a Waste Heat Recovery System': mechanicalImages.projects.organicRankineCycle,
-    'Transient Thermal Analysis of Braking Systems Using ANSYS': mechanicalImages.projects.thermalAnalysis,
-    'Heat Exchanger Performance Optimization using CFD': mechanicalImages.projects.heatExchanger,
-    'Hybrid Air-conditioning System for Passenger Vehicles': mechanicalImages.projects.hybridAirConditioning,
+    // Mechanical Projects - Fixed mappings
+    'implementationofanorganicrankinecycleasawasteheatrecoverysystem': '/images/orc-image.jpeg',
+    'transientthermalanalysisofbrakingsystemsusingansys': '/images/transient-thermal-braking.jpeg',
+    'heatexchangerperformanceoptimizationusingcfd': '/images/heat-exchanger-performance-cfd.jpeg',
+    'hybridairconditioningsystemforpassengervehicles': '/images/hybrid-air-conditioning-system.jpeg',
   };
 
-  const imageUrl = projectImageMap[projectTitle];
+  const normalizedTitle = normalizeTitle(projectTitle);
+  const imageUrl = projectImageMap[normalizedTitle];
   
   // Return the mapped image or fallback to a default
   if (imageUrl) {
@@ -42,39 +46,29 @@ export const getProjectImage = (domain: PortfolioDomain, projectTitle: string): 
   
   // Fallback to domain-specific default
   return domain === 'cs' 
-    ? csImages.backgrounds.codeBackground 
-    : mechanicalImages.backgrounds.engineeringBackground;
+    ? 'https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=800'
+    : '/images/orc-image.jpeg';
 };
 
 // Helper function to get hero image with fallback
 export const getHeroImage = (domain: PortfolioDomain): string => {
-  const images = getDomainImages(domain);
-  const heroImage = images.hero.profileImage;
-  
-  // Ensure the image path is correct
-  if (heroImage && !heroImage.startsWith('http')) {
-    // Make sure it starts with /images/ for local images
-    return heroImage.startsWith('/images/') ? heroImage : `/images/${heroImage.replace(/^\//, '')}`;
-  }
-  
-  return heroImage || '/images/thunder.png'; // Fallback
+  return '/images/thunder.png';
 };
 
 // Helper function to get background image
 export const getBackgroundImage = (domain: PortfolioDomain, type: 'primary' | 'secondary' = 'primary'): string => {
-  const images = getDomainImages(domain);
-  
   if (domain === 'cs') {
-    return type === 'primary' ? images.backgrounds.codeBackground : images.backgrounds.techBackground;
+    return type === 'primary' 
+      ? 'https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=1200'
+      : 'https://images.pexels.com/photos/442576/pexels-photo-442576.jpeg?auto=compress&cs=tinysrgb&w=1200';
   } else {
-    return type === 'primary' ? images.backgrounds.engineeringBackground : images.backgrounds.thermalBackground;
+    return type === 'primary' ? '/images/orc-image.jpeg' : '/images/heat-exchanger-performance-cfd.jpeg';
   }
 };
 
 // Image optimization helper
 export const optimizeImageUrl = (url: string, width: number = 800, quality: number = 80): string => {
   if (url.includes('pexels.com')) {
-    // For Pexels images, we can modify the URL parameters
     const baseUrl = url.split('?')[0];
     return `${baseUrl}?auto=compress&cs=tinysrgb&w=${width}&q=${quality}`;
   }
@@ -102,7 +96,7 @@ export const preloadCriticalImages = (domain: PortfolioDomain) => {
 export const validateImageExists = (src: string): Promise<boolean> => {
   return new Promise((resolve) => {
     if (typeof window === 'undefined') {
-      resolve(true); // Assume true on server
+      resolve(true);
       return;
     }
     

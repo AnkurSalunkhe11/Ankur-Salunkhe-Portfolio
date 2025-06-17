@@ -1,4 +1,4 @@
-// CS/Software Development Images
+// CS/Software Development Images - Updated with correct paths
 export const csImages = {
   // Project images
   projects: {
