@@ -1,180 +1,114 @@
-# Ankur Salunkhe Portfolio 
+# Ankur Salunkhe Portfolio 🚀
 
-A modern, responsive portfolio website showcasing both Computer Science and Mechanical Engineering expertise. Built with Next.js, TypeScript, and Tailwind CSS with advanced performance optimizations.
+A modern, highly optimized, and production-grade developer & researcher portfolio website showcasing both **Computer Science (AI/ML & Software)** and **Mechanical Engineering (CFD, ORC, Simulations)** double-specializations. Built with **Next.js (App Router)**, **TypeScript**, **Tailwind CSS**, and **Zustand** client-side state.
 
-## 🚀 Performance Features
+---
 
-- **Optimized Images**: WebP/AVIF formats with responsive sizing
-- **Lazy Loading**: Intersection Observer for components and images
-- **Critical Resource Preloading**: Above-the-fold content loads first
-- **Bundle Optimization**: Tree-shaking and code splitting
-- **Caching Strategy**: Aggressive caching for static assets
+## ⚡ Premium Production-Grade Features
 
-## 📱 Image Specifications
+### 1. Centralized JSON-Driven CMS (`data/`)
+Content updating is incredibly easy. All personal information, social handles, future-ready blog modules, and resume download URLs are driven dynamically out of centralized data files. **No UI or code modifications required.**
+* **Personal Details, Resume Links, and Blogs:** [personal-data.json](file:///C:/Users/ankur/.gemini/antigravity/scratch/ankur-portfolio/data/personal-data.json)
+* **Computer Science Work:** [cs-data.json](file:///C:/Users/ankur/.gemini/antigravity/scratch/ankur-portfolio/data/cs-data.json)
+* **Mechanical Engineering & Research:** [mechanical-data.json](file:///C:/Users/ankur/.gemini/antigravity/scratch/ankur-portfolio/data/mechanical-data.json)
 
-### Optimal Image Resolutions
+### 2. Apple/Stripe-Inspired Native Theme System
+* **Light / Dark Switching:** Native light/dark theme context wrapped using `next-themes` and a premium moon/sun toggler in the header.
+* **Harmonic Branding:** Custom CSS variables drive high-contrast Slate interfaces for CS software profiles and Emerald-Mint borders for Mechanical engineering details.
+* **Micro-interactions:** Interactive card glows, subtle svg grid overlays, and hover lifts make the portfolio feel premium.
 
-#### Hero/Profile Images
-- **Mobile**: 320×320px (1x), 640×640px (2x)
-- **Tablet**: 480×480px (1x), 960×960px (2x)
-- **Desktop**: 640×640px (1x), 1280×1280px (2x)
-- **Format**: WebP/AVIF preferred, JPEG fallback
-- **Quality**: 85-90%
+### 3. Fully Working Contact API & Spam Armor
+* **Endpoint `/api/contact`:** Next.js Server POST endpoint. Integrates seamlessly with the **Resend API**.
+* **Zero-Setup Local Fallback:** If `RESEND_API_KEY` is not present, submissions fall back gracefully to browser local storage metrics, preventing breaks in testing.
+* **Bot-Defense Honeypots:** Invisible input fields trap bot script requests instantly.
+* **Robust Security:** Zod input parsing and strict HTML/XSS character sanitization.
 
-#### Project Images
-- **Thumbnail**: 300×225px (4:3 ratio)
-- **Card View**: 400×300px (4:3 ratio)
-- **Detail View**: 800×600px (4:3 ratio)
-- **Retina**: 2x versions for high-DPI displays
-- **Format**: WebP preferred
-- **Quality**: 80-85%
+### 4. Protected Analytics Suite & Inbox Dashboard (`/admin`)
+* **Access Control:** Log in using your secure, custom-configured administration PIN code.
+* **Visitor Metrics:** Visualizes page switches, resume downloads, and click-through rates dynamically with responsive `recharts` graphs.
+* **Local Inbox:** View, read, and delete contact form inquiries saved securely in the local localStorage database simulator.
+* **Seeding:** Seed mock recruiter events dynamically to showcase dashboard logging capability immediately.
 
-#### Background Images
-- **Mobile**: 800×600px
-- **Desktop**: 1920×1080px
-- **Format**: WebP/AVIF
-- **Quality**: 75-80% (lower for backgrounds)
-
-#### Icons/Logos
-- **Small**: 32×32px
-- **Medium**: 64×64px
-- **Large**: 128×128px
-- **Format**: SVG preferred, WebP for complex images
-- **Quality**: 90%
+---
 
 ## 🛠 Tech Stack
 
-- **Framework**: Next.js 15 with App Router
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **UI Components**: Radix UI + shadcn/ui
-- **Animations**: Framer Motion (optimized)
-- **Analytics**: Vercel Analytics & Speed Insights
-- **State Management**: Zustand
-- **Icons**: Lucide React + React Icons
-- **Image Optimization**: Next.js Image + Custom optimization layer
+- **Framework**: Next.js 15 with App Router (Dynamic API endpoints & static pre-rendered pages)
+- **Language**: TypeScript (100% strict type safety)
+- **Styling**: Tailwind CSS (Custom HSL theme variables)
+- **State Management**: Zustand (Persistent client state)
+- **Data Visualization**: Recharts (Responsive vector SVGs)
+- **Validation**: Zod (Type validation)
+- **Email Delivery**: Resend API (Transactional edge mailers)
 
-## 📊 Performance Optimizations
+---
 
-### Image Management
-- **Responsive Images**: Multiple sizes for different viewports
-- **Modern Formats**: WebP/AVIF with JPEG fallbacks
-- **Lazy Loading**: Intersection Observer API
-- **Preloading**: Critical images loaded immediately
-- **Compression**: Optimized quality settings per use case
-
-### Loading Strategy
-- **Critical Path**: Above-the-fold content prioritized
-- **Code Splitting**: Route-based and component-based
-- **Resource Hints**: Preload, prefetch, and preconnect
-- **Bundle Analysis**: Tree-shaking and dead code elimination
-
-### Caching
-- **Static Assets**: 1 year cache with immutable headers
-- **Images**: Aggressive caching with proper ETags
-- **API Responses**: Appropriate cache headers
-- **Service Worker**: Optional for offline functionality
-
-## 🎯 Performance Targets
-
-- **First Contentful Paint (FCP)**: < 1.5s
-- **Largest Contentful Paint (LCP)**: < 2.5s
-- **Cumulative Layout Shift (CLS)**: < 0.1
-- **First Input Delay (FID)**: < 100ms
-- **Time to Interactive (TTI)**: < 3.5s
-
-## 📁 Project Structure
+## 📁 Refactored Project Structure
 
 ```
-├── app/                    # Next.js app directory
-├── components/            # React components
-│   ├── ui/               # Reusable UI components
-│   └── ...               # Feature components
-├── data/                  # JSON data files
-├── lib/                   # Utility functions
-│   ├── images/           # Image management
-│   ├── performance/      # Performance utilities
-│   └── ...
-├── public/               # Static assets
-│   └── images/          # Optimized images
-└── ...
+├── app/
+│   ├── admin/                 # Secure Analytics Panel & Recruiter Dashboard
+│   │   └── page.tsx
+│   ├── api/                   # Next.js Serverless API endpoints
+│   │   └── contact/
+│   │       └── route.ts       # Secure Resend + Honeypot Contact Handler
+│   ├── layout.tsx             # Theme & Context wrappers
+│   ├── page.tsx               # Main portfolio landing & JSON-LD injectors
+│   └── globals.css            # Dark/Light CSS design variables
+├── components/
+│   ├── ui/                    # Shadcn & custom elements (skeleton loaders, cards)
+│   ├── About.tsx              # Dynamic interdisciplinary layout
+│   ├── Contact.tsx            # Contact form + rate limiting triggers
+│   ├── Header.tsx             # Sleek navigation + Theme Switcher
+│   └── MechanicalAchievements.tsx # Publication and patent showcase
+├── data/
+│   ├── config.json            # Centralized SEO & theme defaults
+│   ├── cs-data.json           # Unified Software Engineering CMS
+│   ├── mechanical-data.json   # Unified Mechanical Engineering CMS
+│   └── personal-data.json     # Personal details & Google Drive resume folders
+├── lib/
+│   ├── analytics.ts           # Dynamic tracking wrapper (local + analytics provider)
+│   └── data-loader.ts         # Centralized typed loading interface
 ```
 
-## 🖼 Image Optimization Guide
+---
 
-### For New Images
+## 🚀 Getting Started
 
-1. **Resize to target dimensions** using the specifications above
-2. **Convert to WebP** for modern browsers
-3. **Keep JPEG fallback** for compatibility
-4. **Compress appropriately**:
-   - Hero images: 85-90% quality
-   - Project images: 80-85% quality
-   - Background images: 75-80% quality
-   - Icons: 90% quality
-
-### Tools Recommended
-- **Squoosh.app**: Online image optimization
-- **ImageOptim**: Mac app for batch processing
-- **TinyPNG**: Online PNG/JPEG compression
-- **AVIF.io**: AVIF format conversion
-
-## 🚀 Development
-
+### 1. Install Dependencies
 ```bash
-# Install dependencies
 npm install
-
-# Run development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Analyze bundle
-npm run analyze
-
-# Type check
-npm run type-check
 ```
 
-## 📈 Performance Monitoring
+### 2. Configure Environment Variables (`.env.local`)
+Create a `.env.local` file in the root folder:
+```env
+# (Optional) Resend API Key for real email forwarding
+RESEND_API_KEY=re_your_resend_api_key_here
 
-The portfolio includes:
-- **Vercel Analytics**: Real user monitoring
-- **Speed Insights**: Core Web Vitals tracking
-- **Custom Performance Hooks**: Component-level monitoring
-- **Image Loading Metrics**: Lazy loading effectiveness
+# (Optional) Site canonical domain
+NEXT_PUBLIC_SITE_URL=https://ankur-salunkhe.vercel.app
+```
 
-## 🔧 Configuration
+### 3. Run Development Server
+```bash
+npm run dev
+```
 
-### Image Optimization Settings
-Edit `lib/images/image-optimization.ts` to adjust:
-- Quality settings per image type
-- Responsive breakpoints
-- Format preferences
-- Compression levels
+### 4. Build for Production
+```bash
+npm run build
+```
 
-### Performance Thresholds
-Modify `lib/performance/monitoring.ts` for:
-- Performance budgets
-- Alert thresholds
-- Metric collection
+---
 
-## 📱 Mobile Optimization
+## 🛡️ Audit & Type-Safety Confirmations
 
-- **Touch-friendly**: 44px minimum touch targets
-- **Responsive Images**: Appropriate sizes for mobile screens
-- **Reduced Motion**: Respects user preferences
-- **Offline Support**: Critical content cached
-- **Fast Loading**: Optimized for 3G networks
+- **Typescript compiling:** Success (Checked via `tsc --noEmit`).
+- **Production bundling:** Success (Checked via `next build`).
+- **SEO Lighthouse Targets:** canonical tags, robots rule files, XML sitemaps, and rich `Person` schema markup injected.
 
-## 🌐 Browser Support
-
-- **Modern Browsers**: Full feature support
-- **Legacy Browsers**: Graceful degradation
-- **Image Formats**: WebP/AVIF with JPEG fallbacks
-- **JavaScript**: Progressive enhancement
+---
 
 ## 📄 License
 
@@ -186,18 +120,3 @@ For questions or collaboration opportunities:
 - Email: ankursalunkhe2004@gmail.com
 - LinkedIn: [Ankur Salunkhe](https://www.linkedin.com/in/ankur-salunkhe/)
 - GitHub: [AnkurSalunkhe11](https://github.com/AnkurSalunkhe11)
-
----
-
-## 🎯 Performance Checklist
-
-- ✅ Images optimized for multiple screen sizes
-- ✅ WebP/AVIF formats with fallbacks
-- ✅ Lazy loading implemented
-- ✅ Critical resources preloaded
-- ✅ Bundle size optimized
-- ✅ Caching headers configured
-- ✅ Core Web Vitals monitored
-- ✅ Mobile-first responsive design
-- ✅ Accessibility standards met
-- ✅ SEO optimized

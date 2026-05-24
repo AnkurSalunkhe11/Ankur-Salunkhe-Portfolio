@@ -106,7 +106,7 @@ export default function MechanicalAchievements() {
   };
 
   return (
-    <section className="py-20 bg-slate-50">
+    <section className="py-20 bg-slate-50 dark:bg-slate-900/50 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -115,9 +115,9 @@ export default function MechanicalAchievements() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-slate-900 mb-4">Mechanical Engineering Achievements</h2>
+          <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">Mechanical Engineering Achievements</h2>
           <div className="w-24 h-1 gradient-primary mx-auto rounded-full mb-6"></div>
-          <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+          <p className="text-lg text-slate-600 dark:text-slate-350 max-w-3xl mx-auto">
             A comprehensive showcase of research publications, engineering projects, and patent innovations
           </p>
         </motion.div>

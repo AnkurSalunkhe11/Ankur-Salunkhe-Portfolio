@@ -5,7 +5,7 @@ import { usePortfolioStore } from '@/lib/store';
 import { getPersonalData, getDomainData } from '@/lib/data-loader';
 import { Button } from '@/components/ui/button';
 import { ArrowDown, Github, Linkedin, Mail, Globe, GraduationCap } from 'lucide-react';
-import { SiLeetcode, SiGooglescholar } from 'react-icons/si';
+import { SiLeetcode, SiGooglescholar, SiMedium } from 'react-icons/si';
 import { analytics } from '@/lib/analytics';
 import { memo, useCallback } from 'react';
 import OptimizedImage from '@/components/ui/optimized-image';
@@ -50,6 +50,12 @@ const Hero = memo(() => {
       platform: 'leetcode',
       color: 'hover:text-orange-500'
     },
+    ...(personalData.medium ? [{
+      icon: SiMedium,
+      url: personalData.medium,
+      platform: 'medium',
+      color: 'hover:text-emerald-600 dark:hover:text-emerald-400'
+    }] : []),
     {
       icon: SiGooglescholar,
       url: personalData.twitter, // Using the twitter field for Google Scholar URL
@@ -74,7 +80,7 @@ const Hero = memo(() => {
   const heroImageConfig = getImageConfig(domain, 'hero');
 
   return (
-    <section id="home" className="min-h-screen flex items-center bg-gradient-to-br from-slate-50 via-white to-slate-100 pt-16">
+    <section id="home" className="min-h-screen flex items-center bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 pt-16 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div
@@ -90,15 +96,15 @@ const Hero = memo(() => {
               transition={{ delay: 0.1, duration: 0.5 }}
               className="space-y-2"
             >
-              <p className="text-lg text-slate-600 font-medium">
+              <p className="text-lg text-slate-600 dark:text-slate-400 font-medium">
                 Hello, I'm
               </p>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white leading-tight">
                 <span className="gradient-text">
                   {personalData.name}
                 </span>
               </h1>
-              <p className="text-xl text-slate-600 font-medium">
+              <p className="text-xl text-slate-600 dark:text-slate-400 font-medium">
                 {personalData.title}
               </p>
             </motion.div>
@@ -107,7 +113,7 @@ const Hero = memo(() => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="text-xl sm:text-2xl text-slate-600 leading-relaxed"
+              className="text-xl sm:text-2xl text-slate-600 dark:text-slate-350 leading-relaxed"
             >
               {domainData.tagline}
             </motion.p>
@@ -128,7 +134,7 @@ const Hero = memo(() => {
               <Button
                 variant="outline"
                 size="lg"
-                className="border-slate-300 text-slate-700 hover:bg-slate-50 px-8 py-4 rounded-xl font-semibold btn-hover-lift focus-ring"
+                className="border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-900 px-8 py-4 rounded-xl font-semibold btn-hover-lift focus-ring"
                 onClick={() => handleNavigation('contact')}
               >
                 Get In Touch
@@ -147,7 +153,7 @@ const Hero = memo(() => {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={social.onClick || (() => handleSocialClick(social.platform, social.url))}
-                  className={`text-slate-500 ${social.color} transition-all duration-200 focus-ring rounded-lg p-2`}
+                  className={`text-slate-500 dark:text-slate-400 ${social.color} dark:hover:text-white transition-all duration-200 focus-ring rounded-lg p-2`}
                 >
                   <social.icon className="w-6 h-6" />
                 </motion.button>

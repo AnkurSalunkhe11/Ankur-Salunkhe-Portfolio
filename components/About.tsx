@@ -28,8 +28,8 @@ export default function About() {
 
   // Get domain-specific certifications (top 3 most recent)
   const domainCertifications = domain === 'cs' 
-    ? domainData.certifications.slice(0, 3)
-    : domainData.certifications.slice(0, 3);
+    ? (domainData.certifications?.slice(0, 3) || [])
+    : (domainData.certifications?.slice(0, 3) || []);
 
   // Key achievements based on domain
   const achievements = domain === 'cs' 
@@ -45,7 +45,7 @@ export default function About() {
       ];
 
   return (
-    <section id="about" className="py-24 bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
+    <section id="about" className="py-24 bg-gradient-to-br from-slate-50 via-white to-blue-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950/30 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -54,9 +54,9 @@ export default function About() {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <h2 className="text-5xl font-bold text-slate-900 mb-6">About Me</h2>
+          <h2 className="text-5xl font-bold text-slate-900 dark:text-white mb-6">About Me</h2>
           <div className="w-32 h-1.5 gradient-primary mx-auto rounded-full mb-8"></div>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-slate-600 dark:text-slate-350 max-w-3xl mx-auto leading-relaxed">
             {domain === 'cs' 
               ? 'Bridging mechanical engineering principles with cutting-edge software development to create innovative solutions'
               : 'Passionate about sustainable energy solutions and thermal system optimization through advanced engineering'
@@ -207,7 +207,7 @@ export default function About() {
                   </div>
                 </div>
                 <div className="space-y-4">
-                  {domainCertifications.map((cert, index) => (
+                  {domainCertifications.map((cert: any, index: number) => (
                     <div key={index} className="border-l-2 border-purple-200 pl-4 py-2">
                       <div className="flex items-start space-x-2">
                         <CheckCircle className="w-4 h-4 text-purple-600 mt-0.5 flex-shrink-0" />

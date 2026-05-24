@@ -8,7 +8,7 @@ export const useIntersectionObserver = (
 ) => {
   const [isIntersecting, setIsIntersecting] = useState(false);
   const [hasIntersected, setHasIntersected] = useState(false);
-  const elementRef = useRef<HTMLElement>(null);
+  const elementRef = useRef<any>(null);
 
   useEffect(() => {
     if (!elementRef.current) return;

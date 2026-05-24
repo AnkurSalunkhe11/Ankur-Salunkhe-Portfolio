@@ -177,7 +177,7 @@ export const getImageConfig = (
     }
     
     if (category === 'projects' && key) {
-      return optimizedImageConfig.projects[domain][key] || optimizedImageConfig.fallback.project;
+      return (optimizedImageConfig.projects[domain] as any)[key] || optimizedImageConfig.fallback.project;
     }
     
     if (category === 'backgrounds') {

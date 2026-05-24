@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { getPersonalData } from '@/lib/data-loader';
 import { Github, Linkedin, Mail, Heart, Globe, Phone, MapPin } from 'lucide-react';
-import { SiLeetcode, SiGooglescholar } from 'react-icons/si';
+import { SiLeetcode, SiGooglescholar, SiMedium } from 'react-icons/si';
 import { analytics } from '@/lib/analytics';
 import { memo, useCallback } from 'react';
 
@@ -39,6 +39,12 @@ const Footer = memo(() => {
       platform: 'leetcode',
       color: 'hover:bg-orange-500'
     },
+    ...(portfolioData.medium ? [{
+      icon: SiMedium,
+      url: portfolioData.medium,
+      platform: 'medium',
+      color: 'hover:bg-green-600'
+    }] : []),
     {
       icon: SiGooglescholar,
       url: portfolioData.twitter, // Using the twitter field for Google Scholar URL

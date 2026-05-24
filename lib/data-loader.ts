@@ -15,8 +15,22 @@ export interface PersonalData {
   twitter: string;
   website: string;
   leetcode: string;
+  medium?: string;
   location: string;
   bio: string;
+  resume: {
+    cs: string;
+    mechanical: string;
+  };
+  blogs: Array<{
+    id: string;
+    title: string;
+    excerpt: string;
+    date: string;
+    readTime: string;
+    category: string;
+    link: string;
+  }>;
   education: Array<{
     degree: string;
     school: string;
@@ -46,7 +60,7 @@ export interface DomainData {
     title: string;
     description: string;
     technologies: string[];
-    image: string;
+    image?: string;
     github?: string;
     demo?: string;
     link?: string;
@@ -76,6 +90,14 @@ export interface DomainData {
     year: number;
     description: string;
   }>;
+  certifications?: Array<{
+    name: string;
+    issuer: string;
+    date: string;
+    credentialId: string;
+    link: string;
+    skills?: string[];
+  }>;
 }
 
 export interface Config {
@@ -92,10 +114,10 @@ export interface Config {
   };
 }
 
-export const getPersonalData = (): PersonalData => personalData;
-export const getCSData = (): DomainData => csData;
-export const getMechanicalData = (): DomainData => mechanicalData;
-export const getConfig = (): Config => config;
+export const getPersonalData = (): PersonalData => personalData as any;
+export const getCSData = (): DomainData => csData as any;
+export const getMechanicalData = (): DomainData => mechanicalData as any;
+export const getConfig = (): Config => config as any;
 
 export const getDomainData = (domain: PortfolioDomain): DomainData => {
   return domain === 'cs' ? getCSData() : getMechanicalData();
@@ -103,4 +125,22 @@ export const getDomainData = (domain: PortfolioDomain): DomainData => {
 
 export const getDefaultLanding = (): PortfolioDomain => {
   return getConfig().defaultLanding;
+};
+
+export const slugify = (text: string): string => {
+  return text
+    .toString()
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/[^\w\-]+/g, '')
+    .replace(/\-\-+/g, '-');
+};
+
+export const getProjectBySlug = (slug: string) => {
+  const csProjects = getCSData().projects || [];
+  const mechProjects = getMechanicalData().projects || [];
+  const allProjects = [...csProjects, ...mechProjects];
+  
+  return allProjects.find(p => slugify(p.title) === slug);
 };

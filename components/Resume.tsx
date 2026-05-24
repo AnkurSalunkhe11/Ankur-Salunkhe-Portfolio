@@ -4,20 +4,16 @@ import { motion } from 'framer-motion';
 import { usePortfolioStore } from '@/lib/store';
 import { Button } from '@/components/ui/button';
 import { Download, FileText } from 'lucide-react';
+import { getPersonalData } from '@/lib/data-loader';
 import { analytics } from '@/lib/analytics';
 
 export default function Resume() {
   const { domain } = usePortfolioStore();
-
-  // Google Drive direct download links
-  const resumeLinks = {
-    cs: 'https://drive.google.com/drive/folders/1gdiE_OcASM8vOZ0OoXROIDundTa19k_9',
-    mechanical: 'https://drive.google.com/drive/folders/14C6aueiwbO9tRpPGiUByMN3ebQGNF-qo'
-  };
+  const personalData = getPersonalData();
 
   const handleDownload = () => {
     analytics.trackResumeDownload(domain);
-    window.open(resumeLinks[domain], '_blank');
+    window.open(personalData.resume[domain], '_blank');
   };
 
   return (

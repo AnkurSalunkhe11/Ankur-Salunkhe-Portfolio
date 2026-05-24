@@ -68,7 +68,7 @@ const Projects = memo(() => {
   }, [personalData.github]);
 
   return (
-    <section id="projects" className="py-20 bg-slate-50">
+    <section id="projects" className="py-20 bg-slate-50 dark:bg-slate-900/50 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -77,9 +77,9 @@ const Projects = memo(() => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-slate-900 mb-4">Featured Projects</h2>
+          <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">Featured Projects</h2>
           <div className="w-24 h-1 gradient-primary mx-auto rounded-full mb-6"></div>
-          <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+          <p className="text-lg text-slate-600 dark:text-slate-350 max-w-3xl mx-auto">
             {domain === 'cs' 
               ? 'A showcase of my software development work, featuring modern technologies and clean code practices'
               : 'Engineering projects demonstrating innovation, precision, and technical excellence'
@@ -155,7 +155,7 @@ const Projects = memo(() => {
                           variant="outline"
                           size="sm"
                           className="flex items-center space-x-2 group/btn border-slate-300 hover:bg-slate-50 focus-ring"
-                          onClick={() => handleProjectCode(project.title, project.github)}
+                          onClick={() => handleProjectCode(project.title, project.github || '')}
                         >
                           <Github className="w-4 h-4 group-hover/btn:scale-110 transition-transform" />
                           <span>Code</span>
@@ -163,7 +163,7 @@ const Projects = memo(() => {
                         <Button
                           size="sm"
                           className="flex items-center space-x-2 gradient-primary text-white group/btn btn-hover-lift focus-ring"
-                          onClick={() => handleProjectDemo(project.title, project.demo)}
+                          onClick={() => handleProjectDemo(project.title, project.demo || '')}
                         >
                           <ExternalLink className="w-4 h-4 group-hover/btn:scale-110 transition-transform" />
                           <span>Demo</span>

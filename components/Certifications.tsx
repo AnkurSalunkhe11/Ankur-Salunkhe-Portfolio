@@ -113,7 +113,7 @@ export default function Certifications() {
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          {domainData.certifications.map((certification, index) => (
+          {(domainData.certifications || []).map((certification: any, index: number) => (
             <motion.div key={certification.name} variants={itemVariants}>
               <Card className="h-full group hover:shadow-professional-xl transition-all duration-300 hover:-translate-y-2 border-slate-200 bg-white overflow-hidden">
                 <CardHeader className="pb-4">

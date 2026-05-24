@@ -8,8 +8,33 @@
   "twitter": "https://scholar.google.com/citations?user=vNmccw8AAAAJ&hl=en",
   "website": "https://ankur-salunkhe.vercel.app/",
   "leetcode": "https://leetcode.com/u/noobmaster11/",
+  "medium": "https://medium.com/@ankursalunkhe11",
   "location": "Pune, Maharashtra, India",
   "bio": "Passionate Mechanical Engineering undergraduate at Dr. D. Y. Patil Institute of Technology with expertise in thermal systems, CFD analysis, and software development.",
+  "resume": {
+    "cs": "https://drive.google.com/drive/folders/1gdiE_OcASM8vOZ0OoXROIDundTa19k_9",
+    "mechanical": "https://drive.google.com/drive/folders/14C6aueiwbO9tRpPGiUByMN3ebQGNF-qo"
+  },
+  "blogs": [
+    {
+      "id": "future-of-cfd",
+      "title": "The Future of Computational Fluid Dynamics in Web Browsers",
+      "excerpt": "Exploring how WebGL and WebAssembly are enabling real-time engineering simulations directly in the browser.",
+      "date": "May 2026",
+      "readTime": "5 min read",
+      "category": "Mechanical",
+      "link": "https://medium.com/@ankursalunkhe11/the-future-of-computational-fluid-dynamics-in-web-browsers-a1b2c3d4e5f6"
+    },
+    {
+      "id": "machine-learning-thermal",
+      "title": "Applying Machine Learning to Thermal System Optimization",
+      "excerpt": "How neural networks can predict transient heat transfer properties faster than traditional finite difference methods.",
+      "date": "Apr 2026",
+      "readTime": "8 min read",
+      "category": "CS",
+      "link": "https://medium.com/@ankursalunkhe11/applying-machine-learning-to-thermal-system-optimization-f6e5d4c3b2a1"
+    }
+  ],
   "education": [
     {
       "degree": "Bachelor of Engineering (Mechanical)",

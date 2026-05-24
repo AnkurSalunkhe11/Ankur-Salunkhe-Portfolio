@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -17,10 +17,29 @@ export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    message: ''
+    message: '',
+    honeypot: '',
+    numA: 0,
+    numB: 0,
+    captchaAnswer: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+
+  const generateCaptcha = useCallback(() => {
+    const a = Math.floor(Math.random() * 9) + 1; // 1-9
+    const b = Math.floor(Math.random() * 9) + 1; // 1-9
+    setFormData(prev => ({
+      ...prev,
+      numA: a,
+      numB: b,
+      captchaAnswer: ''
+    }));
+  }, []);
+
+  useEffect(() => {
+    generateCaptcha();
+  }, [generateCaptcha]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,28 +49,55 @@ export default function Contact() {
     analytics.trackContactFormSubmit();
 
     try {
-      // Create Gmail compose URL
-      const subject = encodeURIComponent(`Portfolio Contact: ${formData.name}`);
-      const body = encodeURIComponent(
-        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-      );
-      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${personalData.email}&su=${subject}&body=${body}`;
-      
-      // Open Gmail in new tab
-      window.open(gmailUrl, '_blank');
-      
-      toast({
-        title: "Email client opened!",
-        description: "Gmail has opened in a new tab with your message pre-filled.",
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
 
-      setFormData({ name: '', email: '', message: '' });
-    } catch (error) {
+      const data = await response.json();
+
+      if (response.ok) {
+        toast({
+          title: "Message Sent!",
+          description: data.message || "Thank you for getting in touch. I will respond to you shortly.",
+        });
+
+        // Fallback: If simulated, log locally so the Admin Dashboard can list it
+        if (data.simulated) {
+          const localMsgs = JSON.parse(localStorage.getItem('portfolio_local_messages') || '[]');
+          localMsgs.push({
+            id: Date.now().toString(),
+            name: formData.name,
+            email: formData.email,
+            message: formData.message,
+            date: new Date().toLocaleString(),
+          });
+          localStorage.setItem('portfolio_local_messages', JSON.stringify(localMsgs));
+        }
+
+        setFormData({
+          name: '',
+          email: '',
+          message: '',
+          honeypot: '',
+          numA: 0,
+          numB: 0,
+          captchaAnswer: ''
+        });
+        generateCaptcha();
+      } else {
+        throw new Error(data.error || "Failed to send message.");
+      }
+    } catch (error: any) {
       toast({
-        title: "Error",
-        description: "There was an issue opening the email client. Please try again.",
+        title: "Error Sending Message",
+        description: error.message || "There was an issue sending your message. Please try again.",
         variant: "destructive",
       });
+      generateCaptcha(); // Regenerate Captcha upon failure to secure state
     } finally {
       setIsSubmitting(false);
     }
@@ -75,8 +121,7 @@ export default function Contact() {
 
   const handleEmailClick = () => {
     analytics.trackSocialClick('email');
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${personalData.email}`;
-    window.open(gmailUrl, '_blank');
+    window.open(`mailto:${personalData.email}`);
   };
 
   return (
@@ -179,6 +224,17 @@ export default function Contact() {
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {/* Honeypot field (hidden from users, catches automated bots) */}
+                  <div className="hidden" aria-hidden="true">
+                    <Input
+                      type="text"
+                      name="honeypot"
+                      value={formData.honeypot}
+                      onChange={handleChange}
+                      tabIndex={-1}
+                      autoComplete="off"
+                    />
+                  </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="name" className="text-slate-300">Name</Label>
@@ -224,6 +280,24 @@ export default function Contact() {
                     />
                   </div>
 
+                  {/* Mathematical CAPTCHA Verification */}
+                  <div className="space-y-2 bg-slate-700/35 border border-slate-800 p-4 rounded-xl">
+                    <Label htmlFor="captchaAnswer" className="text-slate-300 text-xs block mb-1">
+                      Spam Protection: What is <span className="font-bold text-white text-sm bg-slate-800 dark:bg-slate-900 px-2.5 py-0.5 rounded">{formData.numA}</span> + <span className="font-bold text-white text-sm bg-slate-800 dark:bg-slate-900 px-2.5 py-0.5 rounded">{formData.numB}</span>?
+                    </Label>
+                    <Input
+                      id="captchaAnswer"
+                      name="captchaAnswer"
+                      type="text"
+                      maxLength={5}
+                      value={formData.captchaAnswer}
+                      onChange={handleChange}
+                      required
+                      placeholder="Enter calculation result"
+                      className="bg-slate-700 border-slate-600 text-white placeholder:text-slate-400 focus:border-indigo-500 focus-ring text-center tracking-widest"
+                    />
+                  </div>
+
                   <Button
                     type="submit"
                     disabled={isSubmitting}
@@ -232,7 +306,7 @@ export default function Contact() {
                     {isSubmitting ? (
                       <>
                         <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                        <span>Opening Gmail...</span>
+                        <span>Sending message...</span>
                       </>
                     ) : (
                       <>
