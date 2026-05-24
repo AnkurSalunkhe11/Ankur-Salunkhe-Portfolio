@@ -158,42 +158,7 @@ export default function AdminDashboard() {
     }
   };
 
-  // Seed mock interaction events for demonstration
-  const handleSeedMockData = () => {
-    const mockLogs: LogEntry[] = [
-      { id: '1', event: 'domain_switch', data: { from: 'cs', to: 'mechanical' }, timestamp: Date.now() - 3600000 * 24 * 3 },
-      { id: '2', event: 'project_view', data: { project: 'Financial Statement Analysis Chatbot', domain: 'cs' }, timestamp: Date.now() - 3600000 * 12 },
-      { id: '3', event: 'resume_download', data: { type: 'cs' }, timestamp: Date.now() - 3600000 * 4 },
-      { id: '4', event: 'resume_download', data: { type: 'mechanical' }, timestamp: Date.now() - 3600000 * 18 },
-      { id: '5', event: 'project_demo_click', data: { project: 'LogCount W - Log Analysis System' }, timestamp: Date.now() - 3600000 * 8 },
-      { id: '6', event: 'skill_hover', data: { skill: 'ANSYS Fluent', domain: 'mechanical' }, timestamp: Date.now() - 3600000 * 2 },
-      { id: '7', event: 'skill_hover', data: { skill: 'Python', domain: 'cs' }, timestamp: Date.now() - 3600000 * 1 },
-      { id: '8', event: 'patent_click', data: { title: 'ORC Test Rig for Waste Heat Recovery' }, timestamp: Date.now() - 3600000 * 30 },
-      { id: '9', event: 'publication_click', data: { title: 'Performance Investigation on Organic Rankine Cycle' }, timestamp: Date.now() - 3600000 * 15 }
-    ];
 
-    const mockMessages: LocalMessage[] = [
-      {
-        id: 'msg1',
-        name: 'Sarah Jenkins',
-        email: 'sarah.j@google.com',
-        message: 'Hi Ankur, I reviewed your Organic Rankine Cycle paper and software solvers. They are highly impressive. Let\'s schedule a call to discuss full-stack developer roles.',
-        date: new Date(Date.now() - 3600000 * 36).toLocaleString()
-      },
-      {
-        id: 'msg2',
-        name: 'David Miller',
-        email: 'david@spacex.com',
-        message: 'Excellent portfolio structure. The hybrid vehicle air-conditioning simulation ANSYS results look highly professional. Sending message to confirm your graduation timeline.',
-        date: new Date(Date.now() - 3600000 * 2).toLocaleString()
-      }
-    ];
-
-    localStorage.setItem('portfolio_analytics_logs', JSON.stringify(mockLogs));
-    localStorage.setItem('portfolio_local_messages', JSON.stringify(mockMessages));
-    setLogs(mockLogs);
-    setMessages(mockMessages);
-  };
 
   // Submit dynamic JSON file edits back to Node API
   const handleSaveJson = async () => {
@@ -361,14 +326,7 @@ export default function AdminDashboard() {
           </div>
           
           <div className="flex flex-wrap items-center gap-3">
-            <Button 
-              variant="outline" 
-              className="border-indigo-500/30 hover:bg-indigo-950/30 text-indigo-400"
-              onClick={handleSeedMockData}
-            >
-              <Sparkles className="w-4 h-4 mr-2" />
-              <span>Seed Mock Analytics</span>
-            </Button>
+
             <Button 
               variant="outline" 
               className="border-red-500/30 hover:bg-red-950/30 text-red-400"

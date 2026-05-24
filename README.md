@@ -27,7 +27,6 @@ Content updating is incredibly easy. All personal information, social handles, f
 * **Access Control:** Log in using your secure, custom-configured administration PIN code.
 * **Visitor Metrics:** Visualizes page switches, resume downloads, and click-through rates dynamically with responsive `recharts` graphs.
 * **Local Inbox:** View, read, and delete contact form inquiries saved securely in the local localStorage database simulator.
-* **Seeding:** Seed mock recruiter events dynamically to showcase dashboard logging capability immediately.
 
 ---
 
