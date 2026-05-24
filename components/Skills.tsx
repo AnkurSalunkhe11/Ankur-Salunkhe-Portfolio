@@ -43,21 +43,27 @@ const Skills = memo(() => {
     : ['SolidWorks', 'ANSYS', 'CFD', 'Heat Transfer', 'AutoCAD', 'Python'];
 
   return (
-    <section id="skills" className="py-20 bg-white">
+    <section id="skills" className="py-24 bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="mb-16 space-y-3"
         >
-          <h2 className="text-4xl font-bold text-slate-900 mb-4">Skills & Expertise</h2>
-          <div className="w-24 h-1 gradient-primary mx-auto rounded-full mb-6"></div>
-          <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+          <span className={`text-xs font-bold uppercase tracking-widest ${
+            domain === 'cs' ? 'text-indigo-600 dark:text-indigo-400' : 'text-emerald-600 dark:text-emerald-400'
+          }`}>
+            Stack & Tools
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white font-sans">
+            Technical Expertise
+          </h2>
+          <p className="text-base sm:text-lg text-slate-500 dark:text-slate-400 max-w-2xl leading-relaxed">
             {domain === 'cs' 
-              ? 'Modern technologies and frameworks I use to build exceptional software'
-              : 'Engineering tools and methodologies I leverage for innovative mechanical solutions'
+              ? 'A curated stack of modern programming languages, libraries, and DevOps workflows utilized for software engineering.'
+              : 'Rigorous analytical tools, computational suites, and physical standards leveraged for mechanical systems design.'
             }
           </p>
         </motion.div>
@@ -68,84 +74,90 @@ const Skills = memo(() => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           {domainData.skills.map((skillCategory, index) => (
-            <motion.div key={skillCategory.category} variants={itemVariants}>
-              <Card className="h-full hover:shadow-professional-lg transition-all duration-300 group hover:-translate-y-1 border-slate-200 bg-white">
-                <CardHeader className="pb-4">
-                  <CardTitle className="text-lg font-semibold text-slate-900 group-hover:text-indigo-600 transition-colors">
-                    {skillCategory.category}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  {skillCategory.items.map((skill, skillIndex) => (
-                    <motion.div
-                      key={skill}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ 
-                        delay: (index * 0.05) + (skillIndex * 0.02),
-                        duration: 0.3 
-                      }}
-                      viewport={{ once: true }}
-                      className="flex items-center space-x-3 p-2 rounded-lg hover:bg-slate-50 transition-colors group/skill will-change-transform"
-                      onMouseEnter={() => handleSkillHover(skill)}
-                    >
-                      <TechLogo 
-                        technology={skill} 
-                        size="md"
-                        className="flex-shrink-0"
-                      />
-                      <span className="text-sm font-medium text-slate-700 group-hover/skill:text-indigo-600 transition-colors">
-                        {skill}
-                      </span>
-                    </motion.div>
-                  ))}
-                </CardContent>
-              </Card>
+            <motion.div 
+              key={skillCategory.category} 
+              variants={itemVariants}
+              className="relative p-6 rounded-2xl border border-slate-200/60 dark:border-slate-800/60 bg-white dark:bg-slate-900/20 hover:border-slate-350 dark:hover:border-slate-700 transition-colors duration-300"
+            >
+              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-6 font-sans">
+                {skillCategory.category}
+              </h3>
+              <div className="space-y-3">
+                {skillCategory.items.map((skill, skillIndex) => (
+                  <motion.div
+                    key={skill}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ 
+                      delay: (index * 0.04) + (skillIndex * 0.02),
+                      duration: 0.25 
+                    }}
+                    viewport={{ once: true }}
+                    className="flex items-center space-x-3 p-1.5 rounded-lg transition-colors group/skill cursor-default"
+                    onMouseEnter={() => handleSkillHover(skill)}
+                  >
+                    <TechLogo 
+                      technology={skill} 
+                      size="md"
+                      className="flex-shrink-0"
+                    />
+                    <span className={`text-sm font-medium text-slate-650 dark:text-slate-350 transition-colors duration-150 ${
+                      domain === 'cs' 
+                        ? 'group-hover/skill:text-indigo-600 dark:group-hover/skill:text-indigo-400' 
+                        : 'group-hover/skill:text-emerald-600 dark:group-hover/skill:text-emerald-400'
+                    }`}>
+                      {skill}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
             </motion.div>
           ))}
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
           viewport={{ once: true }}
-          className="mt-16 text-center"
+          className="mt-16"
         >
-          <div className="gradient-primary-light rounded-2xl p-8 border border-slate-200">
-            <h3 className="text-2xl font-semibold text-slate-900 mb-4">
-              {domain === 'cs' ? 'Always Learning' : 'Technical Excellence'}
-            </h3>
-            <p className="text-slate-600 max-w-2xl mx-auto mb-8">
-              {domain === 'cs' 
-                ? 'I stay current with the latest technologies and best practices, constantly expanding my skill set to deliver cutting-edge solutions.'
-                : 'I embrace new technologies and methodologies to optimize designs and improve engineering efficiency.'
-              }
-            </p>
-            
-            {/* Featured Technology Showcase */}
-            <div className="mt-8 flex flex-wrap justify-center items-center gap-6">
-              {featuredTechnologies.map((tech, index) => (
-                <motion.div
-                  key={tech}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ 
-                    delay: index * 0.05,
-                    duration: 0.4,
-                    type: "spring",
-                    stiffness: 100
-                  }}
-                  viewport={{ once: true }}
-                  className="flex flex-col items-center space-y-2 p-3 rounded-xl bg-white/60 backdrop-blur-sm border border-white/20 hover:bg-white/80 transition-all duration-200 hover:scale-105 will-change-transform"
-                >
-                  <TechLogo technology={tech} size="lg" />
-                  <span className="text-xs font-medium text-slate-600">{tech}</span>
-                </motion.div>
-              ))}
+          <div className="bg-slate-50/50 dark:bg-slate-900/10 border border-slate-200/50 dark:border-slate-800/50 rounded-2xl p-8 transition-colors duration-200">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+              <div className="md:col-span-1 space-y-2">
+                <h4 className="text-xl font-bold text-slate-900 dark:text-white">
+                  {domain === 'cs' ? 'Always Learning' : 'Technical Rigor'}
+                </h4>
+                <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                  {domain === 'cs' 
+                    ? 'Constantly expanding paradigms into low-latency algorithms, full-stack responsiveness, and intelligent neural structures.'
+                    : 'Adhering strictly to standard engineering validation guidelines, thermal optimizations, and advanced grid meshing.'
+                  }
+                </p>
+              </div>
+              
+              {/* Featured Technology Showcase */}
+              <div className="md:col-span-2 flex flex-wrap gap-4 justify-start md:justify-end items-center">
+                {featuredTechnologies.map((tech, index) => (
+                  <motion.div
+                    key={tech}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ 
+                      delay: index * 0.03,
+                      duration: 0.3
+                    }}
+                    viewport={{ once: true }}
+                    className="flex items-center space-x-2 px-3 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800/60 hover:border-slate-350 dark:hover:border-slate-700 shadow-sm transition-all duration-200 hover:scale-[1.02]"
+                  >
+                    <TechLogo technology={tech} size="sm" />
+                    <span className="text-xs font-semibold text-slate-700 dark:text-slate-300">{tech}</span>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
         </motion.div>

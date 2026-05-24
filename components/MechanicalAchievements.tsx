@@ -47,28 +47,28 @@ export default function MechanicalAchievements() {
   const getStatusIcon = (status: string) => {
     switch (status.toLowerCase()) {
       case 'granted':
-        return <CheckCircle className="w-4 h-4 text-emerald-600" />;
+        return <CheckCircle className="w-4 h-4 text-emerald-600 dark:text-emerald-450" />;
       case 'published':
-        return <Eye className="w-4 h-4 text-indigo-600" />;
+        return <Eye className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />;
       case 'filed':
       case 'under review':
-        return <AlertCircle className="w-4 h-4 text-amber-600" />;
+        return <AlertCircle className="w-4 h-4 text-amber-600 dark:text-amber-450" />;
       default:
-        return <FileText className="w-4 h-4 text-slate-600" />;
+        return <FileText className="w-4 h-4 text-slate-650 dark:text-slate-400" />;
     }
   };
 
   const getStatusColor = (status: string) => {
     switch (status.toLowerCase()) {
       case 'granted':
-        return 'bg-emerald-100 text-emerald-800 border-emerald-200';
+        return 'bg-emerald-100 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-350 border-emerald-200 dark:border-emerald-900/30';
       case 'published':
-        return 'bg-indigo-100 text-indigo-800 border-indigo-200';
+        return 'bg-indigo-100 dark:bg-indigo-950/40 text-indigo-800 dark:text-indigo-350 border-indigo-200 dark:border-indigo-900/30';
       case 'filed':
       case 'under review':
-        return 'bg-amber-100 text-amber-800 border-amber-200';
+        return 'bg-amber-100 dark:bg-amber-950/40 text-amber-800 dark:text-amber-350 border-amber-200 dark:border-amber-900/30';
       default:
-        return 'bg-slate-100 text-slate-800 border-slate-200';
+        return 'bg-slate-100 dark:bg-slate-900/40 text-slate-800 dark:text-slate-350 border-slate-200 dark:border-slate-800';
     }
   };
 
@@ -106,7 +106,7 @@ export default function MechanicalAchievements() {
   };
 
   return (
-    <section className="py-20 bg-slate-50 dark:bg-slate-900/50 transition-colors duration-200">
+    <section className="py-20 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -115,77 +115,86 @@ export default function MechanicalAchievements() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">Mechanical Engineering Achievements</h2>
+          <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-4 font-display tracking-tight">Mechanical Engineering Achievements</h2>
           <div className="w-24 h-1 gradient-primary mx-auto rounded-full mb-6"></div>
-          <p className="text-lg text-slate-600 dark:text-slate-350 max-w-3xl mx-auto">
+          <p className="text-lg text-slate-655 dark:text-slate-400 max-w-3xl mx-auto">
             A comprehensive showcase of research publications, engineering projects, and patent innovations
           </p>
         </motion.div>
 
         {/* Publications Section */}
+        {/* Publications Section */}
         {publications && (
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
             className="mb-20"
           >
             <div className="flex items-center space-x-3 mb-8">
-              <div className="w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center">
-                <BookOpen className="w-5 h-5 text-emerald-600" />
+              <div className="w-10 h-10 bg-emerald-50 dark:bg-emerald-950/20 rounded-xl flex items-center justify-center">
+                <BookOpen className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900">Publications</h3>
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white font-sans">Research Publications</h3>
             </div>
 
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="space-y-4"
-            >
-              {publications.map((publication: any, index: number) => (
-                <motion.div key={publication.title} variants={itemVariants}>
-                  <Card className="hover:shadow-professional-lg transition-all duration-300 group border-slate-200 bg-white">
-                    <CardContent className="p-6">
-                      <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
-                        <div className="flex-1">
-                          <h4 className="text-lg font-semibold text-slate-900 group-hover:text-emerald-600 transition-colors mb-2">
-                            {publication.title}
-                          </h4>
-                          <p className="text-emerald-600 font-medium mb-2">{publication.journal}</p>
-                          <p className="text-slate-600 text-sm leading-relaxed">{publication.description}</p>
+            <div className="overflow-x-auto rounded-2xl border border-slate-200/60 dark:border-slate-800/60 bg-white dark:bg-slate-900/20 shadow-sm">
+              <table className="w-full border-collapse text-left text-sm text-slate-600 dark:text-slate-400">
+                <thead className="bg-slate-50 dark:bg-slate-900/60 text-slate-500 dark:text-slate-400 font-semibold border-b border-slate-200/60 dark:border-slate-800/60">
+                  <tr>
+                    <th scope="col" className="px-6 py-4">Title & Journal</th>
+                    <th scope="col" className="px-6 py-4 hidden sm:table-cell">Key Parameters</th>
+                    <th scope="col" className="px-6 py-4">DOI Identifier</th>
+                    <th scope="col" className="px-6 py-4 text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-200/60 dark:divide-slate-800/60">
+                  {publications.map((pub: any) => (
+                    <tr key={pub.title} className="hover:bg-slate-50/50 dark:hover:bg-slate-900/30 transition-colors">
+                      <td className="px-6 py-5">
+                        <div className="font-semibold text-slate-900 dark:text-white line-clamp-1">{pub.title}</div>
+                        <div className="text-xs text-emerald-600 dark:text-emerald-400 mt-1.5 flex items-center space-x-2">
+                          <span className="font-bold">{pub.journal}</span>
+                          <span className="text-slate-350 dark:text-slate-700">&bull;</span>
+                          <span className="font-medium text-slate-500">{pub.year}</span>
                         </div>
-                        <div className="flex items-center space-x-4">
-                          <div className="text-right">
-                            <div className="flex items-center space-x-2 text-slate-500 text-sm">
-                              <Calendar className="w-4 h-4" />
-                              <span>{publication.year}</span>
-                            </div>
-                          </div>
-                          {publication.doi && (
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              className="flex items-center space-x-2 border-slate-300 hover:bg-slate-50 focus-ring"
-                              onClick={() => handlePublicationClick(publication.title, publication.doi)}
-                            >
-                              <ExternalLink className="w-4 h-4" />
-                              <span>View</span>
-                            </Button>
-                          )}
+                      </td>
+                      <td className="px-6 py-5 hidden sm:table-cell">
+                        <div className="flex flex-wrap gap-1.5">
+                          <span className="text-[10px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-650 dark:text-slate-350 px-2 py-0.5 rounded">
+                            CFD Meshing
+                          </span>
+                          <span className="text-[10px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-650 dark:text-slate-350 px-2 py-0.5 rounded">
+                            Exergy Metrics
+                          </span>
                         </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </motion.div>
+                      </td>
+                      <td className="px-6 py-5 font-mono text-xs text-slate-500 dark:text-slate-450">
+                        {pub.doi ? pub.doi.replace('https://doi.org/', '') : 'N/A'}
+                      </td>
+                      <td className="px-6 py-5 text-right">
+                        {pub.doi && (
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="inline-flex items-center space-x-1.5 border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 focus-ring text-xs"
+                            onClick={() => handlePublicationClick(pub.title, pub.doi)}
+                          >
+                            <ExternalLink className="w-3.5 h-3.5" />
+                            <span>View</span>
+                          </Button>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </motion.div>
         )}
 
-        {/* Detailed Projects Section */}
+        {/* Detailed Engineering Projects Section */}
         {detailedProjects && (
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -195,10 +204,10 @@ export default function MechanicalAchievements() {
             className="mb-20"
           >
             <div className="flex items-center space-x-3 mb-8">
-              <div className="w-10 h-10 bg-indigo-100 rounded-xl flex items-center justify-center">
-                <Award className="w-5 h-5 text-indigo-600" />
+              <div className="w-10 h-10 bg-indigo-100 dark:bg-indigo-950/40 rounded-xl flex items-center justify-center">
+                <Award className="w-5 h-5 text-indigo-600 dark:text-indigo-405" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900">Engineering Projects</h3>
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white font-display">Engineering Projects</h3>
             </div>
 
             <motion.div
@@ -210,66 +219,70 @@ export default function MechanicalAchievements() {
             >
               {detailedProjects.map((project: any, index: number) => (
                 <motion.div key={project.title} variants={itemVariants}>
-                  <Card className="h-full group hover:shadow-professional-xl transition-all duration-300 overflow-hidden hover:-translate-y-2 border-slate-200 bg-white">
-                    <div className="relative overflow-hidden">
+                  <Card className="h-full group hover:shadow-professional-xl transition-all duration-300 overflow-hidden hover:-translate-y-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 flex flex-col">
+                    <div className="relative overflow-hidden flex-shrink-0">
                       <img
                         src={getProjectImage(project.title)}
                         alt={project.title}
-                        className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                        className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
                           target.src = '/images/orc-image.jpeg';
                         }}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
                     
-                    <CardHeader className="pb-4">
-                      <CardTitle className="text-lg font-semibold text-slate-900 group-hover:text-indigo-600 transition-colors">
+                    <CardHeader className="pb-2 flex-shrink-0">
+                      <CardTitle className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                         {project.title}
                       </CardTitle>
                     </CardHeader>
                     
-                    <CardContent className="space-y-4">
-                      <p className="text-slate-600 leading-relaxed text-sm">
-                        {project.description}
-                      </p>
-                      
-                      <div className="flex flex-wrap gap-2">
-                        {project.technologies.map((tech: string) => (
-                          <Badge
-                            key={tech}
-                            variant="secondary"
-                            className="text-xs bg-indigo-100 text-indigo-800 border border-indigo-200"
-                          >
-                            {tech}
-                          </Badge>
-                        ))}
+                    <CardContent className="space-y-4 flex-grow flex flex-col justify-between">
+                      <div className="space-y-4">
+                        <p className="text-slate-600 dark:text-slate-350 leading-relaxed text-sm">
+                          {project.description}
+                        </p>
+                        
+                        <div className="flex flex-wrap gap-2">
+                          {project.technologies.map((tech: string) => (
+                            <Badge
+                              key={tech}
+                              variant="secondary"
+                              className="text-xs bg-indigo-50/50 dark:bg-indigo-950/20 text-indigo-700 dark:text-indigo-350 border border-indigo-100/50 dark:border-indigo-900/20"
+                            >
+                              {tech}
+                            </Badge>
+                          ))}
+                        </div>
                       </div>
 
-                      <div className="grid grid-cols-2 gap-4 text-sm text-slate-500">
-                        <div className="flex items-center space-x-2">
-                          <Clock className="w-4 h-4" />
-                          <span>{project.duration}</span>
-                        </div>
-                        {project.team && (
-                          <div className="flex items-center space-x-2">
-                            <Users className="w-4 h-4" />
-                            <span>{project.team}</span>
+                      <div className="space-y-3 pt-4 border-t border-slate-100 dark:border-slate-850">
+                        <div className="grid grid-cols-2 gap-4 text-xs text-slate-500 dark:text-slate-400 font-semibold">
+                          <div className="flex items-center space-x-1.5">
+                            <Clock className="w-3.5 h-3.5 text-slate-400" />
+                            <span>{project.duration}</span>
                           </div>
+                          {project.team && (
+                            <div className="flex items-center space-x-1.5">
+                              <Users className="w-3.5 h-3.5 text-slate-400" />
+                              <span>{project.team}</span>
+                            </div>
+                          )}
+                        </div>
+                        
+                        {project.link && (
+                          <Button
+                            size="sm"
+                            className="w-full flex items-center justify-center space-x-1.5 gradient-primary text-white btn-hover-lift focus-ring text-xs font-semibold"
+                            onClick={() => handleProjectClick(project.title, project.link)}
+                          >
+                            <ExternalLink className="w-3.5 h-3.5" />
+                            <span>View Report</span>
+                          </Button>
                         )}
                       </div>
-                      
-                      {project.link && (
-                        <Button
-                          size="sm"
-                          className="w-full flex items-center justify-center space-x-2 gradient-primary text-white btn-hover-lift focus-ring"
-                          onClick={() => handleProjectClick(project.title, project.link)}
-                        >
-                          <ExternalLink className="w-4 h-4" />
-                          <span>View Report</span>
-                        </Button>
-                      )}
                     </CardContent>
                   </Card>
                 </motion.div>
@@ -281,78 +294,68 @@ export default function MechanicalAchievements() {
         {/* Patents Section */}
         {patents && (
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
             <div className="flex items-center space-x-3 mb-8">
-              <div className="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center">
-                <FileText className="w-5 h-5 text-purple-600" />
+              <div className="w-10 h-10 bg-purple-50 dark:bg-purple-950/20 rounded-xl flex items-center justify-center">
+                <FileText className="w-5 h-5 text-purple-600 dark:text-purple-400" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900">Patents</h3>
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white font-sans">Patents Showcase</h3>
             </div>
 
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="space-y-4"
-            >
-              {patents.map((patent: any, index: number) => (
-                <motion.div key={patent.title} variants={itemVariants}>
-                  <Card className="hover:shadow-professional-lg transition-all duration-300 group border-slate-200 bg-white">
-                    <CardContent className="p-6">
-                      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0">
-                        <div className="flex-1">
-                          <div className="flex items-start space-x-3 mb-3">
-                            <div className="flex-shrink-0 mt-1">
-                              {getStatusIcon(patent.status)}
-                            </div>
-                            <div className="flex-1">
-                              <h4 className="text-lg font-semibold text-slate-900 group-hover:text-purple-600 transition-colors mb-2">
-                                {patent.title}
-                              </h4>
-                              <div className="flex flex-wrap items-center gap-3 mb-2">
-                                <Badge className={`text-xs border ${getStatusColor(patent.status)}`}>
-                                  {patent.status}
-                                </Badge>
-                                {patent.patentNumber && (
-                                  <span className="text-sm text-slate-600 font-mono">
-                                    {patent.patentNumber}
-                                  </span>
-                                )}
-                              </div>
-                              <p className="text-slate-600 text-sm leading-relaxed mb-2">
-                                {patent.description}
-                              </p>
-                              <div className="flex items-center space-x-4 text-xs text-slate-500">
-                                <span>Application: {patent.applicationNumber}</span>
-                                <span>Filed: {patent.year}</span>
-                              </div>
-                            </div>
-                          </div>
+            <div className="overflow-x-auto rounded-2xl border border-slate-200/60 dark:border-slate-800/60 bg-white dark:bg-slate-900/20 shadow-sm animate-fade-in">
+              <table className="w-full border-collapse text-left text-sm text-slate-600 dark:text-slate-400">
+                <thead className="bg-slate-50 dark:bg-slate-900/60 text-slate-500 dark:text-slate-400 font-semibold border-b border-slate-200/60 dark:border-slate-800/60">
+                  <tr>
+                    <th scope="col" className="px-6 py-4">Patent Details & Title</th>
+                    <th scope="col" className="px-6 py-4">Status & Identifiers</th>
+                    <th scope="col" className="px-6 py-4 hidden sm:table-cell">Application ID</th>
+                    <th scope="col" className="px-6 py-4 text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-200/60 dark:divide-slate-800/60">
+                  {patents.map((patent: any) => (
+                    <tr key={patent.title} className="hover:bg-slate-50/50 dark:hover:bg-slate-900/30 transition-colors">
+                      <td className="px-6 py-5">
+                        <div className="font-semibold text-slate-900 dark:text-white line-clamp-1">{patent.title}</div>
+                        <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 max-w-xl line-clamp-1">{patent.description}</p>
+                      </td>
+                      <td className="px-6 py-5">
+                        <div className="flex items-center space-x-2">
+                          <span className={`inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold border uppercase tracking-wider ${getStatusColor(patent.status)}`}>
+                            {patent.status}
+                          </span>
+                          {patent.patentNumber && (
+                            <span className="text-xs font-mono font-semibold text-slate-500 dark:text-slate-400">
+                              {patent.patentNumber}
+                            </span>
+                          )}
                         </div>
+                      </td>
+                      <td className="px-6 py-5 font-mono text-xs text-slate-500 dark:text-slate-450 hidden sm:table-cell">
+                        {patent.applicationNumber}
+                      </td>
+                      <td className="px-6 py-5 text-right">
                         {patent.link && (
-                          <div className="flex-shrink-0">
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              className="flex items-center space-x-2 border-slate-300 hover:bg-slate-50 focus-ring"
-                              onClick={() => handlePatentClick(patent.title, patent.link)}
-                            >
-                              <ExternalLink className="w-4 h-4" />
-                              <span>View Patent</span>
-                            </Button>
-                          </div>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="inline-flex items-center space-x-1.5 border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 focus-ring text-xs"
+                            onClick={() => handlePatentClick(patent.title, patent.link)}
+                          >
+                            <ExternalLink className="w-3.5 h-3.5" />
+                            <span>View Patent</span>
+                          </Button>
                         )}
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </motion.div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </motion.div>
         )}
       </div>

@@ -2,12 +2,13 @@
 
 import { motion } from 'framer-motion';
 import { usePortfolioStore } from '@/lib/store';
-import { getDomainData, getPersonalData } from '@/lib/data-loader';
+import { getDomainData, getPersonalData, slugify } from '@/lib/data-loader';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ExternalLink, Github, ChevronDown, ChevronUp } from 'lucide-react';
+import { ExternalLink, Github, ChevronDown, ChevronUp, BookOpen } from 'lucide-react';
 import { useState, memo, useCallback } from 'react';
+import Link from 'next/link';
 import TechLogo from '@/components/TechLogo';
 import { analytics } from '@/lib/analytics';
 import OptimizedImage from '@/components/ui/optimized-image';
@@ -68,7 +69,7 @@ const Projects = memo(() => {
   }, [personalData.github]);
 
   return (
-    <section id="projects" className="py-20 bg-slate-50 dark:bg-slate-900/50 transition-colors duration-200">
+    <section id="projects" className="py-20 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -77,9 +78,9 @@ const Projects = memo(() => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">Featured Projects</h2>
+          <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-4 font-display tracking-tight">Featured Projects</h2>
           <div className="w-24 h-1 gradient-primary mx-auto rounded-full mb-6"></div>
-          <p className="text-lg text-slate-600 dark:text-slate-350 max-w-3xl mx-auto">
+          <p className="text-lg text-slate-600 dark:text-slate-450 max-w-3xl mx-auto">
             {domain === 'cs' 
               ? 'A showcase of my software development work, featuring modern technologies and clean code practices'
               : 'Engineering projects demonstrating innovation, precision, and technical excellence'
@@ -96,7 +97,7 @@ const Projects = memo(() => {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {allProjects.map((project, index) => {
-            const imageConfig = getImageConfig(domain, 'projects', project.title);
+            const projectSlug = slugify(project.title);
             
             return (
               <motion.div 
@@ -105,86 +106,103 @@ const Projects = memo(() => {
                 onViewportEnter={() => handleProjectView(project.title)}
                 className="will-change-transform"
               >
-                <Card className="h-full group hover:shadow-professional-xl transition-all duration-300 overflow-hidden hover:-translate-y-2 border-slate-200 bg-white">
-                  <div className="relative overflow-hidden">
-                    <OptimizedImage
-                      src={imageConfig.src}
-                      alt={imageConfig.alt}
-                      type="project"
-                      variant="card"
-                      className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
-                      priority={index < 3}
-                      fallbackSrc="https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=400&h=300"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  </div>
-                  
-                  <CardHeader className="pb-4">
-                    <h3 className="text-xl font-semibold text-slate-900 group-hover:text-indigo-600 transition-colors">
+                <div className="relative p-6 rounded-2xl border border-slate-200/60 dark:border-slate-800/60 bg-white dark:bg-slate-900/20 hover:border-slate-350 dark:hover:border-slate-700 transition-all duration-300 flex flex-col justify-between h-full group">
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <span className={`text-[9px] font-bold uppercase tracking-widest ${
+                        domain === 'cs' ? 'text-indigo-600 dark:text-indigo-400' : 'text-emerald-600 dark:text-emerald-400'
+                      }`}>
+                        {domain === 'cs' ? 'Software & AI Whitepaper' : 'CFD & Mechanical Case Study'}
+                      </span>
+                    </div>
+                    
+                    <h3 className="text-lg font-bold text-slate-900 dark:text-white leading-snug font-sans">
                       {project.title}
                     </h3>
-                  </CardHeader>
-                  
-                  <CardContent className="space-y-4">
-                    <p className="text-slate-600 leading-relaxed">
-                      {project.description}
-                    </p>
                     
-                    <div className="space-y-3">
-                      <div className="flex flex-wrap gap-2">
-                        {project.technologies.slice(0, 4).map((tech) => (
-                          <div
-                            key={tech}
-                            className="flex items-center space-x-1 bg-indigo-50 text-indigo-800 px-2 py-1 rounded-md text-xs font-medium border border-indigo-100"
-                          >
-                            <TechLogo technology={tech} size="sm" />
-                            <span>{tech}</span>
-                          </div>
-                        ))}
-                        {project.technologies.length > 4 && (
-                          <Badge variant="secondary" className="text-xs bg-slate-100 text-slate-600">
-                            +{project.technologies.length - 4} more
-                          </Badge>
-                        )}
+                    <div className="space-y-3 pt-1 text-xs leading-relaxed text-slate-600 dark:text-slate-400">
+                      <div>
+                        <span className="font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest block text-[9px] mb-1 font-sans">
+                          Overview & Challenge
+                        </span>
+                        <p className="line-clamp-3 font-medium">{project.description}</p>
                       </div>
                     </div>
                     
-                    {domain === 'cs' && project.github && project.demo && (
-                      <div className="flex space-x-3 pt-4">
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          className="flex items-center space-x-2 group/btn border-slate-300 hover:bg-slate-50 focus-ring"
-                          onClick={() => handleProjectCode(project.title, project.github || '')}
+                    <div className="flex flex-wrap gap-1.5 pt-2">
+                      {project.technologies.slice(0, 4).map((tech) => (
+                        <div
+                          key={tech}
+                          className="flex items-center space-x-1.5 bg-slate-50 dark:bg-slate-900/60 text-slate-650 dark:text-slate-350 px-2 py-1 rounded-md text-[10px] font-semibold border border-slate-200/60 dark:border-slate-800/60"
                         >
-                          <Github className="w-4 h-4 group-hover/btn:scale-110 transition-transform" />
-                          <span>Code</span>
-                        </Button>
-                        <Button
-                          size="sm"
-                          className="flex items-center space-x-2 gradient-primary text-white group/btn btn-hover-lift focus-ring"
-                          onClick={() => handleProjectDemo(project.title, project.demo || '')}
-                        >
-                          <ExternalLink className="w-4 h-4 group-hover/btn:scale-110 transition-transform" />
-                          <span>Demo</span>
-                        </Button>
+                          <TechLogo technology={tech} size="sm" />
+                          <span>{tech}</span>
+                        </div>
+                      ))}
+                      {project.technologies.length > 4 && (
+                        <span className="text-[10px] font-semibold text-slate-400 dark:text-slate-505 self-center">
+                          +{project.technologies.length - 4} stack items
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  
+                  <div className="pt-4 mt-6 border-t border-slate-100 dark:border-slate-900 flex flex-col space-y-3">
+                    {/* Secondary Action: Read dynamic case study (high SEO discoverability) */}
+                    <Link 
+                      href={`/projects/${projectSlug}`}
+                      className={`inline-flex items-center text-xs font-bold transition-colors group/link ${
+                        domain === 'cs'
+                          ? 'text-indigo-600 dark:text-indigo-400 hover:text-indigo-800'
+                          : 'text-emerald-600 dark:text-emerald-400 hover:text-emerald-800'
+                      }`}
+                    >
+                      <BookOpen className="w-3.5 h-3.5 mr-1.5 opacity-80" />
+                      <span>Read technical case study</span>
+                      <span className="ml-1 group-hover/link:translate-x-0.5 transition-transform">&rarr;</span>
+                    </Link>
+
+                    {/* Primary Actions (Code & Demos) */}
+                    {domain === 'cs' && (project.github || project.demo) && (
+                      <div className="flex space-x-3 pt-1">
+                        {project.github && (
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="flex-1 flex items-center justify-center space-x-1.5 group/btn border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 focus-ring text-xs"
+                            onClick={() => handleProjectCode(project.title, project.github || '')}
+                          >
+                            <Github className="w-3.5 h-3.5 group-hover/btn:scale-105 transition-transform" />
+                            <span>Repository</span>
+                          </Button>
+                        )}
+                        {project.demo && (
+                          <Button
+                            size="sm"
+                            className="flex-1 flex items-center justify-center space-x-1.5 bg-slate-900 text-white dark:bg-white dark:text-slate-950 group/btn btn-hover-lift focus-ring text-xs font-semibold"
+                            onClick={() => handleProjectDemo(project.title, project.demo || '')}
+                          >
+                            <ExternalLink className="w-3.5 h-3.5 group-hover/btn:scale-105 transition-transform" />
+                            <span>Live Demo</span>
+                          </Button>
+                        )}
                       </div>
                     )}
 
                     {domain === 'mechanical' && project.link && (
-                      <div className="pt-4">
+                      <div className="pt-1">
                         <Button
                           size="sm"
-                          className="w-full flex items-center space-x-2 gradient-primary text-white group/btn btn-hover-lift focus-ring"
+                          className="w-full flex items-center justify-center space-x-1.5 bg-slate-900 text-white dark:bg-white dark:text-slate-950 group/btn btn-hover-lift focus-ring text-xs font-semibold"
                           onClick={() => window.open(project.link, '_blank')}
                         >
-                          <ExternalLink className="w-4 h-4 group-hover/btn:scale-110 transition-transform" />
-                          <span>View Details</span>
+                          <ExternalLink className="w-3.5 h-3.5 group-hover/btn:scale-105 transition-transform" />
+                          <span>View Details & Report</span>
                         </Button>
                       </div>
                     )}
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               </motion.div>
             );
           })}
@@ -201,7 +219,7 @@ const Projects = memo(() => {
             <Button
               size="lg"
               variant="outline"
-              className="mb-6 flex items-center space-x-2 mx-auto border-slate-300 hover:bg-slate-50 btn-hover-lift focus-ring"
+              className="mb-6 flex items-center space-x-2 mx-auto border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 btn-hover-lift focus-ring"
               onClick={handleShowMore}
             >
               {showMore ? (
@@ -226,7 +244,7 @@ const Projects = memo(() => {
           viewport={{ once: true }}
           className="text-center mt-8"
         >
-          <p className="text-slate-600 mb-6">
+          <p className="text-slate-600 dark:text-slate-400 mb-6">
             Interested in seeing more of my work?
           </p>
           <Button
