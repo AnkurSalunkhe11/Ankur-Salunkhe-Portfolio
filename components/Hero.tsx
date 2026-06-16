@@ -80,7 +80,7 @@ const Hero = memo(() => {
   const heroImageConfig = getImageConfig(domain, 'hero');
 
   return (
-    <section id="home" className="min-h-screen flex items-center bg-slate-50 dark:bg-slate-950 pt-16 transition-colors duration-300">
+    <section id="home" className="min-h-screen flex items-center bg-background pt-16 transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div
@@ -91,26 +91,24 @@ const Hero = memo(() => {
             className="space-y-8"
           >
             <div className="space-y-4">
-              <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider border ${
+              <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-mono font-medium tracking-tight border ${
                 domain === 'cs'
-                  ? 'bg-indigo-50/50 dark:bg-indigo-950/20 text-indigo-700 dark:text-indigo-400 border-indigo-100 dark:border-indigo-900/30'
-                  : 'bg-emerald-50/50 dark:bg-emerald-950/20 text-emerald-700 dark:text-emerald-400 border-emerald-100 dark:border-emerald-900/30'
+                  ? 'bg-indigo-50/30 dark:bg-indigo-950/10 text-indigo-700 dark:text-indigo-400 border-indigo-150/30 dark:border-indigo-900/20'
+                  : 'bg-emerald-50/30 dark:bg-emerald-950/10 text-emerald-700 dark:text-emerald-400 border-emerald-150/30 dark:border-emerald-900/20'
               }`}>
                 {domain === 'cs' ? 'Software Engineering & AI' : 'Mechanical Systems & CFD'}
               </span>
               
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight font-sans">
-                I'm <span className={domain === 'cs' ? 'text-indigo-600 dark:text-indigo-400' : 'text-emerald-600 dark:text-emerald-400'}>
-                  {personalData.name}
-                </span>
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight font-sans">
+                {personalData.name}
               </h1>
               
-              <p className="text-lg text-slate-500 dark:text-slate-400 font-medium">
+              <p className="text-lg sm:text-xl font-mono text-slate-500 dark:text-slate-400 tracking-tight">
                 {personalData.title}
               </p>
             </div>
 
-            <p className="text-lg sm:text-xl text-slate-650 dark:text-slate-350 leading-relaxed max-w-xl">
+            <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-xl">
               {domainData.tagline}
             </p>
 
@@ -120,7 +118,7 @@ const Hero = memo(() => {
                 <button
                   key={social.platform}
                   onClick={social.onClick || (() => handleSocialClick(social.platform, social.url))}
-                  className="flex items-center space-x-1.5 text-xs text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors duration-200 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 px-3 py-1.5 rounded-lg shadow-sm focus-ring"
+                  className="flex items-center space-x-1.5 text-xs text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors duration-200 border border-slate-250 dark:border-slate-800 bg-white dark:bg-slate-900/30 px-3 py-1.5 rounded-lg shadow-sm focus-ring"
                 >
                   <social.icon className="w-3.5 h-3.5" />
                   <span className="capitalize font-medium">{social.platform.replace('-', ' ')}</span>
@@ -132,11 +130,7 @@ const Hero = memo(() => {
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button
                 size="lg"
-                className={`px-8 py-4 rounded-xl font-semibold transition-all duration-200 text-white dark:text-slate-900 shadow-sm border ${
-                  domain === 'cs'
-                    ? 'bg-indigo-600 hover:bg-indigo-700 border-indigo-600 dark:bg-white dark:hover:bg-slate-100 dark:border-white'
-                    : 'bg-emerald-600 hover:bg-emerald-700 border-emerald-600 dark:bg-white dark:hover:bg-slate-100 dark:border-white'
-                }`}
+                className="px-8 py-4 rounded-xl font-semibold transition-all duration-200 text-white dark:text-slate-900 bg-slate-900 hover:bg-slate-800 border border-slate-900 dark:bg-white dark:hover:bg-slate-100 dark:border-white shadow-sm"
                 onClick={() => handleNavigation('projects')}
               >
                 View Engineering Work

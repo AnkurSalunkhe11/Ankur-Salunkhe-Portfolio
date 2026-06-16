@@ -69,21 +69,27 @@ const Projects = memo(() => {
   }, [personalData.github]);
 
   return (
-    <section id="projects" className="py-20 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-200">
+    <section id="projects" className="py-24 bg-background border-t border-slate-200/40 dark:border-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="mb-16 space-y-3"
         >
-          <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-4 font-display tracking-tight">Featured Projects</h2>
-          <div className="w-24 h-1 gradient-primary mx-auto rounded-full mb-6"></div>
-          <p className="text-lg text-slate-600 dark:text-slate-450 max-w-3xl mx-auto">
+          <span className={`text-xs font-mono font-medium tracking-tight ${
+            domain === 'cs' ? 'text-indigo-605 dark:text-indigo-400' : 'text-emerald-605 dark:text-emerald-400'
+          }`}>
+            // SELECTED PROJECTS
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white font-sans">
+            Engineering Showcases
+          </h2>
+          <p className="text-base sm:text-lg text-slate-500 dark:text-slate-400 max-w-2xl leading-relaxed">
             {domain === 'cs' 
-              ? 'A showcase of my software development work, featuring modern technologies and clean code practices'
-              : 'Engineering projects demonstrating innovation, precision, and technical excellence'
+              ? 'A showcase of my software development work, featuring modern technologies, systems architecture, and clean code practices.'
+              : 'Rigorous engineering projects demonstrating computational fluid dynamics, thermal systems, and physical prototyping.'
             }
           </p>
         </motion.div>
@@ -106,13 +112,13 @@ const Projects = memo(() => {
                 onViewportEnter={() => handleProjectView(project.title)}
                 className="will-change-transform"
               >
-                <div className="relative p-6 rounded-2xl border border-slate-200/60 dark:border-slate-800/60 bg-white dark:bg-slate-900/20 hover:border-slate-350 dark:hover:border-slate-700 transition-all duration-300 flex flex-col justify-between h-full group">
+                <div className="relative p-6 rounded-2xl border border-slate-200/40 dark:border-slate-900 bg-white/40 dark:bg-slate-950/20 hover:border-slate-350 dark:hover:border-slate-700 transition-all duration-300 flex flex-col justify-between h-full group">
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
-                      <span className={`text-[9px] font-bold uppercase tracking-widest ${
-                        domain === 'cs' ? 'text-indigo-600 dark:text-indigo-400' : 'text-emerald-600 dark:text-emerald-400'
+                      <span className={`text-[10px] font-mono font-medium tracking-tight ${
+                        domain === 'cs' ? 'text-indigo-650 dark:text-indigo-400' : 'text-emerald-650 dark:text-emerald-400'
                       }`}>
-                        {domain === 'cs' ? 'Software & AI Whitepaper' : 'CFD & Mechanical Case Study'}
+                        {domain === 'cs' ? '// Software & AI Showcase' : '// CFD & Simulation Study'}
                       </span>
                     </div>
                     
@@ -120,9 +126,9 @@ const Projects = memo(() => {
                       {project.title}
                     </h3>
                     
-                    <div className="space-y-3 pt-1 text-xs leading-relaxed text-slate-600 dark:text-slate-400">
+                    <div className="space-y-3 pt-1 text-xs leading-relaxed text-slate-655 dark:text-slate-400">
                       <div>
-                        <span className="font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest block text-[9px] mb-1 font-sans">
+                        <span className="font-mono font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider block text-[9px] mb-1">
                           Overview & Challenge
                         </span>
                         <p className="line-clamp-3 font-medium">{project.description}</p>
@@ -133,35 +139,35 @@ const Projects = memo(() => {
                       {project.technologies.slice(0, 4).map((tech) => (
                         <div
                           key={tech}
-                          className="flex items-center space-x-1.5 bg-slate-50 dark:bg-slate-900/60 text-slate-650 dark:text-slate-350 px-2 py-1 rounded-md text-[10px] font-semibold border border-slate-200/60 dark:border-slate-800/60"
+                          className="flex items-center space-x-1.5 bg-slate-50/50 dark:bg-slate-900/40 text-slate-600 dark:text-slate-350 px-2 py-1 rounded-md text-[10px] font-semibold border border-slate-200/40 dark:border-slate-900"
                         >
                           <TechLogo technology={tech} size="sm" />
                           <span>{tech}</span>
                         </div>
                       ))}
                       {project.technologies.length > 4 && (
-                        <span className="text-[10px] font-semibold text-slate-400 dark:text-slate-505 self-center">
-                          +{project.technologies.length - 4} stack items
+                        <span className="text-[10px] font-mono font-semibold text-slate-400 dark:text-slate-500 self-center">
+                          +{project.technologies.length - 4} items
                         </span>
                       )}
                     </div>
                   </div>
                   
-                  <div className="pt-4 mt-6 border-t border-slate-100 dark:border-slate-900 flex flex-col space-y-3">
+                  <div className="pt-4 mt-6 border-t border-slate-100 dark:border-slate-900/60 flex flex-col space-y-3">
                     {/* Secondary Action: Read dynamic case study (high SEO discoverability) */}
                     <Link 
                       href={`/projects/${projectSlug}`}
                       className={`inline-flex items-center text-xs font-bold transition-colors group/link ${
                         domain === 'cs'
-                          ? 'text-indigo-600 dark:text-indigo-400 hover:text-indigo-800'
-                          : 'text-emerald-600 dark:text-emerald-400 hover:text-emerald-800'
+                          ? 'text-indigo-650 dark:text-indigo-400 hover:text-indigo-850'
+                          : 'text-emerald-650 dark:text-emerald-400 hover:text-emerald-850'
                       }`}
                     >
                       <BookOpen className="w-3.5 h-3.5 mr-1.5 opacity-80" />
                       <span>Read technical case study</span>
                       <span className="ml-1 group-hover/link:translate-x-0.5 transition-transform">&rarr;</span>
                     </Link>
-
+ 
                     {/* Primary Actions (Code & Demos) */}
                     {domain === 'cs' && (project.github || project.demo) && (
                       <div className="flex space-x-3 pt-1">
@@ -188,12 +194,12 @@ const Projects = memo(() => {
                         )}
                       </div>
                     )}
-
+ 
                     {domain === 'mechanical' && project.link && (
                       <div className="pt-1">
                         <Button
                           size="sm"
-                          className="w-full flex items-center justify-center space-x-1.5 bg-slate-900 text-white dark:bg-white dark:text-slate-950 group/btn btn-hover-lift focus-ring text-xs font-semibold"
+                          className="w-full flex items-center justify-center space-x-1.5 bg-slate-900 text-white dark:bg-white dark:text-slate-955 group/btn btn-hover-lift focus-ring text-xs font-semibold"
                           onClick={() => window.open(project.link, '_blank')}
                         >
                           <ExternalLink className="w-3.5 h-3.5 group-hover/btn:scale-105 transition-transform" />

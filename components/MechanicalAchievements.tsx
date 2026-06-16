@@ -106,23 +106,26 @@ export default function MechanicalAchievements() {
   };
 
   return (
-    <section className="py-20 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-200">
+    <section className="py-24 bg-background border-t border-slate-200/40 dark:border-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="mb-16 space-y-3"
         >
-          <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-4 font-display tracking-tight">Mechanical Engineering Achievements</h2>
-          <div className="w-24 h-1 gradient-primary mx-auto rounded-full mb-6"></div>
-          <p className="text-lg text-slate-655 dark:text-slate-400 max-w-3xl mx-auto">
-            A comprehensive showcase of research publications, engineering projects, and patent innovations
+          <span className="text-xs font-mono font-medium tracking-tight text-emerald-650 dark:text-emerald-400">
+            // MECHANICAL ENGINEERING
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white font-sans">
+            Research & Patents
+          </h2>
+          <p className="text-base sm:text-lg text-slate-500 dark:text-slate-400 max-w-2xl leading-relaxed">
+            A comprehensive showcase of peer-reviewed publications, patented energy systems, and computational fluid simulations.
           </p>
         </motion.div>
 
-        {/* Publications Section */}
         {/* Publications Section */}
         {publications && (
           <motion.div
@@ -133,15 +136,15 @@ export default function MechanicalAchievements() {
             className="mb-20"
           >
             <div className="flex items-center space-x-3 mb-8">
-              <div className="w-10 h-10 bg-emerald-50 dark:bg-emerald-950/20 rounded-xl flex items-center justify-center">
-                <BookOpen className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+              <div className="w-10 h-10 bg-emerald-50/30 dark:bg-emerald-950/10 border border-emerald-150/20 dark:border-emerald-900/20 rounded-xl flex items-center justify-center">
+                <BookOpen className="w-5 h-5 text-emerald-650 dark:text-emerald-400" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 dark:text-white font-sans">Research Publications</h3>
             </div>
 
-            <div className="overflow-x-auto rounded-2xl border border-slate-200/60 dark:border-slate-800/60 bg-white dark:bg-slate-900/20 shadow-sm">
+            <div className="overflow-x-auto rounded-2xl border border-slate-200/40 dark:border-slate-900 bg-white/40 dark:bg-slate-950/20 shadow-sm">
               <table className="w-full border-collapse text-left text-sm text-slate-600 dark:text-slate-400">
-                <thead className="bg-slate-50 dark:bg-slate-900/60 text-slate-500 dark:text-slate-400 font-semibold border-b border-slate-200/60 dark:border-slate-800/60">
+                <thead className="bg-slate-50/50 dark:bg-slate-955/40 text-slate-450 dark:text-slate-500 font-mono text-[11px] uppercase tracking-wider border-b border-slate-200/40 dark:border-slate-900">
                   <tr>
                     <th scope="col" className="px-6 py-4">Title & Journal</th>
                     <th scope="col" className="px-6 py-4 hidden sm:table-cell">Key Parameters</th>
@@ -154,7 +157,7 @@ export default function MechanicalAchievements() {
                     <tr key={pub.title} className="hover:bg-slate-50/50 dark:hover:bg-slate-900/30 transition-colors">
                       <td className="px-6 py-5">
                         <div className="font-semibold text-slate-900 dark:text-white line-clamp-1">{pub.title}</div>
-                        <div className="text-xs text-emerald-600 dark:text-emerald-400 mt-1.5 flex items-center space-x-2">
+                        <div className="text-xs text-emerald-650 dark:text-emerald-400 mt-1.5 flex items-center space-x-2">
                           <span className="font-bold">{pub.journal}</span>
                           <span className="text-slate-350 dark:text-slate-700">&bull;</span>
                           <span className="font-medium text-slate-500">{pub.year}</span>
@@ -162,15 +165,15 @@ export default function MechanicalAchievements() {
                       </td>
                       <td className="px-6 py-5 hidden sm:table-cell">
                         <div className="flex flex-wrap gap-1.5">
-                          <span className="text-[10px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-650 dark:text-slate-350 px-2 py-0.5 rounded">
+                          <span className="text-[10px] font-mono font-medium bg-slate-50/50 dark:bg-slate-900/40 text-slate-500 dark:text-slate-450 px-2 py-0.5 rounded border border-slate-200/30 dark:border-slate-800">
                             CFD Meshing
                           </span>
-                          <span className="text-[10px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-650 dark:text-slate-350 px-2 py-0.5 rounded">
+                          <span className="text-[10px] font-mono font-medium bg-slate-50/50 dark:bg-slate-900/40 text-slate-500 dark:text-slate-450 px-2 py-0.5 rounded border border-slate-200/30 dark:border-slate-800">
                             Exergy Metrics
                           </span>
                         </div>
                       </td>
-                      <td className="px-6 py-5 font-mono text-xs text-slate-500 dark:text-slate-450">
+                      <td className="px-6 py-5 font-mono text-xs text-slate-505 dark:text-slate-450">
                         {pub.doi ? pub.doi.replace('https://doi.org/', '') : 'N/A'}
                       </td>
                       <td className="px-6 py-5 text-right">
@@ -178,7 +181,7 @@ export default function MechanicalAchievements() {
                           <Button
                             variant="outline"
                             size="sm"
-                            className="inline-flex items-center space-x-1.5 border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 focus-ring text-xs"
+                            className="inline-flex items-center space-x-1.5 border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-305 focus-ring text-xs"
                             onClick={() => handlePublicationClick(pub.title, pub.doi)}
                           >
                             <ExternalLink className="w-3.5 h-3.5" />
@@ -204,10 +207,10 @@ export default function MechanicalAchievements() {
             className="mb-20"
           >
             <div className="flex items-center space-x-3 mb-8">
-              <div className="w-10 h-10 bg-indigo-100 dark:bg-indigo-950/40 rounded-xl flex items-center justify-center">
-                <Award className="w-5 h-5 text-indigo-600 dark:text-indigo-405" />
+              <div className="w-10 h-10 bg-emerald-50/30 dark:bg-emerald-950/10 border border-emerald-150/20 dark:border-emerald-900/20 rounded-xl flex items-center justify-center">
+                <Award className="w-5 h-5 text-emerald-650 dark:text-emerald-400" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white font-display">Engineering Projects</h3>
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white font-sans">Engineering Projects</h3>
             </div>
 
             <motion.div
@@ -219,7 +222,7 @@ export default function MechanicalAchievements() {
             >
               {detailedProjects.map((project: any, index: number) => (
                 <motion.div key={project.title} variants={itemVariants}>
-                  <Card className="h-full group hover:shadow-professional-xl transition-all duration-300 overflow-hidden hover:-translate-y-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 flex flex-col">
+                  <Card className="h-full group hover:shadow-professional-xl transition-all duration-300 overflow-hidden hover:-translate-y-2 border border-slate-200/40 dark:border-slate-900 bg-white/40 dark:bg-slate-955/20 flex flex-col">
                     <div className="relative overflow-hidden flex-shrink-0">
                       <img
                         src={getProjectImage(project.title)}
@@ -234,7 +237,7 @@ export default function MechanicalAchievements() {
                     </div>
                     
                     <CardHeader className="pb-2 flex-shrink-0">
-                      <CardTitle className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                      <CardTitle className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-emerald-650 dark:group-hover:text-emerald-400 transition-colors">
                         {project.title}
                       </CardTitle>
                     </CardHeader>
@@ -250,7 +253,7 @@ export default function MechanicalAchievements() {
                             <Badge
                               key={tech}
                               variant="secondary"
-                              className="text-xs bg-indigo-50/50 dark:bg-indigo-950/20 text-indigo-700 dark:text-indigo-350 border border-indigo-100/50 dark:border-indigo-900/20"
+                              className="text-[10px] font-mono font-medium bg-emerald-50/20 dark:bg-emerald-955/10 text-emerald-705 dark:text-emerald-400 border border-emerald-150/20 dark:border-emerald-900/20"
                             >
                               {tech}
                             </Badge>
@@ -260,12 +263,12 @@ export default function MechanicalAchievements() {
 
                       <div className="space-y-3 pt-4 border-t border-slate-100 dark:border-slate-850">
                         <div className="grid grid-cols-2 gap-4 text-xs text-slate-500 dark:text-slate-400 font-semibold">
-                          <div className="flex items-center space-x-1.5">
+                          <div className="flex items-center space-x-1.5 font-mono">
                             <Clock className="w-3.5 h-3.5 text-slate-400" />
                             <span>{project.duration}</span>
                           </div>
                           {project.team && (
-                            <div className="flex items-center space-x-1.5">
+                            <div className="flex items-center space-x-1.5 font-mono">
                               <Users className="w-3.5 h-3.5 text-slate-400" />
                               <span>{project.team}</span>
                             </div>
@@ -300,15 +303,15 @@ export default function MechanicalAchievements() {
             viewport={{ once: true }}
           >
             <div className="flex items-center space-x-3 mb-8">
-              <div className="w-10 h-10 bg-purple-50 dark:bg-purple-950/20 rounded-xl flex items-center justify-center">
-                <FileText className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+              <div className="w-10 h-10 bg-emerald-50/30 dark:bg-emerald-950/10 border border-emerald-150/20 dark:border-emerald-900/20 rounded-xl flex items-center justify-center">
+                <FileText className="w-5 h-5 text-emerald-655 dark:text-emerald-400" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 dark:text-white font-sans">Patents Showcase</h3>
             </div>
 
-            <div className="overflow-x-auto rounded-2xl border border-slate-200/60 dark:border-slate-800/60 bg-white dark:bg-slate-900/20 shadow-sm animate-fade-in">
+            <div className="overflow-x-auto rounded-2xl border border-slate-200/40 dark:border-slate-900 bg-white/40 dark:bg-slate-955/20 shadow-sm animate-fade-in">
               <table className="w-full border-collapse text-left text-sm text-slate-600 dark:text-slate-400">
-                <thead className="bg-slate-50 dark:bg-slate-900/60 text-slate-500 dark:text-slate-400 font-semibold border-b border-slate-200/60 dark:border-slate-800/60">
+                <thead className="bg-slate-50/50 dark:bg-slate-955/40 text-slate-450 dark:text-slate-500 font-mono text-[11px] uppercase tracking-wider border-b border-slate-200/40 dark:border-slate-900">
                   <tr>
                     <th scope="col" className="px-6 py-4">Patent Details & Title</th>
                     <th scope="col" className="px-6 py-4">Status & Identifiers</th>
@@ -324,12 +327,12 @@ export default function MechanicalAchievements() {
                         <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 max-w-xl line-clamp-1">{patent.description}</p>
                       </td>
                       <td className="px-6 py-5">
-                        <div className="flex items-center space-x-2">
+                        <div className="flex items-center space-x-2 font-mono">
                           <span className={`inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold border uppercase tracking-wider ${getStatusColor(patent.status)}`}>
                             {patent.status}
                           </span>
                           {patent.patentNumber && (
-                            <span className="text-xs font-mono font-semibold text-slate-500 dark:text-slate-400">
+                            <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">
                               {patent.patentNumber}
                             </span>
                           )}

@@ -51,7 +51,7 @@ const Header = memo(() => {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 backdrop-blur-glass border-b border-slate-200/60 dark:border-slate-800/60 bg-white/80 dark:bg-slate-950/80 transition-colors duration-200"
+      className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b border-slate-200/40 dark:border-slate-900 bg-white/75 dark:bg-slate-950/75 transition-all duration-200"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -217,7 +217,7 @@ const Header = memo(() => {
               <div className="pt-4 border-t border-slate-200 dark:border-slate-800 space-y-3">
                 <div className="flex flex-col space-y-2">
                   <span className="text-sm font-semibold text-slate-700 dark:text-slate-350">Portfolio Focus</span>
-                  <div className="relative flex items-center bg-slate-105 dark:bg-slate-900 rounded-full p-1 border border-slate-200 dark:border-slate-800 shadow-sm w-full">
+                  <div className="relative flex items-center bg-slate-100 dark:bg-slate-900 rounded-full p-1 border border-slate-200 dark:border-slate-800 shadow-sm w-full">
                     <button
                       onClick={() => handleDomainSwitch(false)}
                       className={`relative flex-1 flex items-center justify-center space-x-2 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 focus:outline-none ${

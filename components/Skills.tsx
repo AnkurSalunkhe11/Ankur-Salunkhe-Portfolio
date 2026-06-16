@@ -43,7 +43,7 @@ const Skills = memo(() => {
     : ['SolidWorks', 'ANSYS', 'CFD', 'Heat Transfer', 'AutoCAD', 'Python'];
 
   return (
-    <section id="skills" className="py-24 bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-200">
+    <section id="skills" className="py-24 bg-background border-t border-slate-200/40 dark:border-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -52,10 +52,10 @@ const Skills = memo(() => {
           viewport={{ once: true }}
           className="mb-16 space-y-3"
         >
-          <span className={`text-xs font-bold uppercase tracking-widest ${
-            domain === 'cs' ? 'text-indigo-600 dark:text-indigo-400' : 'text-emerald-600 dark:text-emerald-400'
+          <span className={`text-xs font-mono font-medium tracking-tight ${
+            domain === 'cs' ? 'text-indigo-650 dark:text-indigo-400' : 'text-emerald-650 dark:text-emerald-400'
           }`}>
-            Stack & Tools
+            // STACK & TOOLS
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white font-sans">
             Technical Expertise
@@ -80,11 +80,17 @@ const Skills = memo(() => {
             <motion.div 
               key={skillCategory.category} 
               variants={itemVariants}
-              className="relative p-6 rounded-2xl border border-slate-200/60 dark:border-slate-800/60 bg-white dark:bg-slate-900/20 hover:border-slate-350 dark:hover:border-slate-700 transition-colors duration-300"
+              className="relative p-6 rounded-2xl border border-slate-200/40 dark:border-slate-900 bg-white/40 dark:bg-slate-950/20 hover:border-slate-300 dark:hover:border-slate-800 transition-all duration-300"
             >
-              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-6 font-sans">
-                {skillCategory.category}
-              </h3>
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-xs font-mono font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+                  {skillCategory.category}
+                </h3>
+                <span className="text-[10px] font-mono text-slate-350 dark:text-slate-700">
+                  [{String(index + 1).padStart(2, '0')}]
+                </span>
+              </div>
+              
               <div className="space-y-3">
                 {skillCategory.items.map((skill, skillIndex) => (
                   <motion.div
@@ -104,10 +110,10 @@ const Skills = memo(() => {
                       size="md"
                       className="flex-shrink-0"
                     />
-                    <span className={`text-sm font-medium text-slate-650 dark:text-slate-350 transition-colors duration-150 ${
+                    <span className={`text-sm font-medium text-slate-600 dark:text-slate-350 transition-colors duration-150 ${
                       domain === 'cs' 
-                        ? 'group-hover/skill:text-indigo-600 dark:group-hover/skill:text-indigo-400' 
-                        : 'group-hover/skill:text-emerald-600 dark:group-hover/skill:text-emerald-400'
+                        ? 'group-hover/skill:text-indigo-650 dark:group-hover/skill:text-indigo-400' 
+                        : 'group-hover/skill:text-emerald-650 dark:group-hover/skill:text-emerald-400'
                     }`}>
                       {skill}
                     </span>
@@ -125,13 +131,13 @@ const Skills = memo(() => {
           viewport={{ once: true }}
           className="mt-16"
         >
-          <div className="bg-slate-50/50 dark:bg-slate-900/10 border border-slate-200/50 dark:border-slate-800/50 rounded-2xl p-8 transition-colors duration-200">
+          <div className="bg-slate-50/30 dark:bg-slate-950/20 border border-slate-200/40 dark:border-slate-900 rounded-2xl p-8 transition-all duration-200">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
               <div className="md:col-span-1 space-y-2">
-                <h4 className="text-xl font-bold text-slate-900 dark:text-white">
+                <h4 className="text-xl font-bold text-slate-900 dark:text-white font-sans">
                   {domain === 'cs' ? 'Always Learning' : 'Technical Rigor'}
                 </h4>
-                <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
                   {domain === 'cs' 
                     ? 'Constantly expanding paradigms into low-latency algorithms, full-stack responsiveness, and intelligent neural structures.'
                     : 'Adhering strictly to standard engineering validation guidelines, thermal optimizations, and advanced grid meshing.'
@@ -151,7 +157,7 @@ const Skills = memo(() => {
                       duration: 0.3
                     }}
                     viewport={{ once: true }}
-                    className="flex items-center space-x-2 px-3 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800/60 hover:border-slate-350 dark:hover:border-slate-700 shadow-sm transition-all duration-200 hover:scale-[1.02]"
+                    className="flex items-center space-x-2 px-3 py-2 rounded-xl bg-white dark:bg-slate-900/40 border border-slate-200/40 dark:border-slate-900 hover:border-slate-350 dark:hover:border-slate-700 shadow-sm transition-all duration-200 hover:scale-[1.02]"
                   >
                     <TechLogo technology={tech} size="sm" />
                     <span className="text-xs font-semibold text-slate-700 dark:text-slate-300">{tech}</span>
