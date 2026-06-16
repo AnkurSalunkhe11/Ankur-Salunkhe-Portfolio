@@ -17,59 +17,70 @@ export default function Resume() {
   };
 
   return (
-    <section id="resume" className="py-20 bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-200">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="resume" className="py-24 bg-background border-t border-slate-200/40 dark:border-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center"
+          className="mb-16 space-y-3 text-left"
         >
-          <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-4 font-display tracking-tight">Resume</h2>
-          <div className="w-24 h-1 gradient-primary mx-auto rounded-full mb-8"></div>
-          
-          <div className="bg-gradient-to-br from-slate-50 to-indigo-50 dark:from-slate-900 dark:to-slate-950 rounded-2xl p-12 border border-slate-200 dark:border-slate-800 transition-colors">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="flex flex-col items-center space-y-6"
-            >
-              <div className={`w-20 h-20 ${domain === 'cs' ? 'bg-indigo-100 dark:bg-indigo-950/40' : 'bg-emerald-100 dark:bg-emerald-950/40'} rounded-full flex items-center justify-center`}>
-                <FileText className={`w-10 h-10 ${domain === 'cs' ? 'text-indigo-600 dark:text-indigo-400' : 'text-emerald-600 dark:text-emerald-450'}`} />
+          <span className={`text-xs font-mono font-medium tracking-tight ${
+            domain === 'cs' ? 'text-indigo-605 dark:text-indigo-400' : 'text-emerald-605 dark:text-emerald-400'
+          }`}>
+            // CREDENTIALS
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white font-sans">
+            Curriculum Vitae
+          </h2>
+          <p className="text-base sm:text-lg text-slate-500 dark:text-slate-400 max-w-2xl leading-relaxed">
+            Access my professional history, academic publications, and key technical capabilities in standard document formats.
+          </p>
+        </motion.div>
+
+        <div className="relative p-8 md:p-12 rounded-2xl border border-slate-200/40 dark:border-slate-900 bg-white/40 dark:bg-slate-955/20 transition-all duration-300">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8"
+          >
+            <div className="flex items-center space-x-6">
+              <div className="w-16 h-16 bg-slate-50/50 dark:bg-slate-900/40 border border-slate-200/40 dark:border-slate-900 rounded-xl flex items-center justify-center flex-shrink-0">
+                <FileText className={`w-8 h-8 ${domain === 'cs' ? 'text-indigo-650 dark:text-indigo-400' : 'text-emerald-650 dark:text-emerald-450'}`} />
               </div>
               
-              <div className="text-center space-y-3">
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white">
+              <div className="space-y-1.5">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white font-sans">
                   {domain === 'cs' ? 'Computer Science Resume' : 'Mechanical Engineering Resume'}
                 </h3>
-                <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed">
+                <p className="text-sm text-slate-505 dark:text-slate-400 max-w-xl leading-relaxed font-medium">
                   {domain === 'cs' 
-                    ? 'Download my software development focused resume showcasing programming projects, technical skills, and AI/ML expertise'
-                    : 'Download my engineering resume highlighting thermal systems expertise, research publications, and technical achievements'
+                    ? 'Download my software development focused resume showcasing programming projects, technical skills, and AI/ML expertise.'
+                    : 'Download my engineering resume highlighting thermal systems expertise, research publications, and technical achievements.'
                   }
                 </p>
               </div>
+            </div>
 
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 w-full md:w-auto">
               <Button
                 size="lg"
-                className={`${domain === 'cs' ? 'gradient-primary' : 'bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-650'} text-white px-8 py-4 rounded-xl font-semibold btn-hover-lift focus-ring flex items-center space-x-3 text-lg`}
+                className={`px-8 py-4 rounded-xl font-mono uppercase tracking-wider text-xs font-semibold focus-ring flex items-center space-x-2 transition-all duration-200 border w-full sm:w-auto justify-center ${
+                  domain === 'cs'
+                    ? 'border-indigo-500/30 dark:border-indigo-400/30 text-indigo-650 dark:text-indigo-400 hover:bg-indigo-500/10 dark:hover:bg-indigo-400/10'
+                    : 'border-emerald-500/30 dark:border-emerald-400/30 text-emerald-650 dark:text-emerald-400 hover:bg-emerald-500/10 dark:hover:bg-emerald-400/10'
+                }`}
                 onClick={handleDownload}
               >
-                <Download className="w-6 h-6" />
+                <Download className="w-4 h-4" />
                 <span>Download Resume</span>
               </Button>
-
-              <div className="text-sm text-slate-500 dark:text-slate-400 bg-white/60 dark:bg-slate-900/60 backdrop-blur-sm rounded-lg px-4 py-2 border border-slate-200/50 dark:border-slate-800/50">
-                Currently viewing: <span className="font-semibold text-slate-700 dark:text-slate-200">
-                  {domain === 'cs' ? 'Computer Science' : 'Mechanical Engineering'}
-                </span> portfolio
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

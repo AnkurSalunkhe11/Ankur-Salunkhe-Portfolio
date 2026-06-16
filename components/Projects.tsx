@@ -175,7 +175,7 @@ const Projects = memo(() => {
                           <Button
                             variant="outline"
                             size="sm"
-                            className="flex-1 flex items-center justify-center space-x-1.5 group/btn border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 focus-ring text-xs"
+                            className="flex-1 flex items-center justify-center space-x-1.5 group/btn border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-850 focus-ring text-[10px] font-mono uppercase tracking-wider"
                             onClick={() => handleProjectCode(project.title, project.github || '')}
                           >
                             <Github className="w-3.5 h-3.5 group-hover/btn:scale-105 transition-transform" />
@@ -185,7 +185,11 @@ const Projects = memo(() => {
                         {project.demo && (
                           <Button
                             size="sm"
-                            className="flex-1 flex items-center justify-center space-x-1.5 bg-slate-900 text-white dark:bg-white dark:text-slate-950 group/btn btn-hover-lift focus-ring text-xs font-semibold"
+                            className={`flex-1 flex items-center justify-center space-x-1.5 bg-transparent border text-[10px] font-mono uppercase tracking-wider font-semibold focus-ring transition-all duration-200 rounded-xl ${
+                              domain === 'cs'
+                                ? 'border-indigo-500/30 dark:border-indigo-400/30 text-indigo-650 dark:text-indigo-400 hover:bg-indigo-500/10 dark:hover:bg-indigo-400/10'
+                                : 'border-emerald-500/30 dark:border-emerald-400/30 text-emerald-650 dark:text-emerald-400 hover:bg-emerald-500/10 dark:hover:bg-emerald-400/10'
+                            }`}
                             onClick={() => handleProjectDemo(project.title, project.demo || '')}
                           >
                             <ExternalLink className="w-3.5 h-3.5 group-hover/btn:scale-105 transition-transform" />
@@ -199,7 +203,11 @@ const Projects = memo(() => {
                       <div className="pt-1">
                         <Button
                           size="sm"
-                          className="w-full flex items-center justify-center space-x-1.5 bg-slate-900 text-white dark:bg-white dark:text-slate-955 group/btn btn-hover-lift focus-ring text-xs font-semibold"
+                          className={`w-full flex items-center justify-center space-x-1.5 bg-transparent border text-[10px] font-mono uppercase tracking-wider font-semibold focus-ring transition-all duration-200 rounded-xl ${
+                            domain === 'cs'
+                              ? 'border-indigo-500/30 dark:border-indigo-400/30 text-indigo-650 dark:text-indigo-400 hover:bg-indigo-500/10 dark:hover:bg-indigo-400/10'
+                              : 'border-emerald-500/30 dark:border-emerald-400/30 text-emerald-650 dark:text-emerald-400 hover:bg-emerald-500/10 dark:hover:bg-emerald-400/10'
+                          }`}
                           onClick={() => window.open(project.link, '_blank')}
                         >
                           <ExternalLink className="w-3.5 h-3.5 group-hover/btn:scale-105 transition-transform" />
@@ -255,7 +263,11 @@ const Projects = memo(() => {
           </p>
           <Button
             size="lg"
-            className="gradient-primary text-white px-8 py-3 rounded-xl font-semibold btn-hover-lift focus-ring"
+            className={`px-8 py-3 rounded-xl font-mono uppercase tracking-wider text-xs font-semibold focus-ring transition-all duration-200 border ${
+              domain === 'cs'
+                ? 'border-indigo-500/30 dark:border-indigo-400/30 text-indigo-650 dark:text-indigo-400 hover:bg-indigo-500/10 dark:hover:bg-indigo-400/10'
+                : 'border-emerald-500/30 dark:border-emerald-400/30 text-emerald-650 dark:text-emerald-400 hover:bg-emerald-500/10 dark:hover:bg-emerald-400/10'
+            }`}
             onClick={handleGitHubClick}
           >
             View All Projects on GitHub

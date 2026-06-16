@@ -28,6 +28,16 @@ export default async function ProjectCaseStudy({ params }: PageProps) {
     notFound();
   }
 
+  // Detect domain of the project for theme color accent discipline
+  const csProjects = getCSData().projects || [];
+  const isCS = csProjects.some(p => slugify(p.title) === resolvedParams.slug);
+  const accentColorClass = isCS ? 'text-indigo-650 dark:text-indigo-400' : 'text-emerald-650 dark:text-emerald-450';
+  const hoverColorClass = isCS ? 'hover:text-indigo-650 dark:hover:text-indigo-400' : 'hover:text-emerald-650 dark:hover:text-emerald-400';
+  const borderAccentClass = isCS ? 'border-indigo-500/30 dark:border-indigo-400/30' : 'border-emerald-500/30 dark:border-emerald-400/30';
+  const hoverBgClass = isCS ? 'hover:bg-indigo-500/10 dark:hover:bg-indigo-400/10' : 'hover:bg-emerald-500/10 dark:hover:bg-emerald-400/10';
+  const accentBgClass = isCS ? 'bg-indigo-50/30 dark:bg-indigo-950/10' : 'bg-emerald-50/30 dark:bg-emerald-950/10';
+  const accentBorderClass = isCS ? 'border-indigo-150/30 dark:border-indigo-900/20' : 'border-emerald-150/20 dark:border-emerald-900/20';
+
   // Schema structured JSON-LD data
   const projectSchema = {
     "@context": "https://schema.org",
@@ -67,7 +77,7 @@ export default async function ProjectCaseStudy({ params }: PageProps) {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-200 py-12 md:py-20 px-4">
+    <div className="min-h-screen bg-background text-slate-900 dark:text-slate-100 transition-colors duration-200 py-12 md:py-20 px-4">
       {/* Search Engine structured metadata injection */}
       <script
         type="application/ld+json"
@@ -84,50 +94,50 @@ export default async function ProjectCaseStudy({ params }: PageProps) {
         <div>
           <Link 
             href="/"
-            className="inline-flex items-center space-x-2 text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:underline focus-ring rounded p-1"
+            className={`inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider font-semibold transition-colors focus-ring rounded p-1 ${accentColorClass}`}
           >
-            <ArrowLeft className="w-4 h-4" />
+            <ArrowLeft className="w-3.5 h-3.5" />
             <span>Back to Portfolio Home</span>
           </Link>
         </div>
 
         {/* Hero Section Card */}
-        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 md:p-12 shadow-professional-lg space-y-6">
+        <div className="bg-white/40 dark:bg-slate-950/20 border border-slate-200/40 dark:border-slate-900 rounded-2xl p-8 md:p-12 space-y-6 transition-all duration-300">
           <div className="space-y-4">
-            <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
+            <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight font-sans">
               {project.title}
             </h1>
-            <p className="text-lg md:text-xl text-slate-600 dark:text-slate-350 leading-relaxed">
+            <p className="text-base md:text-lg text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
               {project.description}
             </p>
           </div>
 
           {/* Project Parameters Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4 border-t border-slate-100 dark:border-slate-800 text-sm text-slate-600 dark:text-slate-400">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-slate-200/40 dark:border-slate-900 text-sm text-slate-605 dark:text-slate-400">
             {project.duration && (
               <div className="flex items-center space-x-2.5">
-                <Calendar className="w-5 h-5 text-indigo-500" />
+                <Calendar className={`w-5 h-5 ${accentColorClass}`} />
                 <div>
-                  <p className="text-xs text-slate-400">Project Timeline</p>
-                  <p className="font-semibold text-slate-800 dark:text-slate-200">{project.duration}</p>
+                  <p className="text-[10px] font-mono text-slate-400 uppercase tracking-wider font-semibold">Timeline</p>
+                  <p className="font-bold text-slate-800 dark:text-slate-200">{project.duration}</p>
                 </div>
               </div>
             )}
             {project.team && (
               <div className="flex items-center space-x-2.5">
-                <Users className="w-5 h-5 text-emerald-500" />
+                <Users className={`w-5 h-5 ${accentColorClass}`} />
                 <div>
-                  <p className="text-xs text-slate-400">Team Size</p>
-                  <p className="font-semibold text-slate-800 dark:text-slate-200">{project.team}</p>
+                  <p className="text-[10px] font-mono text-slate-400 uppercase tracking-wider font-semibold">Team Size</p>
+                  <p className="font-bold text-slate-800 dark:text-slate-200">{project.team}</p>
                 </div>
               </div>
             )}
             <div className="flex items-center space-x-2.5">
-              <Cpu className="w-5 h-5 text-amber-500" />
+              <Cpu className={`w-5 h-5 ${accentColorClass}`} />
               <div>
-                <p className="text-xs text-slate-400">Branding Segment</p>
-                <p className="font-semibold text-slate-800 dark:text-slate-200 capitalize">
-                  {project.github ? 'Software Engineering' : 'Mechanical & CFD'}
+                <p className="text-[10px] font-mono text-slate-400 uppercase tracking-wider font-semibold">Focus Area</p>
+                <p className="font-bold text-slate-800 dark:text-slate-200">
+                  {isCS ? 'Software & AI' : 'Mechanical & CFD'}
                 </p>
               </div>
             </div>
@@ -139,29 +149,29 @@ export default async function ProjectCaseStudy({ params }: PageProps) {
           
           {/* Main Case-study Description */}
           <div className="md:col-span-2 space-y-6">
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-white pb-3 border-b border-slate-200 dark:border-slate-800">
+            <h2 className="text-xl font-bold text-slate-900 dark:text-white pb-3 border-b border-slate-200/40 dark:border-slate-900 font-sans">
               Technical Overview & Case-study
             </h2>
-            <div className="prose dark:prose-invert max-w-none text-slate-700 dark:text-slate-300 leading-relaxed space-y-4">
+            <div className="prose dark:prose-invert max-w-none text-slate-700 dark:text-slate-300 leading-relaxed space-y-4 text-sm font-medium">
               <p>
                 This advanced engineering project was designed and optimized utilizing rigorous simulations and standard validation guidelines. By implementing dynamic parameter feedback and optimization modules, the system establishes top-tier efficiency bounds.
               </p>
               <p>
-                As a Mechanical Engineer and Software Developer, I focused on reducing computational time-steps and improving physical meshing structures to resolve multi-phase flow interactions and thermo-fluid transient boundary conditions.
+                As a multidisciplinary engineer, I focused on reducing computational time-steps and improving physical meshing structures to resolve multi-phase flow interactions and thermo-fluid transient boundary conditions.
               </p>
             </div>
           </div>
 
           {/* Sidebar: Technology Stack */}
-          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm h-fit space-y-6">
+          <div className="bg-white/40 dark:bg-slate-955/20 border border-slate-200/40 dark:border-slate-900 rounded-2xl p-6 h-fit space-y-6 transition-all duration-300">
             <div>
-              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4">Core Technology Stack</h3>
-              <div className="flex flex-wrap gap-2">
+              <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-4 font-sans">Core Technology Stack</h3>
+              <div className="flex flex-wrap gap-1.5">
                 {project.technologies.map((tech) => (
                   <Badge 
                     key={tech} 
                     variant="secondary"
-                    className="bg-indigo-50 dark:bg-indigo-950/30 text-indigo-700 dark:text-indigo-300 border border-indigo-100 dark:border-indigo-900/30 text-xs font-semibold px-2.5 py-1 rounded"
+                    className={`text-[10px] font-mono font-semibold px-2 py-0.5 rounded shadow-none border ${accentBgClass} ${accentColorClass} ${accentBorderClass}`}
                   >
                     {tech}
                   </Badge>
@@ -170,11 +180,11 @@ export default async function ProjectCaseStudy({ params }: PageProps) {
             </div>
 
             {/* Links and Actions */}
-            <div className="space-y-3 pt-4 border-t border-slate-100 dark:border-slate-800">
+            <div className="space-y-3 pt-4 border-t border-slate-200/40 dark:border-slate-900">
               {project.github && (
                 <Button 
                   variant="outline" 
-                  className="w-full flex items-center justify-center space-x-2 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-350 hover:bg-slate-50 dark:hover:bg-slate-800 focus-ring"
+                  className="w-full flex items-center justify-center space-x-2 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-350 hover:bg-slate-50 dark:hover:bg-slate-900 focus-ring font-mono uppercase tracking-wider text-xs rounded-xl"
                   asChild
                 >
                   <a href={project.github} target="_blank" rel="noopener noreferrer">
@@ -186,7 +196,7 @@ export default async function ProjectCaseStudy({ params }: PageProps) {
 
               {project.demo && (
                 <Button 
-                  className="w-full flex items-center justify-center space-x-2 gradient-primary text-white btn-hover-lift focus-ring"
+                  className={`w-full flex items-center justify-center space-x-2 bg-transparent border font-mono uppercase tracking-wider text-xs font-semibold focus-ring transition-all duration-200 rounded-xl ${borderAccentClass} ${accentColorClass} ${hoverBgClass}`}
                   asChild
                 >
                   <a href={project.demo} target="_blank" rel="noopener noreferrer">
@@ -198,7 +208,7 @@ export default async function ProjectCaseStudy({ params }: PageProps) {
 
               {project.link && (
                 <Button 
-                  className="w-full flex items-center justify-center space-x-2 gradient-primary text-white btn-hover-lift focus-ring"
+                  className={`w-full flex items-center justify-center space-x-2 bg-transparent border font-mono uppercase tracking-wider text-xs font-semibold focus-ring transition-all duration-200 rounded-xl ${borderAccentClass} ${accentColorClass} ${hoverBgClass}`}
                   asChild
                 >
                   <a href={project.link} target="_blank" rel="noopener noreferrer">

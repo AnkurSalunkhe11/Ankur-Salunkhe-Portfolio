@@ -11,8 +11,10 @@ import { getPersonalData } from '@/lib/data-loader';
 import { Mail, MapPin, Phone, Send } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { analytics } from '@/lib/analytics';
+import { usePortfolioStore } from '@/lib/store';
 
 export default function Contact() {
+  const { domain } = usePortfolioStore();
   const personalData = getPersonalData();
   const [formData, setFormData] = useState({
     name: '',
@@ -125,18 +127,22 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 bg-slate-900">
+    <section id="contact" className="py-24 bg-background border-t border-slate-200/40 dark:border-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="mb-16 space-y-3 text-left"
         >
-          <h2 className="text-4xl font-bold text-white mb-4">Get In Touch</h2>
-          <div className="w-24 h-1 gradient-primary mx-auto rounded-full mb-6"></div>
-          <p className="text-lg text-slate-300 max-w-2xl mx-auto">
+          <span className="text-xs font-mono font-medium tracking-tight text-slate-400 dark:text-slate-500">
+            // GET IN TOUCH
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white font-sans">
+            Contact Details
+          </h2>
+          <p className="text-base sm:text-lg text-slate-500 dark:text-slate-400 max-w-2xl leading-relaxed">
             Let's discuss your next project or opportunity. I'm always open to new challenges and collaborations.
           </p>
         </motion.div>
@@ -150,17 +156,17 @@ export default function Contact() {
             className="space-y-8"
           >
             <div>
-              <h3 className="text-2xl font-semibold text-white mb-6">Contact Information</h3>
-              <div className="space-y-4">
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6 font-sans">Contact Information</h3>
+              <div className="space-y-6">
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center">
-                    <Mail className="w-6 h-6 text-white" />
+                  <div className="w-10 h-10 bg-slate-50/50 dark:bg-slate-900/40 border border-slate-200/40 dark:border-slate-900 rounded-xl flex items-center justify-center">
+                    <Mail className="w-5 h-5 text-indigo-650 dark:text-indigo-400" />
                   </div>
                   <div>
-                    <p className="text-slate-300">Email</p>
+                    <p className="text-slate-400 dark:text-slate-550 text-xs font-mono">EMAIL</p>
                     <button 
                       onClick={handleEmailClick}
-                      className="text-white hover:text-indigo-400 transition-colors focus-ring rounded"
+                      className="text-slate-800 dark:text-slate-200 font-semibold hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors focus-ring rounded"
                     >
                       {personalData.email}
                     </button>
@@ -168,43 +174,43 @@ export default function Contact() {
                 </div>
 
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-emerald-600 rounded-xl flex items-center justify-center">
-                    <MapPin className="w-6 h-6 text-white" />
+                  <div className="w-10 h-10 bg-slate-50/50 dark:bg-slate-900/40 border border-slate-200/40 dark:border-slate-900 rounded-xl flex items-center justify-center">
+                    <MapPin className="w-5 h-5 text-emerald-650 dark:text-emerald-450" />
                   </div>
                   <div>
-                    <p className="text-slate-300">Location</p>
-                    <p className="text-white">{personalData.location}</p>
+                    <p className="text-slate-400 dark:text-slate-550 text-xs font-mono">LOCATION</p>
+                    <p className="text-slate-800 dark:text-slate-200 font-semibold">{personalData.location}</p>
                   </div>
                 </div>
 
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-purple-600 rounded-xl flex items-center justify-center">
-                    <Phone className="w-6 h-6 text-white" />
+                  <div className="w-10 h-10 bg-slate-50/50 dark:bg-slate-900/40 border border-slate-200/40 dark:border-slate-900 rounded-xl flex items-center justify-center">
+                    <Phone className="w-5 h-5 text-purple-650 dark:text-purple-400" />
                   </div>
                   <div>
-                    <p className="text-slate-300">Phone</p>
-                    <p className="text-white">{personalData.phone}</p>
+                    <p className="text-slate-400 dark:text-slate-550 text-xs font-mono">PHONE</p>
+                    <p className="text-slate-800 dark:text-slate-200 font-semibold">{personalData.phone}</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
-              <h4 className="text-lg font-semibold text-white mb-4">Let's Connect</h4>
-              <p className="text-slate-300 mb-4">
+            <div className="bg-white/40 dark:bg-slate-950/20 rounded-2xl p-6 border border-slate-200/40 dark:border-slate-900">
+              <h4 className="text-base font-bold text-slate-900 dark:text-white mb-4 font-sans">Professional Networks</h4>
+              <p className="text-slate-505 dark:text-slate-400 text-sm mb-4 leading-relaxed font-medium">
                 I'm always interested in discussing new opportunities, creative projects, 
                 or just having a conversation about technology and engineering.
               </p>
               <div className="flex space-x-4">
                 <button
                   onClick={() => handleSocialClick('linkedin', personalData.linkedin)}
-                  className="text-blue-400 hover:text-blue-300 transition-colors focus-ring rounded"
+                  className="text-indigo-650 dark:text-indigo-400 hover:underline text-sm font-semibold transition-colors focus-ring rounded"
                 >
                   LinkedIn
                 </button>
                 <button
                   onClick={() => handleSocialClick('github', personalData.github)}
-                  className="text-slate-400 hover:text-slate-300 transition-colors focus-ring rounded"
+                  className="text-slate-600 dark:text-slate-400 hover:underline text-sm font-semibold transition-colors focus-ring rounded"
                 >
                   GitHub
                 </button>
@@ -218,9 +224,9 @@ export default function Contact() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <Card className="bg-slate-800 border-slate-700">
+            <Card className="bg-white/40 dark:bg-slate-950/20 border-slate-200/40 dark:border-slate-900 rounded-2xl shadow-none">
               <CardHeader>
-                <CardTitle className="text-white">Send me a message</CardTitle>
+                <CardTitle className="text-slate-900 dark:text-white font-sans text-lg">Send a message</CardTitle>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -237,7 +243,7 @@ export default function Contact() {
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="name" className="text-slate-300">Name</Label>
+                      <Label htmlFor="name" className="text-slate-600 dark:text-slate-400 text-xs font-mono font-semibold">NAME</Label>
                       <Input
                         id="name"
                         name="name"
@@ -245,12 +251,12 @@ export default function Contact() {
                         onChange={handleChange}
                         onFocus={handleFormStart}
                         required
-                        className="bg-slate-700 border-slate-600 text-white placeholder:text-slate-400 focus:border-indigo-500 focus-ring"
+                        className="bg-white/50 dark:bg-slate-900/40 border-slate-200/60 dark:border-slate-800 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:border-indigo-500 focus-ring"
                         placeholder="Your name"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="email" className="text-slate-300">Email</Label>
+                      <Label htmlFor="email" className="text-slate-600 dark:text-slate-400 text-xs font-mono font-semibold">EMAIL</Label>
                       <Input
                         id="email"
                         name="email"
@@ -259,14 +265,14 @@ export default function Contact() {
                         onChange={handleChange}
                         onFocus={handleFormStart}
                         required
-                        className="bg-slate-700 border-slate-600 text-white placeholder:text-slate-400 focus:border-indigo-500 focus-ring"
+                        className="bg-white/50 dark:bg-slate-900/40 border-slate-200/60 dark:border-slate-800 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:border-indigo-500 focus-ring"
                         placeholder="your.email@example.com"
                       />
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="message" className="text-slate-300">Message</Label>
+                    <Label htmlFor="message" className="text-slate-600 dark:text-slate-400 text-xs font-mono font-semibold">MESSAGE</Label>
                     <Textarea
                       id="message"
                       name="message"
@@ -275,15 +281,15 @@ export default function Contact() {
                       onFocus={handleFormStart}
                       required
                       rows={6}
-                      className="bg-slate-700 border-slate-600 text-white placeholder:text-slate-400 focus:border-indigo-500 resize-none focus-ring"
+                      className="bg-white/50 dark:bg-slate-900/40 border-slate-200/60 dark:border-slate-800 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:border-indigo-500 resize-none focus-ring"
                       placeholder="Tell me about your project or just say hello..."
                     />
                   </div>
 
                   {/* Mathematical CAPTCHA Verification */}
-                  <div className="space-y-2 bg-slate-700/35 border border-slate-800 p-4 rounded-xl">
-                    <Label htmlFor="captchaAnswer" className="text-slate-300 text-xs block mb-1">
-                      Spam Protection: What is <span className="font-bold text-white text-sm bg-slate-800 dark:bg-slate-900 px-2.5 py-0.5 rounded">{formData.numA}</span> + <span className="font-bold text-white text-sm bg-slate-800 dark:bg-slate-900 px-2.5 py-0.5 rounded">{formData.numB}</span>?
+                  <div className="space-y-2 bg-slate-50/50 dark:bg-slate-900/30 border border-slate-200/40 dark:border-slate-900 p-4 rounded-xl">
+                    <Label htmlFor="captchaAnswer" className="text-slate-600 dark:text-slate-400 text-xs block mb-1">
+                      Spam Protection: What is <span className="font-bold text-slate-805 dark:text-slate-200 text-sm bg-slate-100 dark:bg-slate-900 px-2.5 py-0.5 rounded">{formData.numA}</span> + <span className="font-bold text-slate-805 dark:text-slate-200 text-sm bg-slate-100 dark:bg-slate-900 px-2.5 py-0.5 rounded">{formData.numB}</span>?
                     </Label>
                     <Input
                       id="captchaAnswer"
@@ -294,19 +300,25 @@ export default function Contact() {
                       onChange={handleChange}
                       required
                       placeholder="Enter calculation result"
-                      className="bg-slate-700 border-slate-600 text-white placeholder:text-slate-400 focus:border-indigo-500 focus-ring text-center tracking-widest"
+                      className="bg-white/50 dark:bg-slate-900/40 border-slate-200/60 dark:border-slate-800 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:border-indigo-500 focus-ring text-center tracking-widest"
                     />
                   </div>
 
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full gradient-primary text-white py-3 flex items-center justify-center space-x-2 btn-hover-lift focus-ring"
+                    className={`w-full py-3 flex items-center justify-center space-x-2 font-mono uppercase tracking-wider text-xs font-semibold focus-ring transition-all duration-200 border rounded-xl ${
+                      domain === 'cs'
+                        ? 'border-indigo-500/30 dark:border-indigo-400/30 text-indigo-650 dark:text-indigo-400 hover:bg-indigo-500/10 dark:hover:bg-indigo-400/10'
+                        : 'border-emerald-500/30 dark:border-emerald-400/30 text-emerald-650 dark:text-emerald-400 hover:bg-emerald-500/10 dark:hover:bg-emerald-400/10'
+                    }`}
                   >
                     {isSubmitting ? (
                       <>
-                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                        <span>Sending message...</span>
+                        <div className={`w-4 h-4 border-2 border-t-transparent rounded-full animate-spin ${
+                          domain === 'cs' ? 'border-indigo-650 dark:border-indigo-400' : 'border-emerald-650 dark:border-emerald-400'
+                        }`}></div>
+                        <span>Sending...</span>
                       </>
                     ) : (
                       <>

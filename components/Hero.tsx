@@ -118,10 +118,14 @@ const Hero = memo(() => {
                 <button
                   key={social.platform}
                   onClick={social.onClick || (() => handleSocialClick(social.platform, social.url))}
-                  className="flex items-center space-x-1.5 text-xs text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors duration-200 border border-slate-250 dark:border-slate-800 bg-white dark:bg-slate-900/30 px-3 py-1.5 rounded-lg shadow-sm focus-ring"
+                  className={`flex items-center space-x-1.5 text-xs text-slate-500 dark:text-slate-400 transition-colors duration-200 border border-slate-200/40 dark:border-slate-900 bg-slate-50/50 dark:bg-slate-950/20 px-3 py-1.5 rounded-lg focus-ring font-medium ${
+                    domain === 'cs'
+                      ? 'hover:text-indigo-650 dark:hover:text-indigo-400 hover:border-indigo-650/40 dark:hover:border-indigo-400/40'
+                      : 'hover:text-emerald-650 dark:hover:text-emerald-400 hover:border-emerald-650/40 dark:hover:border-emerald-400/40'
+                  }`}
                 >
                   <social.icon className="w-3.5 h-3.5" />
-                  <span className="capitalize font-medium">{social.platform.replace('-', ' ')}</span>
+                  <span className="capitalize">{social.platform.replace('-', ' ')}</span>
                 </button>
               ))}
             </div>
@@ -130,7 +134,11 @@ const Hero = memo(() => {
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button
                 size="lg"
-                className="px-8 py-4 rounded-xl font-semibold transition-all duration-200 text-white dark:text-slate-900 bg-slate-900 hover:bg-slate-800 border border-slate-900 dark:bg-white dark:hover:bg-slate-100 dark:border-white shadow-sm"
+                className={`px-8 py-4 rounded-xl font-mono uppercase tracking-wider text-xs font-semibold focus-ring transition-all duration-200 border ${
+                  domain === 'cs'
+                    ? 'border-indigo-500/30 dark:border-indigo-400/30 text-indigo-650 dark:text-indigo-400 hover:bg-indigo-500/10 dark:hover:bg-indigo-400/10'
+                    : 'border-emerald-500/30 dark:border-emerald-400/30 text-emerald-650 dark:text-emerald-400 hover:bg-emerald-500/10 dark:hover:bg-emerald-400/10'
+                }`}
                 onClick={() => handleNavigation('projects')}
               >
                 View Engineering Work
@@ -138,7 +146,7 @@ const Hero = memo(() => {
               <Button
                 variant="outline"
                 size="lg"
-                className="border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100/50 dark:hover:bg-slate-900/50 px-8 py-4 rounded-xl font-semibold transition-all duration-200 shadow-sm"
+                className="border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-350 bg-slate-50/50 dark:bg-slate-900/40 hover:bg-transparent hover:text-slate-905 dark:hover:text-white px-8 py-4 rounded-xl font-mono uppercase tracking-wider text-xs transition-all duration-200 focus-ring"
                 onClick={() => handleNavigation('contact')}
               >
                 Get In Touch

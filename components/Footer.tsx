@@ -6,8 +6,10 @@ import { Github, Linkedin, Mail, Heart, Globe, Phone, MapPin } from 'lucide-reac
 import { SiLeetcode, SiGooglescholar, SiMedium } from 'react-icons/si';
 import { analytics } from '@/lib/analytics';
 import { memo, useCallback } from 'react';
+import { usePortfolioStore } from '@/lib/store';
 
 const Footer = memo(() => {
+  const { domain } = usePortfolioStore();
   const portfolioData = getPersonalData();
   const currentYear = new Date().getFullYear();
 
@@ -76,9 +78,9 @@ const Footer = memo(() => {
   ];
 
   return (
-    <footer className="bg-slate-900 border-t border-slate-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer className="bg-background border-t border-slate-200/40 dark:border-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Brand Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -89,29 +91,31 @@ const Footer = memo(() => {
           >
             <div className="flex items-center space-x-3 mb-4">
               <div className="w-10 h-10 gradient-primary rounded-xl flex items-center justify-center">
-                <span className="text-white font-bold text-lg">AS</span>
+                <span className="text-white dark:text-slate-900 font-bold text-lg">AS</span>
               </div>
-              <span className="text-white font-semibold text-lg">
+              <span className="text-slate-905 dark:text-white font-semibold text-lg font-sans">
                 {portfolioData.name}
               </span>
             </div>
-            <p className="text-slate-400 mb-4 max-w-md">
+            <p className="text-slate-500 dark:text-slate-400 mb-6 max-w-md text-sm leading-relaxed font-medium">
               {portfolioData.bio}
             </p>
-            <div className="space-y-2 text-sm text-slate-400">
-              <div className="flex items-center space-x-2">
-                <MapPin className="w-4 h-4" />
+            <div className="space-y-2.5 text-sm">
+              <div className="flex items-center space-x-2 text-slate-600 dark:text-slate-400 font-medium">
+                <MapPin className={`w-4 h-4 ${domain === 'cs' ? 'text-indigo-650 dark:text-indigo-400' : 'text-emerald-650 dark:text-emerald-450'}`} />
                 <span>{portfolioData.location}</span>
               </div>
-              <div className="flex items-center space-x-2">
-                <Phone className="w-4 h-4" />
+              <div className="flex items-center space-x-2 text-slate-600 dark:text-slate-400 font-medium">
+                <Phone className={`w-4 h-4 ${domain === 'cs' ? 'text-indigo-650 dark:text-indigo-400' : 'text-emerald-650 dark:text-emerald-450'}`} />
                 <span>{portfolioData.phone}</span>
               </div>
-              <div className="flex items-center space-x-2">
-                <Mail className="w-4 h-4" />
+              <div className="flex items-center space-x-2 text-slate-600 dark:text-slate-400 font-medium">
+                <Mail className={`w-4 h-4 ${domain === 'cs' ? 'text-indigo-650 dark:text-indigo-400' : 'text-emerald-650 dark:text-emerald-450'}`} />
                 <a 
                   href={`mailto:${portfolioData.email}`}
-                  className="hover:text-white transition-colors"
+                  className={`hover:underline transition-colors ${
+                    domain === 'cs' ? 'hover:text-indigo-650 dark:hover:text-indigo-400' : 'hover:text-emerald-650 dark:hover:text-emerald-400'
+                  }`}
                   onClick={() => analytics.trackSocialClick('email')}
                 >
                   {portfolioData.email}
@@ -127,13 +131,15 @@ const Footer = memo(() => {
             transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-white font-semibold mb-4">Quick Links</h3>
+            <h3 className="text-slate-900 dark:text-white font-semibold text-xs font-mono uppercase tracking-wider mb-4">Quick Links</h3>
             <div className="space-y-2">
               {navLinks.map((link) => (
                 <a 
                   key={link.href}
                   href={link.href} 
-                  className="block text-slate-400 hover:text-white transition-colors focus-ring rounded"
+                  className={`block text-sm font-medium text-slate-500 dark:text-slate-400 hover:underline transition-colors focus-ring rounded ${
+                    domain === 'cs' ? 'hover:text-indigo-650 dark:hover:text-indigo-400' : 'hover:text-emerald-650 dark:hover:text-emerald-400'
+                  }`}
                   onClick={() => handleNavigation(link.label.toLowerCase())}
                 >
                   {link.label}
@@ -149,23 +155,27 @@ const Footer = memo(() => {
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-white font-semibold mb-4">Connect</h3>
-            <div className="flex flex-wrap gap-3 mb-6">
+            <h3 className="text-slate-900 dark:text-white font-semibold text-xs font-mono uppercase tracking-wider mb-4">Connect</h3>
+            <div className="flex flex-wrap gap-2.5 mb-6">
               {socialLinks.map((social) => (
                 <motion.button
                   key={social.platform}
-                  whileHover={{ scale: 1.1 }}
+                  whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => handleSocialClick(social.platform, social.url)}
-                  className={`w-10 h-10 bg-slate-800 rounded-xl flex items-center justify-center text-slate-400 hover:text-white ${social.color} transition-colors focus-ring`}
+                  className={`w-10 h-10 bg-slate-50/50 dark:bg-slate-900/40 border border-slate-200/40 dark:border-slate-900 rounded-xl flex items-center justify-center text-slate-500 dark:text-slate-400 transition-colors focus-ring ${
+                    domain === 'cs'
+                      ? 'hover:text-indigo-650 dark:hover:text-indigo-400 hover:border-indigo-650/40 dark:hover:border-indigo-400/40'
+                      : 'hover:text-emerald-650 dark:hover:text-emerald-400 hover:border-emerald-650/40 dark:hover:border-emerald-400/40'
+                  }`}
                 >
-                  <social.icon className="w-5 h-5" />
+                  <social.icon className="w-4.5 h-4.5" />
                 </motion.button>
               ))}
             </div>
-            <div className="space-y-2 text-sm text-slate-400">
-              <p>Available for freelance projects</p>
-              <p>Remote or {portfolioData.location}</p>
+            <div className="space-y-1.5 text-xs font-mono text-slate-400 dark:text-slate-500">
+              <p>// Available for freelance projects</p>
+              <p>// Remote or {portfolioData.location}</p>
             </div>
           </motion.div>
         </div>
@@ -175,12 +185,12 @@ const Footer = memo(() => {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
           viewport={{ once: true }}
-          className="border-t border-slate-800 mt-8 pt-8"
+          className="border-t border-slate-200/40 dark:border-slate-900 mt-12 pt-8"
         >
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-slate-500 text-sm flex items-center space-x-2">
+            <p className="text-slate-450 dark:text-slate-500 text-xs flex items-center space-x-2 font-mono">
               <span>© {currentYear} {portfolioData.name}. Made with</span>
-              <Heart className="w-4 h-4 text-red-500" />
+              <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500" />
               <span>using Next.js & Tailwind CSS</span>
             </p>
           </div>
@@ -192,4 +202,4 @@ const Footer = memo(() => {
 
 Footer.displayName = 'Footer';
 
-export default Footer;
+export default Footer;;
