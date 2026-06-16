@@ -163,7 +163,7 @@ export default async function ProjectCaseStudy({ params }: PageProps) {
           </div>
 
           {/* Sidebar: Technology Stack */}
-          <div className="bg-white/40 dark:bg-slate-955/20 border border-slate-200/40 dark:border-slate-900 rounded-2xl p-6 h-fit space-y-6 transition-all duration-300">
+          <div className="bg-white/40 dark:bg-slate-950/20 border border-slate-200/40 dark:border-slate-900 rounded-2xl p-6 h-fit space-y-6 transition-all duration-300">
             <div>
               <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-4 font-sans">Core Technology Stack</h3>
               <div className="flex flex-wrap gap-1.5">

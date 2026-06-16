@@ -39,7 +39,7 @@ export default function Resume() {
           </p>
         </motion.div>
 
-        <div className="relative p-8 md:p-12 rounded-2xl border border-slate-200/40 dark:border-slate-900 bg-white/40 dark:bg-slate-955/20 transition-all duration-300">
+        <div className="relative p-8 md:p-12 rounded-2xl border border-slate-200/40 dark:border-slate-900 bg-white/40 dark:bg-slate-950/20 transition-all duration-300">
           <motion.div
             initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}

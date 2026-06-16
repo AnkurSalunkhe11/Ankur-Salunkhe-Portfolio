@@ -115,7 +115,7 @@ export default function About() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3, duration: 0.6 }}
-                  className="bg-slate-50/30 dark:bg-slate-955/20 border border-slate-200/40 dark:border-slate-900 border-l-2 border-l-emerald-500/80 p-6 rounded-r-xl shadow-sm"
+                  className="bg-slate-50/30 dark:bg-slate-950/20 border border-slate-200/40 dark:border-slate-900 border-l-2 border-l-emerald-500/80 p-6 rounded-r-xl shadow-sm"
                 >
                   <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-3 flex items-center font-sans">
                     <Zap className="w-5 h-5 mr-2 text-emerald-600 dark:text-emerald-450" />
@@ -244,7 +244,7 @@ export default function About() {
             </Card>
 
             {/* Experience Summary Card */}
-            <Card className="border border-slate-200/40 dark:border-slate-900 bg-white/40 dark:bg-slate-955/20 hover:border-slate-350 dark:hover:border-slate-800 transition-all duration-300 rounded-2xl overflow-hidden shadow-none">
+            <Card className="border border-slate-200/40 dark:border-slate-900 bg-white/40 dark:bg-slate-950/20 hover:border-slate-350 dark:hover:border-slate-800 transition-all duration-300 rounded-2xl overflow-hidden shadow-none">
               <CardContent className="p-6">
                 <div className="flex items-center space-x-4 mb-4">
                   <div className="w-10 h-10 bg-emerald-50/30 dark:bg-emerald-950/10 border border-emerald-150/30 dark:border-emerald-900/20 rounded-xl flex items-center justify-center">
@@ -272,7 +272,7 @@ export default function About() {
             </Card>
 
             {/* Contact Info Card */}
-            <Card className="border border-slate-200/40 dark:border-slate-900 bg-white/40 dark:bg-slate-955/20 hover:border-slate-350 dark:hover:border-slate-800 transition-all duration-300 rounded-2xl overflow-hidden shadow-none">
+            <Card className="border border-slate-200/40 dark:border-slate-900 bg-white/40 dark:bg-slate-950/20 hover:border-slate-350 dark:hover:border-slate-800 transition-all duration-300 rounded-2xl overflow-hidden shadow-none">
               <CardContent className="p-6">
                 <div className="flex items-center space-x-4 mb-4">
                   <div className="w-10 h-10 bg-blue-50/30 dark:bg-blue-950/10 border border-blue-150/30 dark:border-blue-900/20 rounded-xl flex items-center justify-center">

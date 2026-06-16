@@ -144,7 +144,7 @@ export default function MechanicalAchievements() {
 
             <div className="overflow-x-auto rounded-2xl border border-slate-200/40 dark:border-slate-900 bg-white/40 dark:bg-slate-950/20 shadow-sm">
               <table className="w-full border-collapse text-left text-sm text-slate-600 dark:text-slate-400">
-                <thead className="bg-slate-50/50 dark:bg-slate-955/40 text-slate-450 dark:text-slate-500 font-mono text-[11px] uppercase tracking-wider border-b border-slate-200/40 dark:border-slate-900">
+                <thead className="bg-slate-50/50 dark:bg-slate-950/40 text-slate-450 dark:text-slate-500 font-mono text-[11px] uppercase tracking-wider border-b border-slate-200/40 dark:border-slate-900">
                   <tr>
                     <th scope="col" className="px-6 py-4">Title & Journal</th>
                     <th scope="col" className="px-6 py-4 hidden sm:table-cell">Key Parameters</th>
@@ -222,7 +222,7 @@ export default function MechanicalAchievements() {
             >
               {detailedProjects.map((project: any, index: number) => (
                 <motion.div key={project.title} variants={itemVariants}>
-                  <Card className="h-full group hover:shadow-professional-xl transition-all duration-300 overflow-hidden hover:-translate-y-2 border border-slate-200/40 dark:border-slate-900 bg-white/40 dark:bg-slate-955/20 flex flex-col">
+                  <Card className="h-full group hover:shadow-professional-xl transition-all duration-300 overflow-hidden hover:-translate-y-2 border border-slate-200/40 dark:border-slate-900 bg-white/40 dark:bg-slate-950/20 flex flex-col">
                     <div className="relative overflow-hidden flex-shrink-0">
                       <img
                         src={getProjectImage(project.title)}
@@ -309,9 +309,9 @@ export default function MechanicalAchievements() {
               <h3 className="text-2xl font-bold text-slate-900 dark:text-white font-sans">Patents Showcase</h3>
             </div>
 
-            <div className="overflow-x-auto rounded-2xl border border-slate-200/40 dark:border-slate-900 bg-white/40 dark:bg-slate-955/20 shadow-sm animate-fade-in">
+            <div className="overflow-x-auto rounded-2xl border border-slate-200/40 dark:border-slate-900 bg-white/40 dark:bg-slate-950/20 shadow-sm animate-fade-in">
               <table className="w-full border-collapse text-left text-sm text-slate-600 dark:text-slate-400">
-                <thead className="bg-slate-50/50 dark:bg-slate-955/40 text-slate-450 dark:text-slate-500 font-mono text-[11px] uppercase tracking-wider border-b border-slate-200/40 dark:border-slate-900">
+                <thead className="bg-slate-50/50 dark:bg-slate-950/40 text-slate-450 dark:text-slate-500 font-mono text-[11px] uppercase tracking-wider border-b border-slate-200/40 dark:border-slate-900">
                   <tr>
                     <th scope="col" className="px-6 py-4">Patent Details & Title</th>
                     <th scope="col" className="px-6 py-4">Status & Identifiers</th>
