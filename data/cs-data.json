@@ -34,7 +34,7 @@
       "title": "AI Virtual Assistant",
       "description": "Voice and text-enabled virtual assistant in Python for task automation including alarms, web browsing, PDF summarization, and system control.",
       "technologies": ["Python", "Speech Recognition", "Web Scraping", "winsdk", "Automation"],
-      "github": "https://github.com/AnkurSalunkhe11/ai-assistant",
+      "github": "https://github.com/AnkurSalunkhe11/-Desktop-Assistant",
       "demo": "https://ai-assistant-demo.vercel.app"
     },
     {
@@ -48,8 +48,20 @@
       "title": "Space Wars Game",
       "description": "2D arcade-style game with player-controlled spaceship, enemy waves, collision detection, scoring, and animation using Pygame.",
       "technologies": ["Python", "Pygame", "Game Development", "Object-Oriented Programming"],
-      "github": "https://github.com/AnkurSalunkhe11/space-wars",
+      "github": "https://github.com/AnkurSalunkhe11/Spacewars",
       "demo": "https://space-wars-game.itch.io"
+    },
+    {
+      "title": "Spotify Downloader CLI",
+      "description": "High-performance command-line utility in Python to download playlists and tracks. Integrates YouTube search matching, automated metadata tagging (ID3v2), album art extraction, and a containerized Docker structure.",
+      "technologies": ["Python", "Docker", "Poetry", "spotDL", "API Integration"],
+      "github": "https://github.com/AnkurSalunkhe11/spotify-downloader"
+    },
+    {
+      "title": "EMI Calculator Automation Suite",
+      "description": "Automated Selenium testing suite designed in Java/Maven to validate banking website Equated Monthly Installment (EMI) calculators. Implements Page Object Model (POM) and BDD Cucumber features for comprehensive validation of loan interest and repayment matrices.",
+      "technologies": ["Java", "Selenium WebDriver", "Maven", "Cucumber", "BDD"],
+      "github": "https://github.com/AnkurSalunkhe11/Identify_Emi_Final_Project"
     }
   ],
   "experience": [
